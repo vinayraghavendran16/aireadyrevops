@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FAF8F3">
+<title>AI-Ready RevOps Assessment — Score Your Revenue Stack in 4 Minutes</title>
+<meta name="description" content="Free 15-question self-assessment. Score your AI-readiness across six weighted dimensions. Get a personalized Readiness Index and your top three remediation priorities.">
+<link rel="canonical" href="https://aireadyrevops.com/assessment.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="AI-Ready RevOps Assessment — Score Your Revenue Stack in 4 Minutes">
+<meta property="og:description" content="15 questions. 4 minutes. One Readiness Index across six weighted dimensions.">
+<meta property="og:url" content="https://aireadyrevops.com/assessment.html">
+<meta property="og:image" content="https://aireadyrevops.com/assets/og-image.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,30..100;1,9..144,300..700,30..100&family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Quiz",
+  "name": "AI-Ready RevOps Self-Assessment",
+  "about": "Revenue Operations AI Readiness",
+  "educationalUse": "assessment",
+  "url": "https://aireadyrevops.com/assessment.html"
+}
+</script>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site-header">
+  <nav class="nav" aria-label="Primary">
+    <a class="brand" href="/" aria-label="AI-Ready RevOps home">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>AI-Ready RevOps</span>
+    </a>
+    <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <ul class="nav-links" id="primary-nav">
+      <li><a href="/framework.html">Framework</a></li>
+      <li><a href="/services.html">Services</a></li>
+      <li><a href="/blog/">Articles</a></li>
+      <li><a href="/about.html">About</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+
+<!-- ============ INTRO ============ -->
+<section id="intro" class="quiz-screen">
+  <div class="container narrow" style="padding-top:clamp(3rem,6vw,5rem); padding-bottom:clamp(2rem,4vw,3rem)">
+    <span class="kicker">The free assessment</span>
+    <h1 style="margin-bottom:1.5rem">Score your revenue stack's AI-readiness.</h1>
+    <p class="lead muted" style="margin-bottom:2rem">
+      Fifteen behavioral questions. Six weighted dimensions. One number — the Readiness Index — that tells you whether your AI investments are positioned to deliver ROI or compound technical debt.
+    </p>
+
+    <div class="assessment-cta-meta" style="margin-bottom:2rem">
+      <div><span>Questions</span><strong>15 (across 6 dimensions)</strong></div>
+      <div><span>Time</span><strong>~4 minutes</strong></div>
+      <div><span>Output</span><strong>Index 0–100, dimension breakdown, top 3 priorities</strong></div>
+      <div><span>Cost</span><strong>Free · email at end for full report</strong></div>
+    </div>
+
+    <p class="muted" style="margin-bottom:2rem;font-size:0.95rem">
+      <strong style="color:var(--ink)">A note on accuracy.</strong> The self-assessment is directional. A paid audit produces evidence-backed scoring with system access. If you score below 65 here, you're a candidate for the audit — but you don't need it to start improving.
+    </p>
+
+    <button class="btn btn-primary btn-lg btn-arrow" onclick="startQuiz()">Begin assessment</button>
+  </div>
+</section>
+
+<!-- ============ QUIZ ============ -->
+<section id="quiz" class="quiz-screen" style="display:none">
+  <div class="quiz-progress">
+    <div class="container narrow">
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="progressFill"></div></div>
+      <div class="quiz-progress-text">
+        <span id="progressLabel">Question 1 of 15</span>
+        <span id="progressDim">Data Foundation</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="quiz-wrap">
+    <div id="questionContainer"></div>
+    <div class="quiz-actions">
+      <button class="btn btn-secondary" id="prevBtn" onclick="prevQ()">← Back</button>
+      <button class="btn btn-primary btn-arrow" id="nextBtn" onclick="nextQ()" disabled>Next</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EMAIL GATE ============ -->
+<section id="emailGate" class="quiz-screen" style="display:none">
+  <div class="email-gate container narrow">
+    <span class="kicker">One last step</span>
+    <h2>Where should we send your full report?</h2>
+    <p class="muted" style="max-width:50ch;margin:1rem auto 0">Your scorecard, the dimension-level breakdown, and a personalized list of remediation priorities — delivered to your inbox in the next minute.</p>
+    <form id="emailForm" onsubmit="submitEmail(event)">
+      <input type="email" id="emailInput" placeholder="you@company.com" required>
+      <button type="submit" class="btn btn-accent btn-arrow">Get my report</button>
+    </form>
+    <p class="muted" style="margin-top:1.5rem;font-size:0.85rem">No spam. Unsubscribe in one click. We email you the report and at most one follow-up.</p>
+    <p style="margin-top:0.75rem;font-size:0.85rem"><a href="#" onclick="skipEmail(event)" style="color:var(--muted)">Skip and just show my score</a></p>
+  </div>
+</section>
+
+<!-- ============ RESULTS ============ -->
+<section id="results" class="quiz-screen" style="display:none">
+
+  <div class="results-hero">
+    <div class="container">
+      <div class="results-score-grid">
+        <div>
+          <span class="kicker" style="color:#E8946A">Your Readiness Index</span>
+          <div class="results-index" id="rIndex">—</div>
+          <div class="results-index-meta">
+            <span>Out of 100 · weighted across 6 dimensions</span>
+          </div>
+        </div>
+        <div>
+          <div class="results-band" id="rBand">—</div>
+          <p id="rBandDesc" style="color:#B8AC95;line-height:1.5;max-width:38ch">—</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container narrow" style="padding-top:clamp(2.5rem,5vw,4rem); padding-bottom:clamp(2rem,4vw,3rem)">
+
+    <h2 style="margin-bottom:0.5rem">Dimension breakdown</h2>
+    <p class="muted" style="margin-bottom:2rem">Hover or tap each bar to see the criteria scored.</p>
+
+    <div class="dim-bars" id="dimBars"></div>
+
+    <hr style="border:0;border-top:1px solid var(--rule);margin:3rem 0">
+
+    <h2 style="margin-bottom:0.5rem">Your top three priorities</h2>
+    <p class="muted" style="margin-bottom:2rem">The dimensions where remediation will move your Index the most.</p>
+    <ol id="priorityList" style="margin-left:1.5rem"></ol>
+
+    <hr style="border:0;border-top:1px solid var(--rule);margin:3rem 0">
+
+    <div class="callout">
+      <h3 style="margin-bottom:0.5rem">Want evidence-backed scoring?</h3>
+      <p style="margin-bottom:1rem">A paid audit produces a defensible scorecard with system access, a 90-day remediation roadmap, and a cost-of-inaction analysis your CFO can fund Phase 2 against.</p>
+      <a href="/services.html" class="btn btn-primary btn-arrow">See the audits</a>
+    </div>
+
+    <p style="text-align:center;margin-top:3rem"><a href="#" onclick="restartQuiz(event)" class="muted">Retake the assessment</a></p>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">AI-Ready RevOps</div>
+        <p class="footer-tag">A diagnostic and remediation methodology for the modern revenue stack.</p>
+      </div>
+      <div class="footer-col">
+        <h4>The Framework</h4>
+        <ul>
+          <li><a href="/framework.html">Methodology</a></li>
+          <li><a href="/assessment.html">Free assessment</a></li>
+          <li><a href="/services.html">Paid audits</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Read</h4>
+        <ul>
+          <li><a href="/blog/">Articles</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>About</h4>
+        <ul>
+          <li><a href="/about.html">About the author</a></li>
+          <li><a href="mailto:hello@aireadyrevops.com">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 AI-Ready RevOps · WhizzLead</span>
+      <span>aireadyrevops.com</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/assessment.js"></script>
+<script>
+  const tog = document.querySelector('.menu-toggle');
+  const links = document.getElementById('primary-nav');
+  if (tog && links) {
+    tog.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      tog.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+</script>
+</body>
+</html>
