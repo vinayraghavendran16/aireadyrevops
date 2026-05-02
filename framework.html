@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FAF8F3">
+<title>The AI-Ready RevOps Framework — Six Dimensions, One Index</title>
+<meta name="description" content="The full methodology: six weighted dimensions, twenty-four scoring criteria, and a published rubric. The diagnostic that tells you whether your AI investments will deliver ROI.">
+<link rel="canonical" href="https://aireadyrevops.com/framework.html">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="The AI-Ready RevOps Framework — Six Dimensions, One Index">
+<meta property="og:description" content="The full methodology behind the diagnostic that scores your revenue stack's AI-readiness.">
+<meta property="og:url" content="https://aireadyrevops.com/framework.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,30..100;1,9..144,300..700,30..100&family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The AI-Ready RevOps Framework",
+  "description": "A diagnostic and remediation methodology for the modern revenue stack.",
+  "author": { "@type": "Person", "name": "Vinay Raghavendran" },
+  "publisher": { "@type": "Organization", "name": "AI-Ready RevOps" },
+  "url": "https://aireadyrevops.com/framework.html",
+  "mainEntityOfPage": "https://aireadyrevops.com/framework.html"
+}
+</script>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="/"><span class="brand-mark"></span><span>AI-Ready RevOps</span></a>
+    <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    <ul class="nav-links" id="primary-nav">
+      <li><a href="/framework.html" aria-current="page">Framework</a></li>
+      <li><a href="/services.html">Services</a></li>
+      <li><a href="/blog/">Articles</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a class="nav-cta" href="/assessment.html">Take the Assessment</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+
+<article class="article-header">
+  <div class="container narrow">
+    <div class="article-meta">
+      <span>The Methodology</span>
+      <span>v1.0 · 2026</span>
+      <span>~12 min read</span>
+    </div>
+    <h1>The AI-Ready RevOps Framework</h1>
+    <p class="lead muted" style="margin-top:1.5rem">A diagnostic and remediation methodology for the modern revenue stack. Six weighted dimensions. Twenty-four scoring criteria. One auditable Readiness Index.</p>
+  </div>
+</article>
+
+<section class="section-tight">
+  <div class="container narrow prose">
+
+    <h2>The thesis</h2>
+    <p>By early 2026, roughly three out of four RevOps teams had embedded AI into their go-to-market stack. The most common conversation in revenue leadership is no longer about AI strategy. It is about whether the data underneath the AI can be trusted at all.</p>
+    <p>Three patterns recur across mid-market B2B companies, and they are why a generic RevOps audit produces a 60-page deck and changes nothing.</p>
+
+    <h4>Pattern 1 — AI deployed before data hygiene</h4>
+    <p>Companies buy Agentforce, a forecasting copilot, or an AI SDR expecting transformation. They then discover the model is operating on stale CRM data with 40% or more missing fields and inconsistent stage definitions across reps. The AI produces outputs, but the outputs are wrong in ways that are hard to detect until a forecast is missed by 20 points.</p>
+
+    <h4>Pattern 2 — Tool sprawl masquerading as transformation</h4>
+    <p>The average B2B sales rep now juggles 7 to 10 tools. Each new AI-native platform adds another data silo, another integration to maintain, and another source of conflicting truth. Tool costs are now 15 to 20% of an AE's on-target earnings.</p>
+
+    <h4>Pattern 3 — Governance debt from unchecked admin sprawl</h4>
+    <p>The Salesforce-Salesloft-Drift breach exposed a category-wide problem. Connected apps, OAuth grants, profile permissions, and integration users have multiplied across a decade without rigorous audit trails. Every new AI agent inherits that debt.</p>
+
+    <blockquote>The AI investment is real. The ROI is gated entirely on foundation quality. This framework quantifies the gate.</blockquote>
+
+    <h2>The math</h2>
+    <p>The Readiness Index, scored 0 to 100, is computed as a weighted sum across six dimensions. Each dimension contains four scoring criteria, rated 1 to 5 against a defined rubric where 1 represents critical risk and 5 represents best-in-class. The dimension score is the average of its criteria, scaled to a 0 to 100 range.</p>
+    <p>The math is intentionally simple so a buyer can audit the result themselves:</p>
+    <ol>
+      <li>Score each of 24 criteria 1 to 5 using the rubric below.</li>
+      <li>Compute Dimension Score = (sum of four criteria ÷ 20) × 100.</li>
+      <li>Compute Readiness Index = Σ (Dimension Score × Weight).</li>
+    </ol>
+
+    <h3 style="margin-top:2.5rem">Scoring bands</h3>
+    <table class="data-table">
+      <thead><tr><th>Index</th><th>Band</th><th>Interpretation</th></tr></thead>
+      <tbody>
+        <tr><td><strong>80–100</strong></td><td><strong style="color:var(--good)">AI-Ready</strong></td><td>Foundations support AI deployment. Focus on optimization and scale.</td></tr>
+        <tr><td><strong>65–79</strong></td><td><strong style="color:var(--good)">AI-Capable</strong></td><td>Most foundations in place. Targeted remediation will unlock AI ROI.</td></tr>
+        <tr><td><strong>50–64</strong></td><td><strong style="color:var(--warn)">AI-Risky</strong></td><td>AI investments at risk. Structural remediation required before scaling.</td></tr>
+        <tr><td><strong>35–49</strong></td><td><strong style="color:var(--bad)">AI-Fragile</strong></td><td>AI likely producing unreliable outputs. Immediate intervention needed.</td></tr>
+        <tr><td><strong>0–34</strong></td><td><strong style="color:var(--bad)">AI-Premature</strong></td><td>Foundational work required before AI investment delivers any ROI.</td></tr>
+      </tbody>
+    </table>
+
+    <h2>The six dimensions</h2>
+
+    <h3 id="data">01 · Data Foundation <span class="tag">Weight 20%</span></h3>
+    <p>AI models are only as good as the data they consume. Every downstream dimension — forecasting, scoring, routing, agent actions — depends on this foundation. It is the highest-weighted dimension because it is the most common point of failure.</p>
+    <h4>Scoring criteria</h4>
+    <ul>
+      <li><strong>1.1 Field Completeness</strong> on Account, Contact, and Opportunity required fields.</li>
+      <li><strong>1.2 Data Definitions</strong> and picklist discipline. Documented dictionary; enforced values.</li>
+      <li><strong>1.3 Duplicate Management</strong>. Automated deduplication; measured rate.</li>
+      <li><strong>1.4 Data Ownership and Stewardship</strong>. Named owner per object; cadence; KPIs.</li>
+    </ul>
+    <p class="muted"><em>Common failure modes:</em> Salesforce instances with 30+ unused custom fields. Picklists with "Other" absorbing 30–40% of records. Required field rules disabled to "unblock reps" and never re-enabled.</p>
+
+    <h3 id="integration">02 · Integration Architecture <span class="tag">Weight 15%</span></h3>
+    <p>Modern revenue stacks have 7 to 10 tools per rep. Without clear system-of-record rules and data lineage, every tool tells a different story. AI agents inherit and amplify this confusion.</p>
+    <h4>Scoring criteria</h4>
+    <ul>
+      <li><strong>2.1 System of Record Clarity</strong>. Documented SoR per data domain.</li>
+      <li><strong>2.2 Integration Health Monitoring</strong>. Real-time observability with alerts.</li>
+      <li><strong>2.3 Data Sync Latency and Reliability</strong>. SLA tracking; sub-minute critical paths.</li>
+      <li><strong>2.4 Integration Inventory</strong>. Living architecture documentation.</li>
+    </ul>
+
+    <h3 id="process">03 · Process Standardization <span class="tag">Weight 15%</span></h3>
+    <p>AI cannot infer process. If "MQL" means three different things across marketing, sales, and customer success, AI scoring and routing will produce three different recommendations. Standardization is what allows AI to act consistently.</p>
+    <h4>Scoring criteria</h4>
+    <ul>
+      <li><strong>3.1 Lead-to-Cash Documentation</strong>. Living process documentation tied to systems.</li>
+      <li><strong>3.2 Stage Definitions and Exit Criteria</strong>. Enforced via validation.</li>
+      <li><strong>3.3 MQL/SQL/Opp Definitions</strong>. Aligned and enforced cross-functionally.</li>
+      <li><strong>3.4 Handoff SLAs</strong>. Documented, measured, enforced.</li>
+    </ul>
+
+    <h3 id="ai">04 · AI Stack Fit <span class="tag">Weight 20%</span></h3>
+    <p>Whether AI investments are positioned to produce value. This is where wasted spend hides — overlapping tools, capabilities deployed without adoption, and pipelines that should but do not exist.</p>
+    <h4>Scoring criteria</h4>
+    <ul>
+      <li><strong>4.1 AI Tool Inventory and ROI Tracking</strong>. Measured outcomes per tool.</li>
+      <li><strong>4.2 Adoption and Embedded Workflow</strong>. Active rep usage of AI tools.</li>
+      <li><strong>4.3 Data-to-AI Pipeline Quality</strong>. Curated layer feeding AI tools.</li>
+      <li><strong>4.4 Use Case Discipline</strong>. Tools mapped to use cases; redundancy eliminated.</li>
+    </ul>
+
+    <h3 id="governance">05 · Governance and Access <span class="tag">Weight 15%</span></h3>
+    <p>Post-breach, governance moved from IT concern to revenue concern. AI agents now act on systems autonomously. Without audit trails, you cannot prove what they did, attribute changes correctly, or revoke access cleanly.</p>
+    <h4>Scoring criteria</h4>
+    <ul>
+      <li><strong>5.1 Connected App and OAuth Grant Hygiene</strong>. Inventoried; least-privilege; monitored.</li>
+      <li><strong>5.2 Profile and Permission Discipline</strong>. Role-based access with attestation.</li>
+      <li><strong>5.3 Audit Trail Coverage</strong>. Field history; event monitoring; SIEM integration.</li>
+      <li><strong>5.4 Change Management Discipline</strong>. CI/CD with deployment governance.</li>
+    </ul>
+
+    <h3 id="forecast">06 · Forecasting Trust <span class="tag">Weight 15%</span></h3>
+    <p>The proof point that everything below works. If leaders do not believe the number, no other RevOps work matters. This dimension is the integration test for the rest of the framework.</p>
+    <h4>Scoring criteria</h4>
+    <ul>
+      <li><strong>6.1 Forecast Accuracy (Recent 4 Quarters)</strong>. Commit-to-actual measurement.</li>
+      <li><strong>6.2 Pipeline Hygiene Discipline</strong>. Stale opportunity management.</li>
+      <li><strong>6.3 Methodology and Cadence</strong>. Documented method consistently applied.</li>
+      <li><strong>6.4 Leadership Trust Indicator</strong>. Forecast is the operating plan.</li>
+    </ul>
+
+    <hr>
+
+    <h2>What this framework is not</h2>
+    <p><strong>Not a maturity model.</strong> Maturity models describe where you are; they don't tell you what specific change moves the number. This framework produces a scorecard with named criteria tied to specific evidence and specific remediation.</p>
+    <p><strong>Not a tech stack audit.</strong> Tool inventory is one of 24 criteria, not the focus. The question is whether the foundation is AI-ready, not whether you bought the right tools.</p>
+    <p><strong>Not a strategy deck.</strong> The output is a working document the buyer can run a remediation project against — not slides that sit unread in a shared drive.</p>
+
+    <div class="callout">
+      <h3 style="margin-bottom:0.5rem">Apply the framework to your stack.</h3>
+      <p style="margin-bottom:1rem">Take the free 15-question self-assessment. You'll get a directional Readiness Index, a dimension-level breakdown, and your top three remediation priorities.</p>
+      <a href="/assessment.html" class="btn btn-accent btn-arrow">Take the assessment</a>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">AI-Ready RevOps</div>
+        <p class="footer-tag">A diagnostic and remediation methodology for the modern revenue stack.</p>
+      </div>
+      <div class="footer-col"><h4>The Framework</h4><ul><li><a href="/framework.html">Methodology</a></li><li><a href="/assessment.html">Free assessment</a></li><li><a href="/services.html">Paid audits</a></li></ul></div>
+      <div class="footer-col"><h4>Read</h4><ul><li><a href="/blog/">Articles</a></li></ul></div>
+      <div class="footer-col"><h4>About</h4><ul><li><a href="/about.html">About the author</a></li><li><a href="mailto:hello@aireadyrevops.com">Contact</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 AI-Ready RevOps · WhizzLead</span><span>aireadyrevops.com</span></div>
+  </div>
+</footer>
+
+<script>
+  const tog = document.querySelector('.menu-toggle');
+  const links = document.getElementById('primary-nav');
+  if (tog && links) tog.addEventListener('click', () => { const o = links.classList.toggle('open'); tog.setAttribute('aria-expanded', o ? 'true' : 'false'); });
+</script>
+</body>
+</html>

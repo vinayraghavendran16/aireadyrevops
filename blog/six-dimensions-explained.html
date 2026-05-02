@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FAF8F3">
+<title>The Six Dimensions of an AI-Ready Revenue Stack</title>
+<meta name="description" content="What each of the six AI-readiness dimensions measures, why it's weighted the way it is, the failure modes that recur, and the highest-leverage fix for each. The framework, decomposed.">
+<link rel="canonical" href="https://aireadyrevops.com/blog/six-dimensions-explained.html">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Six Dimensions of an AI-Ready Revenue Stack">
+<meta property="og:description" content="What each dimension measures, why it's weighted the way it is, and the highest-leverage fix for each.">
+<meta property="og:url" content="https://aireadyrevops.com/blog/six-dimensions-explained.html">
+<meta property="article:published_time" content="2026-05-02">
+<meta property="article:author" content="Vinay Raghavendran">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,30..100;1,9..144,300..700,30..100&family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The Six Dimensions of an AI-Ready Revenue Stack",
+  "description": "What each AI-readiness dimension measures, why it's weighted as it is, and the highest-leverage fix for each.",
+  "author": { "@type": "Person", "name": "Vinay Raghavendran", "url": "https://aireadyrevops.com/about.html" },
+  "publisher": { "@type": "Organization", "name": "AI-Ready RevOps" },
+  "datePublished": "2026-05-02",
+  "url": "https://aireadyrevops.com/blog/six-dimensions-explained.html",
+  "mainEntityOfPage": "https://aireadyrevops.com/blog/six-dimensions-explained.html"
+}
+</script>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="/"><span class="brand-mark"></span><span>AI-Ready RevOps</span></a>
+    <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    <ul class="nav-links" id="primary-nav">
+      <li><a href="/framework.html">Framework</a></li>
+      <li><a href="/services.html">Services</a></li>
+      <li><a href="/blog/" aria-current="page">Articles</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a class="nav-cta" href="/assessment.html">Take the Assessment</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+
+<article>
+  <header class="article-header">
+    <div class="container narrow">
+      <div class="article-meta">
+        <span>Methodology</span>
+        <span>May 2026</span>
+        <span>~12 min read</span>
+      </div>
+      <h1>The six dimensions of an AI-ready revenue stack</h1>
+      <p class="lead muted" style="margin-top:1.5rem">What each dimension measures, why it's weighted the way it is, the failure modes that recur across audits, and the single highest-leverage fix for each.</p>
+    </div>
+  </header>
+
+  <div class="container narrow prose">
+
+    <p>The AI-Ready RevOps Framework scores six dimensions. Each is weighted, each contains four scoring criteria, and each rolls up into a single 0–100 Readiness Index. The full <a href="/framework.html">methodology page</a> has the rubric. This piece is a working tour of what each dimension actually measures in the field, and what to do about it.</p>
+
+    <p>One note before the tour. Dimensions are not equally tractable. Some respond to a 30-day fix. Some require six months of cross-functional work. The weighting in the framework reflects impact, not difficulty. The order below reflects roughly how the work sequences — start with data, end with forecasting trust.</p>
+
+    <hr>
+
+    <h2>01 · Data Foundation <span class="tag">Weight 20%</span></h2>
+
+    <p><strong>What it measures.</strong> Whether the data sitting in your CRM is actually the data your AI tools need. Field completeness on revenue-critical objects (Account, Contact, Opportunity). Whether picklist values are documented and enforced. Duplicate rates. Whether anyone owns data quality.</p>
+
+    <p><strong>Why it's weighted highest.</strong> Every other dimension inherits this one. Forecasting AI is broken if pipeline data is wrong. Lead-scoring AI is broken if firmographic fields are empty. Conversational AI is broken if records aren't deduped. Data Foundation is the dependency every downstream AI capability sits on top of.</p>
+
+    <h4>Failure modes I see most often</h4>
+    <ul>
+      <li>Salesforce orgs with 60+ custom fields on Account, of which 30+ are unused or undocumented and quietly polluting reports.</li>
+      <li>Picklist values like "Other," "TBD," and "NA" absorbing 30 to 40% of records on segmentation-critical fields, breaking AI scoring.</li>
+      <li>Required-field validation rules that were disabled six quarters ago to "unblock reps" and never re-enabled.</li>
+      <li>Duplicate Account records created by integration users that bypass dedup rules — usually a 5 to 10% duplicate rate sitting unnoticed.</li>
+    </ul>
+
+    <h4>The highest-leverage fix</h4>
+    <p>Run a field utilization scan on records created in the last 90 days. Identify the five fields with the worst completeness rates. For each, decide: is this field actually needed? If yes, put validation back. If no, deprecate it. This single exercise typically gains 8 to 12 points on the dimension score within 30 days, with no system changes required.</p>
+
+    <hr>
+
+    <h2>02 · Integration Architecture <span class="tag">Weight 15%</span></h2>
+
+    <p><strong>What it measures.</strong> Whether your systems share one truth or fight over it. System-of-record clarity per data domain. Sync health and monitoring. Latency on revenue-critical paths. The existence of a living integration inventory.</p>
+
+    <p><strong>Why it matters.</strong> Modern revenue stacks have 7 to 10 tools per rep. Without clear SoR rules, every tool develops its own model of the customer. AI agents inherit and amplify that confusion. The result is forecasts that don't reconcile, leads that get routed to two reps simultaneously, and CS teams looking at customer records that don't match what sales is seeing.</p>
+
+    <h4>Failure modes I see most often</h4>
+    <ul>
+      <li>Marketing automation and CRM both treating themselves as SoR for Contact email, leading to overwrite loops where each updates the other in turn.</li>
+      <li>Custom middleware (Workato recipes, Mulesoft flows, n8n automations) built by people who left two years ago, with no documentation.</li>
+      <li>Integration users with system administrator profiles, granting de facto unaudited access across the entire data model.</li>
+      <li>AI tools querying Salesforce production directly under high request volumes, hitting governor limits and producing partial results without flagging it.</li>
+    </ul>
+
+    <h4>The highest-leverage fix</h4>
+    <p>Build a one-page architecture diagram. List every integration. Name the SoR per domain (who owns Contact email? Who owns Opportunity stage? Who owns ARR?). Where two systems claim ownership of the same domain, pick one and document the rule. The diagram itself is half the value — the conversation that produces it is the other half.</p>
+
+    <hr>
+
+    <h2>03 · Process Standardization <span class="tag">Weight 15%</span></h2>
+
+    <p><strong>What it measures.</strong> Whether your reps and tools mean the same things by the same words. Lead-to-cash documentation. Stage exit criteria. MQL/SQL/Opp/Won definitions across functions. Handoff SLAs.</p>
+
+    <p><strong>Why it matters.</strong> AI cannot infer process. If "MQL" means three different things across marketing, sales, and CS, AI scoring and routing will produce three different — and partially correct — recommendations. Standardization isn't bureaucracy; it's the prerequisite for any AI to act consistently across functions.</p>
+
+    <h4>Failure modes I see most often</h4>
+    <ul>
+      <li>"MQL" defined as a form fill in marketing, a 50+ point lead score in ops, and a verbal qualification in sales. Each function uses its own definition while still reporting joint funnel metrics.</li>
+      <li>Opportunity stages with names but no exit criteria — opps stuck in Stage 3 for 200+ days because nothing forces them forward.</li>
+      <li>Lead routing rules written five years ago that nobody on the current team can fully explain.</li>
+      <li>Customer success handoffs that consist of an email with the deal in CC. No data transfer. No SLA.</li>
+    </ul>
+
+    <h4>The highest-leverage fix</h4>
+    <p>Run a 60-minute MQL/SQL alignment workshop with marketing, sales, and CS in one room. Force a single shared definition. Write it down. Then encode the definition in your CRM as required field validation on the relevant objects. The workshop is the easy part. Encoding it in the system is what makes it stick.</p>
+
+    <hr>
+
+    <h2>04 · AI Stack Fit <span class="tag">Weight 20%</span></h2>
+
+    <p><strong>What it measures.</strong> Whether your AI investments are actually positioned to produce value. Tool inventory and ROI tracking. Adoption — meaning real usage, not seat counts. The quality of the data pipeline feeding each tool. Whether use cases were defined before purchase or rationalized after.</p>
+
+    <p><strong>Why it's weighted highest alongside Data Foundation.</strong> This is where wasted spend hides, and it's the dimension that most directly translates to AI ROI. Companies typically have $25,000 to $100,000 of annual savings sitting in tools that nobody uses but everyone keeps renewing.</p>
+
+    <h4>Failure modes I see most often</h4>
+    <ul>
+      <li>Two AI tools doing call recording and summarization with overlapping outputs. Nobody's run a consolidation analysis. Both renewed last quarter.</li>
+      <li>AI SDR platforms billed monthly with seat licenses for 20 SDRs, and active usage from 4 of them.</li>
+      <li>Forecasting AI fed by the same stage probabilities (10/30/50/70/90) that have been on the org since the original Salesforce implementation. The AI is producing exactly the bad number the bad inputs warrant.</li>
+      <li>Conversational analytics dashboards never opened by the executive who personally signed the contract.</li>
+    </ul>
+
+    <h4>The highest-leverage fix</h4>
+    <p>List every AI tool you pay for. For each, write the specific revenue or cost outcome it's producing. If you can't write one, the tool is a sunset candidate. Do this once per quarter. The first pass typically eliminates two to four tools and surfaces $30,000 to $80,000 of savings — usually more than the audit costs.</p>
+
+    <hr>
+
+    <h2>05 · Governance and Access <span class="tag">Weight 15%</span></h2>
+
+    <p><strong>What it measures.</strong> Whether you can audit what AI is doing inside your systems. Connected app and OAuth grant hygiene. Profile and permission discipline. Audit trail coverage. Change management.</p>
+
+    <p><strong>Why it matters.</strong> Post the Salesforce-Salesloft-Drift breach, governance moved from IT concern to revenue concern. AI agents now act on revenue systems autonomously. Without audit trails, you cannot prove what they did, attribute changes correctly, or revoke access cleanly when a vendor relationship ends.</p>
+
+    <h4>Failure modes I see most often</h4>
+    <ul>
+      <li>Connected apps installed by individual users with system administrator privileges, never reviewed by anyone in IT or RevOps.</li>
+      <li>Integration users named after vendors that left the company two years ago, still active and still authenticated.</li>
+      <li>Field history disabled to save storage costs, with no replacement audit mechanism in place — meaning forensic investigation of an AI agent's actions is functionally impossible.</li>
+      <li>Production changes made directly by external consultants with no approval trail or sandbox testing.</li>
+    </ul>
+
+    <h4>The highest-leverage fix</h4>
+    <p>Pull the connected apps list. Sort by last-used date. Revoke anything older than 12 months that isn't immediately recognized. Then implement Spring '26 OAuth restrictions. This is governance hygiene that has been deferred for years and is now urgent. It's also the single fastest way to gain points on this dimension.</p>
+
+    <hr>
+
+    <h2>06 · Forecasting Trust <span class="tag">Weight 15%</span></h2>
+
+    <p><strong>What it measures.</strong> Whether leadership believes the number. Forecast accuracy across the recent four quarters. Pipeline hygiene discipline. Whether you have a documented methodology consistently applied. Whether the CEO uses the CRM-generated forecast as the operating plan, or maintains a parallel model in a spreadsheet.</p>
+
+    <p><strong>Why it matters.</strong> This dimension is the integration test for the rest of the framework. If leaders don't believe the number, no other RevOps work matters. AI forecasting tools promise improvement, but they only deliver if the foundations under them are sound. A high score here is the proof point that everything else works.</p>
+
+    <h4>Failure modes I see most often</h4>
+    <ul>
+      <li>Two forecasts in circulation — the CRM number and the CRO's parallel spreadsheet — with the parallel model being the one used in board meetings.</li>
+      <li>Stage probabilities inherited from the original CRM implementation in 2019, never recalibrated against actual close rates.</li>
+      <li>AI forecasting tools producing numbers that diverge significantly from manager calls, with no reconciliation process.</li>
+      <li>Pipeline coverage ratios calculated on bloated pipelines, masking the real coverage gap. The 4× coverage looks like 2× once you remove the stale opps.</li>
+    </ul>
+
+    <h4>The highest-leverage fix</h4>
+    <p>Define stale-opportunity criteria (e.g., "no activity in 30 days, in stage longer than expected sales cycle"). Run a one-time cleanup pass. Then set a weekly hygiene cadence with named ownership. The forecast accuracy gain in the following two quarters is usually 8 to 15 percentage points — the largest single improvement available across the framework.</p>
+
+    <hr>
+
+    <h2>How the dimensions interact</h2>
+
+    <p>The dimensions are scored independently, but they interact in practice.</p>
+
+    <p>You cannot fix Forecasting Trust without first fixing Data Foundation and Process Standardization. You cannot rationalize the AI stack without first establishing Integration Architecture, because tool overlap is hard to see when systems aren't reconciled. Governance touches every other dimension because every change to any dimension creates governance work.</p>
+
+    <p>This is why the framework produces a roadmap, not a checklist. The 90-day remediation plan sequences the work — quick wins that gain points fast, structural fixes that take 60 days, foundational changes that take 90 — based on dependencies between the dimensions.</p>
+
+    <h2>Where to start</h2>
+
+    <p>If you're reading this and don't yet know your scores, start there. The free 15-question assessment produces a directional Readiness Index in under four minutes and tells you which dimensions are the lowest. The lowest dimensions are not always the ones to fix first — sequencing matters — but they're where the conversation should begin.</p>
+
+    <div class="callout">
+      <h3 style="margin-bottom:0.5rem">See your scores across the six dimensions.</h3>
+      <p style="margin-bottom:1rem">Free, 4 minutes, no demo required. The output is a Readiness Index and a personalized list of priorities sorted by impact.</p>
+      <a href="/assessment.html" class="btn btn-accent btn-arrow">Take the assessment</a>
+    </div>
+
+    <p style="margin-top:3rem"><a href="/blog/">← All articles</a></p>
+
+  </div>
+</article>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div><div class="footer-brand">AI-Ready RevOps</div><p class="footer-tag">A diagnostic and remediation methodology for the modern revenue stack.</p></div>
+      <div class="footer-col"><h4>The Framework</h4><ul><li><a href="/framework.html">Methodology</a></li><li><a href="/assessment.html">Free assessment</a></li><li><a href="/services.html">Paid audits</a></li></ul></div>
+      <div class="footer-col"><h4>Read</h4><ul><li><a href="/blog/">Articles</a></li></ul></div>
+      <div class="footer-col"><h4>About</h4><ul><li><a href="/about.html">About the author</a></li><li><a href="mailto:hello@aireadyrevops.com">Contact</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 AI-Ready RevOps · WhizzLead</span><span>aireadyrevops.com</span></div>
+  </div>
+</footer>
+
+<script>
+  const tog = document.querySelector('.menu-toggle');
+  const links = document.getElementById('primary-nav');
+  if (tog && links) tog.addEventListener('click', () => { const o = links.classList.toggle('open'); tog.setAttribute('aria-expanded', o ? 'true' : 'false'); });
+</script>
+</body>
+</html>

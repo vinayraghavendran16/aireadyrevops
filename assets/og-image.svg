@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <style>
+      .bg { fill: #FAF8F3; }
+      .ink { fill: #0E1116; }
+      .accent { fill: #B23A1E; }
+      .muted { fill: #5C6473; }
+      .display { font-family: 'Fraunces', Georgia, serif; font-weight: 400; }
+      .body { font-family: 'Geist', sans-serif; font-weight: 400; }
+      .mono { font-family: 'Geist Mono', monospace; font-weight: 500; }
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="630"/>
+
+  <!-- Decorative giant typography -->
+  <text x="1180" y="540" text-anchor="end" class="display" font-size="380" font-style="italic" fill="#F4E4DE" letter-spacing="-15">A.R.R.</text>
+
+  <!-- Brand mark -->
+  <g transform="translate(72,72)">
+    <circle cx="16" cy="16" r="14" class="accent"/>
+    <circle cx="16" cy="16" r="6" class="bg"/>
+    <text x="48" y="24" class="display" font-size="22" fill="#0E1116">AI-Ready RevOps</text>
+  </g>
+
+  <!-- Eyebrow -->
+  <text x="72" y="240" class="mono" font-size="20" fill="#B23A1E" letter-spacing="3">A DIAGNOSTIC FOR THE AI ERA</text>
+
+  <!-- Headline -->
+  <text x="72" y="330" class="display" font-size="84" fill="#0E1116" letter-spacing="-2">You bought the AI.</text>
+  <text x="72" y="430" class="display" font-size="84" fill="#0E1116" letter-spacing="-2">The data <tspan font-style="italic" fill="#B23A1E">isn't ready</tspan> for it.</text>
+
+  <!-- Bottom strip -->
+  <line x1="72" y1="528" x2="1128" y2="528" stroke="#DFD9CC" stroke-width="1"/>
+  <text x="72" y="568" class="body" font-size="22" fill="#5C6473">15 questions · 6 dimensions · One Readiness Index</text>
+  <text x="1128" y="568" text-anchor="end" class="mono" font-size="18" fill="#5C6473" letter-spacing="2">AIREADYREVOPS.COM</text>
+</svg>
