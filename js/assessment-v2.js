@@ -1,7 +1,7 @@
 /* ===========================================================
    AI-Ready RevOps Self-Assessment — Quiz Engine
    =========================================================== */
-
+console.log("NEW JS LOADED V2");
 const QUESTIONS = [
   { dim: 'data', text: "When you pull a list of accounts in your CRM, how would you describe the completeness of critical fields like industry, employee count, and renewal date?", anchors: ['Mostly missing', 'Patchy but workable', 'Above 95% complete'] },
   { dim: 'data', text: "If you asked three of your reps to define MQL right now, would you get three matching answers?", anchors: ['Three different answers', 'Roughly the same', 'Identical, system-enforced'] },
