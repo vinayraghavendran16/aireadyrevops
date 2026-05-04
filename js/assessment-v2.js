@@ -1,7 +1,9 @@
 /* ===========================================================
    AI-Ready RevOps Self-Assessment — Quiz Engine
    =========================================================== */
+
 console.log("NEW JS LOADED V2");
+
 const QUESTIONS = [
   { dim: 'data', text: "When you pull a list of accounts in your CRM, how would you describe the completeness of critical fields like industry, employee count, and renewal date?", anchors: ['Mostly missing', 'Patchy but workable', 'Above 95% complete'] },
   { dim: 'data', text: "If you asked three of your reps to define MQL right now, would you get three matching answers?", anchors: ['Three different answers', 'Roughly the same', 'Identical, system-enforced'] },
@@ -36,6 +38,10 @@ const DIMENSIONS = {
 
 let answers = new Array(QUESTIONS.length).fill(null);
 let currentQ = 0;
+
+/* =========================
+   QUIZ FLOW
+========================= */
 
 function startQuiz() {
   document.getElementById('intro').style.display = 'none';
@@ -73,6 +79,10 @@ function nextQ() {
   }
 }
 
+/* =========================
+   SUBMISSION (FIXED)
+========================= */
+
 function submitEmail(e) {
   e.preventDefault();
 
@@ -81,57 +91,86 @@ function submitEmail(e) {
 
   const results = computeResults();
 
+  // Build dimension lookup
   const dimByKey = {};
   results.dimensions.forEach(d => dimByKey[d.key] = d);
 
+  // Full payload (Zapier friendly)
   const submission = {
     email,
     readiness_index: results.index,
     band: results.band.label,
+
     score_data: dimByKey.data?.score,
+    score_integration: dimByKey.integration?.score,
+    score_process: dimByKey.process?.score,
     score_ai: dimByKey.ai?.score,
-    answers: results.answers,
+    score_governance: dimByKey.governance?.score,
+    score_forecast: dimByKey.forecast?.score,
+
+    answers: JSON.stringify(results.answers),
     timestamp: new Date().toISOString()
   };
 
- const formData = new FormData();
+  console.log("Submitting:", submission);
 
-Object.entries(submission).forEach(([key, value]) => {
-  formData.append(
-    key,
-    typeof value === "object" ? JSON.stringify(value) : value
-  );
-});
+  // Convert to FormData (avoids CORS issues)
+  const formData = new FormData();
+  Object.entries(submission).forEach(([key, value]) => {
+    formData.append(key, value);
+  });
 
-fetch("https://hooks.zapier.com/hooks/catch/27472091/uvxrtos/", {
-  method: "POST",
-  mode: "no-cors",   // 🔥 fixes CORS
-  body: formData     // 🔥 avoids preflight
-})
-.then(() => {
-  console.log("Sent to Zapier");
-})
-.catch(err => {
-  console.error("Zapier error:", err);
-});
+  fetch("https://hooks.zapier.com/hooks/catch/27472091/uvxrtos/", {
+    method: "POST",
+    mode: "no-cors",
+    body: formData
+  })
+  .then(() => {
+    console.log("Sent to Zapier");
+  })
+  .catch(err => {
+    console.error("Zapier error:", err);
+  });
+
   showResults();
 }
+
+/* =========================
+   RESULTS
+========================= */
 
 function showResults() {
   document.getElementById('emailGate').style.display = 'none';
   document.getElementById('results').style.display = 'block';
 }
 
+/* =========================
+   SCORING
+========================= */
+
 function computeResults() {
-  const score = Math.round((answers.reduce((a,b)=>a+(b||1),0)/answers.length -1)/4*100);
+  const byDim = {};
+  Object.keys(DIMENSIONS).forEach(k => byDim[k] = []);
+
+  QUESTIONS.forEach((q, i) => {
+    byDim[q.dim].push(answers[i] || 1);
+  });
+
+  const dimensions = Object.keys(DIMENSIONS).map(key => {
+    const arr = byDim[key];
+    const avg = arr.reduce((a,b)=>a+b,0) / arr.length;
+    const score = Math.round(((avg - 1) / 4) * 100);
+    return { key, score };
+  });
+
+  const index = Math.round(
+    dimensions.reduce((s, d) => s + d.score * DIMENSIONS[d.key].weight, 0)
+  );
 
   return {
-    index: score,
-    band: { label: score > 70 ? 'Good' : 'Needs Work' },
-    dimensions: [
-      { key:'data', score },
-      { key:'ai', score }
-    ],
+    index,
+    band: { label: index > 70 ? 'Good' : 'Needs Work' },
+    dimensions,
     answers
   };
 }
