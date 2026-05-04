@@ -120,18 +120,26 @@ function submitEmail(e) {
     formData.append(key, value);
   });
 
-  fetch("https://hooks.zapier.com/hooks/catch/27472091/uvxrtos/", {
-    method: "POST",
-    mode: "no-cors",
-    body: formData
-  })
-  .then(() => {
-    console.log("Sent to Zapier");
-  })
-  .catch(err => {
-    console.error("Zapier error:", err);
-  });
+ const formData = new FormData();
 
+Object.entries(submission).forEach(([key, value]) => {
+  formData.append(
+    key,
+    typeof value === "object" ? JSON.stringify(value) : value
+  );
+});
+
+fetch("https://hooks.zapier.com/hooks/catch/27472091/uvxrtos/", {
+  method: "POST",
+  mode: "no-cors",   // ✅ CRITICAL
+  body: formData     // ✅ CRITICAL
+})
+.then(() => {
+  console.log("Sent to Zapier");
+})
+.catch(err => {
+  console.error("Zapier error:", err);
+});
   showResults();
 }
 
