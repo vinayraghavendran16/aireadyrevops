@@ -114,12 +114,6 @@ function submitEmail(e) {
 
   console.log("Submitting:", submission);
 
-  // Convert to FormData (avoids CORS issues)
-  const formData = new FormData();
-  Object.entries(submission).forEach(([key, value]) => {
-    formData.append(key, value);
-  });
-
  const formData = new FormData();
 
 Object.entries(submission).forEach(([key, value]) => {
