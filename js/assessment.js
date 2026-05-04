@@ -232,13 +232,88 @@ function submitEmail(e) {
 
   // Fire-and-forget. Don't make the user wait. Show results immediately
   // regardless of network outcome. Failures log to the browser console.
+  function submitEmail(e) {
+  e.preventDefault();
+
+  const email = document.getElementById('emailInput').value.trim();
+  if (!email) return;
+
+  // Compute results
+  const results = computeResults();
+
+  const payload = {
+    ...results,
+    email,
+    timestamp: new Date().toISOString()
+  };
+
+  // Store locally
+  try {
+    localStorage.setItem('arr_lastResult', JSON.stringify(payload));
+  } catch (e) {}
+
+  // Build dimension lookup
+  const dimByKey = {};
+  results.dimensions.forEach(d => {
+    dimByKey[d.key] = d;
+  });
+
+  // Top 3 priorities
+  const priorities = results.dimensions
+    .map(d => ({ ...d, impact: (100 - d.score) * d.weight }))
+    .sort((a, b) => b.impact - a.impact)
+    .slice(0, 3)
+    .map(d => `${d.name} (${d.score}/100)`);
+
+  // Final submission object
+  const submission = {
+    email: email,
+    readiness_index: results.index,
+    band: results.band.label,
+    band_description: results.band.desc,
+
+    score_data_foundation: dimByKey.data?.score || null,
+    score_integration: dimByKey.integration?.score || null,
+    score_process: dimByKey.process?.score || null,
+    score_ai_stack: dimByKey.ai?.score || null,
+    score_governance: dimByKey.governance?.score || null,
+    score_forecasting: dimByKey.forecast?.score || null,
+
+    top_priorities: priorities.join(' | '),
+    raw_answers: results.answers.join(','),
+
+    timestamp: payload.timestamp,
+    source: 'aireadyrevops.com/assessment',
+    _subject: `New assessment: ${results.index} — ${results.band.label} (${email})`
+  };
+
+  /* ============================
+     ✅ FIX: Use FormData (NOT JSON)
+     ============================ */
+  const formData = new FormData();
+
+  Object.keys(submission).forEach(key => {
+    formData.append(key, submission[key]);
+  });
+
   fetch('https://formspree.io/f/xeenarko', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-    },
-    body: JSON.stringify(submission)
+    body: formData
+  })
+    .then(res => {
+      if (!res.ok) {
+        console.warn('Formspree error:', res.status);
+      } else {
+        console.log('Formspree success');
+      }
+    })
+    .catch(err => {
+      console.warn('Submission failed:', err);
+    });
+
+  // Show results immediately (no waiting)
+  showResults();
+}
   }).then(function(r){
     if (!r.ok) console.warn('Submission returned status', r.status);
   }).catch(function(err){
