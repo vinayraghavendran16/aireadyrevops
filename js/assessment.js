@@ -191,17 +191,59 @@ function submitEmail(e) {
   if (!email) return;
 
   // Persist results locally so they survive reloads
-  const payload = computeResults();
+  const results = computeResults();
+  const payload = Object.assign({}, results);
   payload.email = email;
   payload.timestamp = new Date().toISOString();
   try {
     localStorage.setItem('arr_lastResult', JSON.stringify(payload));
   } catch (e) { /* ignore */ }
 
-  // Capture endpoint (replace with your own when wiring real backend)
-  // Recommended: a simple form endpoint on Formspree, Web3Forms, or your own Cloudflare Worker.
-  // Example (commented):
-  // fetch('https://formspree.io/f/YOUR_ID', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify(payload) });
+  // Build a flat, Formspree-friendly submission. Each top-level key
+  // becomes a column in the dashboard and a labeled row in the email.
+  // results.dimensions is an array of { key, name, weight, score }.
+  const dimByKey = {};
+  results.dimensions.forEach(function(d){ dimByKey[d.key] = d; });
+
+  // Compute the same "top 3 priorities" the results page shows
+  const priorities = results.dimensions
+    .map(function(d){ return Object.assign({}, d, { impact: (100 - d.score) * d.weight }); })
+    .sort(function(a,b){ return b.impact - a.impact; })
+    .slice(0, 3)
+    .map(function(d){ return d.name + ' (' + d.score + '/100)'; });
+
+  const submission = {
+    email: email,
+    readiness_index: results.index,
+    band: results.band.label,
+    band_description: results.band.desc,
+    score_data_foundation:        dimByKey.data        ? dimByKey.data.score        : null,
+    score_integration:            dimByKey.integration ? dimByKey.integration.score : null,
+    score_process:                dimByKey.process     ? dimByKey.process.score     : null,
+    score_ai_stack:               dimByKey.ai          ? dimByKey.ai.score          : null,
+    score_governance:             dimByKey.governance  ? dimByKey.governance.score  : null,
+    score_forecasting:            dimByKey.forecast    ? dimByKey.forecast.score    : null,
+    top_priorities: priorities.join('  ·  '),
+    raw_answers: results.answers.join(','),
+    timestamp: payload.timestamp,
+    source: 'aireadyrevops.com/assessment',
+    _subject: 'New assessment: ' + results.index + ' — ' + results.band.label + ' (' + email + ')'
+  };
+
+  // Fire-and-forget. Don't make the user wait. Show results immediately
+  // regardless of network outcome. Failures log to the browser console.
+  fetch('https://formspree.io/f/xeenarko', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify(submission)
+  }).then(function(r){
+    if (!r.ok) console.warn('Submission returned status', r.status);
+  }).catch(function(err){
+    console.warn('Submission failed:', err);
+  });
 
   showResults();
 }
