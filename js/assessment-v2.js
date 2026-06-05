@@ -245,9 +245,28 @@ function submitEmail(e) {
     console.warn('Submission failed:', err);
   });
 
+  // --- Also send to the AI-Ready RevOps CRM (additive; never blocks results) ---
+  fetch('https://airr-crm.pages.dev/api/assessment', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      email: submission.email,
+      total_score: submission.readiness_index,
+      dimensions: {
+        data_foundation: submission.score_data_foundation,
+        integration:     submission.score_integration,
+        process:         submission.score_process,
+        ai_stack:        submission.score_ai_stack,
+        governance:      submission.score_governance,
+        forecasting:     submission.score_forecasting,
+      },
+      priorities: priorities,
+      source: 'aireadyrevops.com/assessment',
+    }),
+  }).catch(function(err){ console.warn('CRM submit failed:', err); });
+
   showResults();
 }
-
 function skipEmail(e) {
   e.preventDefault();
   showResults();
