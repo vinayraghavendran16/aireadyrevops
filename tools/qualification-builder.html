@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FAF8F3">
+<title>Qualification Framework Builder — AI-Ready RevOps</title>
+<meta name="description" content="Answer five questions about your sales motion and get the qualification framework that actually fits — BANT, CHAMP, SPICED, MEDDIC, or MEDDPICC — plus a ready-to-use scorecard. Free, no email required.">
+<link rel="canonical" href="https://aireadyrevops.com/tools/qualification-builder.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Qualification Framework Builder — AI-Ready RevOps">
+<meta property="og:description" content="The qualification framework that fits your deal shape — with a scorecard you can use Monday morning.">
+<meta property="og:url" content="https://aireadyrevops.com/tools/qualification-builder.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,30..100;1,9..144,300..700,30..100&family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/tools.css">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="/"><span class="brand-mark"></span><span>AI-Ready RevOps</span></a>
+    <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    <ul class="nav-links" id="primary-nav">
+      <li><a href="/framework.html">Framework</a></li>
+      <li><a href="/services.html">Services</a></li>
+      <li><a href="/blog/">Articles</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a class="nav-cta" href="/assessment.html">Take the Assessment</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+
+<section class="tool-hero">
+  <div class="container narrow">
+    <span class="eyebrow">Free Tool · Sales</span>
+    <h1>The qualification framework <span class="italic-serif" style="color:var(--accent)">that fits your deals</span>.</h1>
+    <p class="lead">BANT, CHAMP, SPICED, MEDDIC, MEDDPICC — every team copies one off a blog post and wonders why reps ignore it. The right framework is a function of your deal shape. Answer five questions; get the fit math and a scorecard you can use Monday.</p>
+    <div class="tool-meta">
+      <span><strong>5</strong> questions</span>
+      <span><strong>~90</strong> seconds</span>
+      <span><strong>5</strong> frameworks scored</span>
+      <span>No email required</span>
+    </div>
+  </div>
+</section>
+
+<section class="tool-app">
+  <div class="container narrow">
+
+    <div class="tool-panel">
+      <div class="tool-step-label">Step 1 — Your deal shape</div>
+      <h2>Describe how you actually sell.</h2>
+      <p class="hint">No right answers. Pick the option closest to your typical deal — the median, not the outlier whale.</p>
+
+      <div class="field-grid" id="ctx-fields"></div>
+
+      <div class="tool-actions">
+        <button class="btn btn-primary btn-arrow" id="build-btn">Build my framework</button>
+        <button class="btn btn-secondary" id="reset-btn" type="button">Reset</button>
+      </div>
+    </div>
+
+    <div class="tool-result" id="result">
+
+      <div class="tool-panel" style="margin-top:1.25rem">
+        <div class="tool-step-label">Step 2 — Recommendation</div>
+        <div class="result-headline">
+          <div class="result-metric">
+            <span class="pill" id="fit-pill">Best fit</span>
+            <div class="num" id="rec-name">MEDDIC</div>
+            <div class="cap" id="rec-fit">fit score 0</div>
+          </div>
+          <div>
+            <h2 id="rec-tagline">Built for complex, multi-stakeholder enterprise deals.</h2>
+            <p id="rec-why">—</p>
+          </div>
+        </div>
+
+        <div style="margin-top:1.75rem">
+          <div class="tool-step-label" style="color:var(--muted)"><span style="background:var(--muted)"></span>How every framework scored against your deal shape</div>
+          <div class="rank-bars" id="rank-bars"></div>
+          <p class="tool-note">Fit = how closely each framework's ideal deal profile matches yours, across deal size, cycle length, stakeholder count, motion, and complexity. Transparent on purpose — same philosophy as the Readiness Index.</p>
+        </div>
+      </div>
+
+      <div class="tool-panel">
+        <div class="tool-step-label">Step 3 — Your scorecard</div>
+        <h2 id="sc-title">Your MEDDIC qualification scorecard</h2>
+        <p class="hint">Drop these into your CRM as required fields with stage exit criteria. A criterion that isn't a tracked field is a criterion your pipeline can't be forecasted on — and one your AI tools can't read.</p>
+        <div class="scorecard" id="scorecard"></div>
+        <div class="tool-actions">
+          <button class="btn btn-secondary" onclick="window.print()" type="button">Print / Save as PDF</button>
+        </div>
+      </div>
+
+      <div class="callout" id="gap-callout">
+        <p><strong>The catch:</strong> <span id="gap-text">—</span></p>
+      </div>
+
+      <div class="tool-bridge">
+        <div>
+          <div class="dim-link">↳ Maps to Dimension 03 · Process Standardization</div>
+          <h2>A framework on paper isn't a framework in your stack.</h2>
+          <p>Whether your qualification criteria are actually enforced — as required fields, with stage exit criteria and clean handoffs — is exactly what <em>Process Standardization</em> measures. It's one of six dimensions in the Readiness Index. See where your foundation stands in four minutes.</p>
+          <div class="bridge-actions">
+            <a class="btn btn-accent btn-arrow" href="/assessment.html">Take the free assessment</a>
+            <a class="btn btn-secondary" href="/framework.html">Read the methodology</a>
+          </div>
+        </div>
+        <div class="bridge-meta">
+          <div><span>Format</span><strong>15 questions</strong></div>
+          <div><span>Time</span><strong>~4 minutes</strong></div>
+          <div><span>Output</span><strong>Index 0–100 + radar</strong></div>
+          <div><span>Cost</span><strong>Free</strong></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">AI-Ready RevOps</div>
+        <p class="footer-tag">A diagnostic and remediation methodology for the modern revenue stack.</p>
+      </div>
+      <div class="footer-col"><h4>The Framework</h4><ul><li><a href="/framework.html">Methodology</a></li><li><a href="/assessment.html">Free assessment</a></li><li><a href="/services.html">Paid audits</a></li></ul></div>
+      <div class="footer-col"><h4>Read</h4><ul><li><a href="/blog/">Articles</a></li></ul></div>
+      <div class="footer-col"><h4>About</h4><ul><li><a href="/about.html">About the author</a></li><li><a href="mailto:hello@aireadyrevops.com">Contact</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 AI-Ready RevOps · WhizzLead</span><span>aireadyrevops.com</span></div>
+  </div>
+</footer>
+
+<script>
+  const tog = document.querySelector('.menu-toggle');
+  const links = document.getElementById('primary-nav');
+  if (tog && links) tog.addEventListener('click', () => { const o = links.classList.toggle('open'); tog.setAttribute('aria-expanded', o ? 'true' : 'false'); });
+</script>
+
+<script>
+/* ---------- Qualification Framework Builder ---------- */
+
+// Context questions. Each option carries a normalized 0..1 value on its axis.
+const QUESTIONS = [
+  { id: 'deal', axis: 'deal', label: 'Typical deal size (ACV)', sub: 'Annual contract value of a median won deal.',
+    options: [['< $5k', 0], ['$5k–$25k', 0.33], ['$25k–$100k', 0.66], ['$100k+', 1]] },
+  { id: 'cycle', axis: 'cycle', label: 'Typical sales cycle', sub: 'First touch to closed-won.',
+    options: [['< 30 days', 0], ['1–3 months', 0.4], ['3–9 months', 0.75], ['9+ months', 1]] },
+  { id: 'stake', axis: 'stake', label: 'Buying group size', sub: 'People who can say no.',
+    options: [['1 buyer', 0], ['2–3', 0.5], ['4–6', 0.8], ['7+', 1]] },
+  { id: 'motion', axis: 'motion', label: 'Primary motion', sub: 'How most revenue is won.',
+    options: [['Self-serve / PLG', 0], ['Inside sales', 0.5], ['Field / enterprise', 1]] },
+  { id: 'complex', axis: 'complex', label: 'Deal complexity', sub: 'Competition, technical eval, procurement, legal.',
+    options: [['Low', 0], ['Medium', 0.5], ['High', 1]] },
+];
+
+// Framework ideal profiles over [deal, cycle, stake, motion, complex].
+const FRAMEWORKS = {
+  BANT: {
+    ideal: [0.1, 0.1, 0.1, 0.25, 0.1],
+    tagline: 'Built for fast, transactional, single-buyer deals.',
+    blurb: 'Budget, Authority, Need, Timing. The lightest framework — it keeps high-velocity reps honest without slowing them down. It breaks the moment a deal has real complexity or a buying committee.',
+    criteria: [
+      ['B', 'Budget', 'Is there allocated, accessible budget — and do you know the number, not a guess?'],
+      ['A', 'Authority', 'Are you talking to someone who can sign, or who can get the signer in the room?'],
+      ['N', 'Need', 'Is there a real, articulated problem your product solves — in their words?'],
+      ['T', 'Timing', 'Is there a compelling event forcing a decision inside your forecast window?'],
+    ],
+  },
+  CHAMP: {
+    ideal: [0.35, 0.4, 0.4, 0.45, 0.4],
+    tagline: 'Pain-first qualification for mid-market deals.',
+    blurb: 'Challenges, Authority, Money, Prioritization. Reorders BANT to lead with the prospect\'s challenge instead of your budget question — a better fit when you\'re selling change, not filling an order.',
+    criteria: [
+      ['C', 'Challenges', 'What specific challenge are they trying to solve, and what does it cost them today?'],
+      ['A', 'Authority', 'Who owns this problem, and who controls the decision and the budget?'],
+      ['M', 'Money', 'Is the cost of the problem clearly larger than the cost of the solution?'],
+      ['P', 'Prioritization', 'Where does fixing this rank against everything else competing for their attention?'],
+    ],
+  },
+  SPICED: {
+    ideal: [0.5, 0.5, 0.45, 0.45, 0.5],
+    tagline: 'Consultative, lifecycle-aware qualification for recurring revenue.',
+    blurb: 'Situation, Pain, Impact, Critical Event, Decision. The Winning by Design framework — designed for SaaS where the goal is not just a close but a renewal. Strong when value realization matters as much as the signature.',
+    criteria: [
+      ['S', 'Situation', 'What is their current state — stack, team, process — in concrete detail?'],
+      ['P', 'Pain', 'What is the specific, recurring pain in that situation?'],
+      ['I', 'Impact', 'Quantified: what does that pain cost in revenue, time, or risk?'],
+      ['C', 'Critical Event', 'What deadline or event makes solving this unavoidable now?'],
+      ['E', 'Decision', 'What is the decision process, criteria, and who is involved at each step?'],
+    ],
+  },
+  MEDDIC: {
+    ideal: [0.8, 0.8, 0.8, 0.85, 0.75],
+    tagline: 'Built for complex, multi-stakeholder enterprise deals.',
+    blurb: 'Metrics, Economic buyer, Decision criteria, Decision process, Identify pain, Champion. The enterprise standard. It forces rigor on the things that actually predict whether a six-figure deal closes — and it is unforgiving about the economic buyer and the champion.',
+    criteria: [
+      ['M', 'Metrics', 'The quantified economic impact: the numbers your champion will use to justify the buy.'],
+      ['E', 'Economic Buyer', 'The one person with discretionary budget authority. Have you met them?'],
+      ['D', 'Decision Criteria', 'The formal and informal criteria the decision will be measured against.'],
+      ['D', 'Decision Process', 'The exact steps, approvals, and timeline from selection to signature.'],
+      ['I', 'Identify Pain', 'The compelling business pain — and the cost of doing nothing.'],
+      ['C', 'Champion', 'A person with power and influence who sells for you when you\'re not in the room.'],
+    ],
+  },
+  MEDDPICC: {
+    ideal: [0.95, 0.95, 0.95, 0.95, 0.98],
+    tagline: 'Maximum rigor for competitive, procurement-heavy enterprise deals.',
+    blurb: 'MEDDIC plus Paper Process and Competition. The heaviest framework — reserved for large, contested deals where legal, security, and procurement can kill a verbal yes. Overkill below the enterprise; essential above it.',
+    criteria: [
+      ['M', 'Metrics', 'Quantified economic impact your champion can defend to the board.'],
+      ['E', 'Economic Buyer', 'The budget-holder you have personally engaged and aligned.'],
+      ['D', 'Decision Criteria', 'The technical, business, and relationship criteria in play.'],
+      ['D', 'Decision Process', 'Every approval gate from selection to signed contract.'],
+      ['P', 'Paper Process', 'Procurement, legal, security review, and the time each adds.'],
+      ['I', 'Identify Pain', 'The compelling event and cost of inaction.'],
+      ['C', 'Champion', 'An empowered internal seller invested in your success.'],
+      ['C', 'Competition', 'Who else is in the deal — including the status quo — and your differentiated wedge.'],
+    ],
+  },
+};
+
+const state = {};
+
+function renderQuestions() {
+  const wrap = document.getElementById('ctx-fields');
+  wrap.innerHTML = '';
+  QUESTIONS.forEach(q => {
+    const f = document.createElement('div');
+    f.className = 'field';
+    f.innerHTML = `<label>${q.label}<br><span class="sub">${q.sub}</span></label>`;
+    const seg = document.createElement('div');
+    seg.className = 'seg';
+    q.options.forEach(([txt, val]) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.textContent = txt;
+      b.addEventListener('click', () => {
+        state[q.axis] = val;
+        [...seg.children].forEach(c => c.classList.remove('active'));
+        b.classList.add('active');
+      });
+      seg.appendChild(b);
+    });
+    f.appendChild(seg);
+    wrap.appendChild(f);
+  });
+}
+
+function dist(a, b) {
+  let s = 0;
+  for (let i = 0; i < a.length; i++) s += (a[i] - b[i]) ** 2;
+  return Math.sqrt(s);
+}
+const MAX_DIST = Math.sqrt(5);
+
+function build() {
+  const axes = ['deal', 'cycle', 'stake', 'motion', 'complex'];
+  if (axes.some(a => state[a] === undefined)) {
+    alert('Pick an option for all five questions first.');
+    return;
+  }
+  const vec = axes.map(a => state[a]);
+
+  const scored = Object.entries(FRAMEWORKS).map(([name, fw]) => {
+    const fit = Math.round(100 * (1 - dist(vec, fw.ideal) / MAX_DIST));
+    return { name, fit, ...fw };
+  }).sort((a, b) => b.fit - a.fit);
+
+  const top = scored[0];
+
+  // Headline
+  document.getElementById('rec-name').textContent = top.name;
+  document.getElementById('rec-fit').textContent = 'fit score ' + top.fit + ' / 100';
+  document.getElementById('rec-tagline').textContent = top.tagline;
+  document.getElementById('rec-why').textContent = top.blurb;
+
+  // Ranked bars
+  const rb = document.getElementById('rank-bars');
+  rb.innerHTML = '';
+  const max = scored[0].fit || 1;
+  scored.forEach((s, i) => {
+    const row = document.createElement('div');
+    row.className = 'rank-bar' + (i === 0 ? ' top' : '');
+    row.innerHTML = `
+      <div class="rank-bar-head">
+        <span class="rank-bar-name">${s.name}${i === 0 ? '<span class="winner">Recommended</span>' : ''}</span>
+        <span class="rank-bar-score">${s.fit}</span>
+      </div>
+      <div class="rank-bar-track"><div class="rank-bar-fill" style="width:0%"></div></div>`;
+    rb.appendChild(row);
+    requestAnimationFrame(() => {
+      row.querySelector('.rank-bar-fill').style.width = (s.fit / max * 100) + '%';
+    });
+  });
+
+  // Scorecard
+  document.getElementById('sc-title').textContent = `Your ${top.name} qualification scorecard`;
+  const sc = document.getElementById('scorecard');
+  sc.innerHTML = '';
+  top.criteria.forEach(([letter, name, desc]) => {
+    const r = document.createElement('div');
+    r.className = 'scorecard-row';
+    r.innerHTML = `<div class="scorecard-letter">${letter}</div><div><h4>${name}</h4><p>${desc}</p></div>`;
+    sc.appendChild(r);
+  });
+
+  // Gap callout — tailored
+  const second = scored[1];
+  let gap;
+  if (top.fit < 62) {
+    gap = `Your deal shape sits between frameworks — ${top.name} edges out ${second.name} by only ${top.fit - second.fit} points. That usually means your "typical" deal isn't actually typical: you're running two motions through one process. That ambiguity is precisely what makes a pipeline impossible to forecast or automate.`;
+  } else {
+    gap = `${top.name} is a clear fit (${top.fit}/100) — but a framework only works if its criteria live in your CRM as required, reportable fields. If "${top.criteria[0][1]}" and "Champion" are notes in a rep's head, you have a methodology, not a system. AI can execute a system. It cannot read a rep's intuition.`;
+  }
+  document.getElementById('gap-text').textContent = gap;
+
+  document.getElementById('result').classList.add('show');
+  document.getElementById('result').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+document.getElementById('build-btn').addEventListener('click', build);
+document.getElementById('reset-btn').addEventListener('click', () => {
+  for (const k in state) delete state[k];
+  renderQuestions();
+  document.getElementById('result').classList.remove('show');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+renderQuestions();
+</script>
+
+</body>
+</html>

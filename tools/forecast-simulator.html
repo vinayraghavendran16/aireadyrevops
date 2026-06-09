@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FAF8F3">
+<title>Forecasting Model Simulator — AI-Ready RevOps</title>
+<meta name="description" content="Pick a forecasting model, run it against a real closed quarter, and see how far off it was. Compare commit, best-case, stage-weighted, history-calibrated, and Monte Carlo — with auditable accuracy. Free, no email.">
+<link rel="canonical" href="https://aireadyrevops.com/tools/forecast-simulator.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Forecasting Model Simulator — AI-Ready RevOps">
+<meta property="og:description" content="Five forecasting models, one closed quarter. See which one would have told you the truth.">
+<meta property="og:url" content="https://aireadyrevops.com/tools/forecast-simulator.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,30..100;1,9..144,300..700,30..100&family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/tools.css">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="/"><span class="brand-mark"></span><span>AI-Ready RevOps</span></a>
+    <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    <ul class="nav-links" id="primary-nav">
+      <li><a href="/framework.html">Framework</a></li>
+      <li><a href="/services.html">Services</a></li>
+      <li><a href="/blog/">Articles</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a class="nav-cta" href="/assessment.html">Take the Assessment</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+
+<section class="tool-hero">
+  <div class="container narrow">
+    <span class="eyebrow">Free Tool · Sales</span>
+    <h1>Five forecasting models. <span class="italic-serif" style="color:var(--accent)">One closed quarter.</span></h1>
+    <p class="lead">Every model is confident. Only one was right. Pick a method, run it against a quarter that has already closed, and see exactly how far off the number was — then watch a Monte Carlo simulation put honest error bars around the forecast you actually present to your board.</p>
+    <div class="tool-meta">
+      <span><strong>5</strong> models</span>
+      <span><strong>Editable</strong> pipeline</span>
+      <span><strong>5,000</strong>-run simulation</span>
+      <span>No email required</span>
+    </div>
+  </div>
+</section>
+
+<section class="tool-app">
+  <div class="container narrow">
+
+    <div class="tool-panel">
+      <div class="tool-step-label">Step 1 — Choose your model</div>
+      <h2>How does your team call the number?</h2>
+      <p class="hint">Pick the one closest to how you forecast today. You'll see all five compared regardless.</p>
+      <div class="opt-cards" id="model-cards"></div>
+    </div>
+
+    <div class="tool-panel">
+      <div class="tool-step-label">Step 2 — The pipeline</div>
+      <h2>A quarter, as it looked at forecast time.</h2>
+      <p class="hint">This is a real-shaped book of business with the usual optimism baked in. Edit amounts, stages, and rep calls — or run it as-is. The outcomes are hidden until you run it.</p>
+      <div class="table-scroll">
+        <table class="pipe-table" id="pipe">
+          <thead><tr><th>Deal</th><th style="width:130px">Amount</th><th style="width:150px">Stage</th><th style="width:140px">Rep call</th><th style="width:32px"></th></tr></thead>
+          <tbody id="pipe-body"></tbody>
+        </table>
+      </div>
+      <div class="tool-actions">
+        <button class="btn btn-secondary" id="add-row" type="button">+ Add deal</button>
+      </div>
+
+      <div class="field-grid" style="margin-top:1.5rem">
+        <div class="field">
+          <label>Quota / target for the quarter <span class="sub">What you needed to hit.</span></label>
+          <input type="number" id="target" value="600000" step="10000">
+        </div>
+      </div>
+
+      <div class="tool-actions">
+        <button class="btn btn-primary btn-arrow" id="run-btn">Run the forecast — then reveal the truth</button>
+      </div>
+    </div>
+
+    <div class="tool-result" id="result">
+
+      <div class="tool-panel">
+        <div class="tool-step-label">Step 3 — Your model vs reality</div>
+        <div class="result-headline">
+          <div class="result-metric">
+            <span class="pill" id="model-pill">Stage-weighted</span>
+            <div class="num"><span class="unit">$</span><span id="your-fc">0</span></div>
+            <div class="cap" id="your-verdict">your forecast</div>
+          </div>
+          <div>
+            <h2 id="reveal-head">The quarter actually closed at <span id="actual-inline">$0</span>.</h2>
+            <p id="reveal-body">—</p>
+          </div>
+        </div>
+
+        <div class="metric-strip">
+          <div class="metric-cell"><div class="m-num" id="m-actual">$0</div><div class="m-label">Actually closed-won</div></div>
+          <div class="metric-cell"><div class="m-num" id="m-error">0%</div><div class="m-label" id="m-error-label">Your model's error vs actual</div></div>
+          <div class="metric-cell"><div class="m-num" id="m-best">—</div><div class="m-label">Most accurate model here</div></div>
+        </div>
+      </div>
+
+      <div class="tool-panel">
+        <div class="tool-step-label" style="color:var(--muted)"><span style="background:var(--muted)"></span>Every model, scored against the actual</div>
+        <div class="rank-bars" id="model-bars"></div>
+        <p class="tool-note" id="models-note">Bars show forecast size; the dashed line is what actually closed. Signed error is the honest measure of forecast quality.</p>
+      </div>
+
+      <div class="tool-panel">
+        <div class="tool-step-label">Step 4 — The honest forecast</div>
+        <h2>Monte Carlo: a range, not a point.</h2>
+        <p class="hint">A single number hides the risk. Running the pipeline 5,000 times — each deal winning at its stage's calibrated probability — gives you the distribution of plausible outcomes and the real odds of hitting quota.</p>
+        <div class="histo-wrap" id="histo"></div>
+        <div class="metric-strip" style="margin-top:1.5rem">
+          <div class="metric-cell"><div class="m-num" id="mc-mean">$0</div><div class="m-label">Expected (mean) outcome</div></div>
+          <div class="metric-cell"><div class="m-num" id="mc-band">$0–$0</div><div class="m-label">80% confidence range (P10–P90)</div></div>
+          <div class="metric-cell"><div class="m-num" id="mc-hit">0%</div><div class="m-label" id="mc-hit-label">Chance of hitting quota</div></div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <p><strong>The catch:</strong> <span id="gap-text">—</span></p>
+      </div>
+
+      <div class="tool-bridge">
+        <div>
+          <div class="dim-link">↳ Maps to Dimension 06 · Forecasting Trust</div>
+          <h2>The model is the easy part. The inputs are the problem.</h2>
+          <p>Every model here ran on clean, complete data. Yours won't — stale stages, missing close dates, deals parked in "Negotiation" for two quarters. <em>Forecasting Trust</em> measures accuracy, pipeline hygiene, methodology, and whether leadership actually believes the number. It's the integration test for everything underneath. See where you land.</p>
+          <div class="bridge-actions">
+            <a class="btn btn-accent btn-arrow" href="/assessment.html">Take the free assessment</a>
+            <a class="btn btn-secondary" href="/services.html">See the paid audits</a>
+          </div>
+        </div>
+        <div class="bridge-meta">
+          <div><span>Format</span><strong>15 questions</strong></div>
+          <div><span>Time</span><strong>~4 minutes</strong></div>
+          <div><span>Output</span><strong>Index 0–100 + radar</strong></div>
+          <div><span>Cost</span><strong>Free</strong></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">AI-Ready RevOps</div>
+        <p class="footer-tag">A diagnostic and remediation methodology for the modern revenue stack.</p>
+      </div>
+      <div class="footer-col"><h4>The Framework</h4><ul><li><a href="/framework.html">Methodology</a></li><li><a href="/assessment.html">Free assessment</a></li><li><a href="/services.html">Paid audits</a></li></ul></div>
+      <div class="footer-col"><h4>Read</h4><ul><li><a href="/blog/">Articles</a></li></ul></div>
+      <div class="footer-col"><h4>About</h4><ul><li><a href="/about.html">About the author</a></li><li><a href="mailto:hello@aireadyrevops.com">Contact</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 AI-Ready RevOps · WhizzLead</span><span>aireadyrevops.com</span></div>
+  </div>
+</footer>
+
+<script>
+  const tog = document.querySelector('.menu-toggle');
+  const links = document.getElementById('primary-nav');
+  if (tog && links) tog.addEventListener('click', () => { const o = links.classList.toggle('open'); tog.setAttribute('aria-expanded', o ? 'true' : 'false'); });
+</script>
+
+<script>
+/* ---------- Forecasting Model Simulator ---------- */
+
+const STAGES = {
+  Qualify:     { w: 0.10, h: 0.06 },
+  Discovery:   { w: 0.25, h: 0.18 },
+  Proposal:    { w: 0.45, h: 0.38 },
+  Negotiation: { w: 0.70, h: 0.62 },
+  Commit:      { w: 0.90, h: 0.85 },
+};
+const CATS = ['Commit', 'Best case', 'Pipeline'];
+
+// A real-shaped quarter. `won` is the hidden actual outcome (revealed after running).
+const SEED = [
+  { name: 'Northwind Traders', amt: 80000,  stage: 'Negotiation', cat: 'Commit',    won: true },
+  { name: 'Acme Robotics',     amt: 120000, stage: 'Proposal',    cat: 'Best case',  won: false },
+  { name: 'Globex',            amt: 45000,  stage: 'Discovery',   cat: 'Pipeline',   won: false },
+  { name: 'Initech',           amt: 60000,  stage: 'Commit',      cat: 'Commit',     won: true },
+  { name: 'Umbrella Corp',     amt: 200000, stage: 'Proposal',    cat: 'Best case',  won: false },
+  { name: 'Soylent',           amt: 30000,  stage: 'Qualify',     cat: 'Pipeline',   won: false },
+  { name: 'Stark Industries',  amt: 150000, stage: 'Negotiation', cat: 'Commit',     won: true },
+  { name: 'Wayne Enterprises', amt: 90000,  stage: 'Discovery',   cat: 'Best case',  won: false },
+  { name: 'Hooli',             amt: 55000,  stage: 'Proposal',    cat: 'Commit',     won: false },
+  { name: 'Pied Piper',        amt: 40000,  stage: 'Commit',      cat: 'Commit',     won: true },
+  { name: 'Cyberdyne',         amt: 110000, stage: 'Negotiation', cat: 'Best case',  won: true },
+  { name: 'Vandelay',          amt: 25000,  stage: 'Qualify',     cat: 'Pipeline',   won: false },
+];
+
+let deals = SEED.map(d => ({ ...d }));
+let chosenModel = 'weighted';
+
+const MODELS = {
+  commit:     { label: 'Commit',            tag: 'Judgment',  desc: 'Sum of deals reps have called "commit."' },
+  best:       { label: 'Best case',         tag: 'Judgment',  desc: 'Commit plus everything reps flag as upside.' },
+  weighted:   { label: 'Stage-weighted',    tag: 'Formula',   desc: 'Each deal × a default win probability for its stage.' },
+  historical: { label: 'History-calibrated',tag: 'Formula',   desc: 'Stage probabilities tuned to your own last 4 quarters.' },
+  montecarlo: { label: 'Monte Carlo',       tag: 'Simulation',desc: 'Simulate the quarter 5,000 times for a range, not a point.' },
+};
+
+function fmt(n) { return '$' + Math.round(n).toLocaleString(); }
+function fmtK(n) { return '$' + Math.round(n / 1000) + 'k'; }
+
+function renderModelCards() {
+  const wrap = document.getElementById('model-cards');
+  wrap.innerHTML = '';
+  Object.entries(MODELS).forEach(([id, m]) => {
+    const c = document.createElement('button');
+    c.type = 'button';
+    c.className = 'opt-card' + (id === chosenModel ? ' selected' : '');
+    c.innerHTML = `<span class="opt-tag">${m.tag}</span><span class="opt-name">${m.label}</span><span class="opt-desc">${m.desc}</span>`;
+    c.addEventListener('click', () => { chosenModel = id; renderModelCards(); });
+    wrap.appendChild(c);
+  });
+}
+
+function renderPipe() {
+  const tb = document.getElementById('pipe-body');
+  tb.innerHTML = '';
+  deals.forEach((d, i) => {
+    const tr = document.createElement('tr');
+    const stageOpts = Object.keys(STAGES).map(s => `<option ${s === d.stage ? 'selected' : ''}>${s}</option>`).join('');
+    const catOpts = CATS.map(c => `<option ${c === d.cat ? 'selected' : ''}>${c}</option>`).join('');
+    tr.innerHTML = `
+      <td><input type="text" value="${d.name}" data-i="${i}" data-k="name"></td>
+      <td><input type="number" value="${d.amt}" step="5000" data-i="${i}" data-k="amt"></td>
+      <td><select data-i="${i}" data-k="stage">${stageOpts}</select></td>
+      <td><select data-i="${i}" data-k="cat">${catOpts}</select></td>
+      <td><button class="row-del" data-i="${i}" title="Remove">×</button></td>`;
+    tb.appendChild(tr);
+  });
+  tb.querySelectorAll('input, select').forEach(el => {
+    el.addEventListener('input', e => {
+      const i = +e.target.dataset.i, k = e.target.dataset.k;
+      deals[i][k] = (k === 'amt') ? (+e.target.value || 0) : e.target.value;
+    });
+  });
+  tb.querySelectorAll('.row-del').forEach(b => {
+    b.addEventListener('click', e => { deals.splice(+e.target.dataset.i, 1); renderPipe(); });
+  });
+}
+
+function forecastBy(model) {
+  if (model === 'commit') return deals.filter(d => d.cat === 'Commit').reduce((s, d) => s + d.amt, 0);
+  if (model === 'best') return deals.filter(d => d.cat !== 'Pipeline').reduce((s, d) => s + d.amt, 0);
+  if (model === 'weighted') return deals.reduce((s, d) => s + d.amt * STAGES[d.stage].w, 0);
+  if (model === 'historical') return deals.reduce((s, d) => s + d.amt * STAGES[d.stage].h, 0);
+  if (model === 'montecarlo') return monteCarlo().mean;
+  return 0;
+}
+
+function monteCarlo(runs = 5000) {
+  const totals = new Array(runs);
+  for (let r = 0; r < runs; r++) {
+    let t = 0;
+    for (const d of deals) if (Math.random() < STAGES[d.stage].h) t += d.amt;
+    totals[r] = t;
+  }
+  totals.sort((a, b) => a - b);
+  const mean = totals.reduce((s, x) => s + x, 0) / runs;
+  const pct = q => totals[Math.min(runs - 1, Math.floor(q * runs))];
+  return { mean, p10: pct(0.10), p90: pct(0.90), totals };
+}
+
+function classify(absErr) { return absErr <= 8 ? 'good' : absErr <= 20 ? 'warn' : 'bad'; }
+
+function run() {
+  const actual = deals.filter(d => d.won).reduce((s, d) => s + d.amt, 0);
+  const target = +document.getElementById('target').value || 0;
+
+  const results = Object.keys(MODELS).map(id => {
+    const fc = forecastBy(id);
+    const err = actual ? (fc - actual) / actual * 100 : 0;
+    return { id, label: MODELS[id].label, fc, err, abs: Math.abs(err) };
+  });
+  const byAcc = [...results].sort((a, b) => a.abs - b.abs);
+  const mine = results.find(r => r.id === chosenModel);
+
+  // Headline
+  document.getElementById('model-pill').textContent = MODELS[chosenModel].label;
+  document.getElementById('your-fc').textContent = Math.round(mine.fc).toLocaleString();
+  document.getElementById('actual-inline').textContent = fmt(actual);
+  document.getElementById('reveal-head').innerHTML = `The quarter actually closed at <span style="color:#6FCB8E">${fmt(actual)}</span>.`;
+  const sign = mine.err >= 0 ? 'over' : 'under';
+  const verdictWord = mine.abs <= 8 ? 'remarkably close' : mine.abs <= 20 ? 'in the right neighbourhood' : 'dangerously off';
+  document.getElementById('reveal-body').textContent =
+    `Your ${MODELS[chosenModel].label.toLowerCase()} forecast was ${verdictWord} — ${Math.abs(mine.err).toFixed(0)}% ${sign} the real number. The most accurate method on this quarter was ${byAcc[0].label}, at ${byAcc[0].abs.toFixed(0)}% error. The gap between the best and worst model here is ${(byAcc[byAcc.length-1].abs - byAcc[0].abs).toFixed(0)} points of error — on one quarter.`;
+
+  // Metric strip
+  document.getElementById('m-actual').textContent = fmt(actual);
+  const me = document.getElementById('m-error');
+  me.textContent = (mine.err >= 0 ? '+' : '') + mine.err.toFixed(0) + '%';
+  me.className = 'm-num ' + classify(mine.abs);
+  document.getElementById('m-best').textContent = byAcc[0].label;
+  document.getElementById('m-best').className = 'm-num good';
+
+  // Model bars
+  const mb = document.getElementById('model-bars');
+  mb.innerHTML = '';
+  const maxVal = Math.max(actual, ...results.map(r => r.fc));
+  results.sort((a, b) => b.fc - a.fc).forEach(r => {
+    const row = document.createElement('div');
+    row.className = 'rank-bar' + (r.id === byAcc[0].id ? ' top' : '');
+    const errTxt = (r.err >= 0 ? '+' : '') + r.err.toFixed(0) + '%';
+    row.innerHTML = `
+      <div class="rank-bar-head">
+        <span class="rank-bar-name">${r.label}${r.id === byAcc[0].id ? '<span class="winner">most accurate</span>' : ''}${r.id === chosenModel ? '<span class="winner" style="color:var(--ink-2)">your pick</span>' : ''}</span>
+        <span class="rank-bar-score">${fmt(r.fc)} · <span style="color:${r.abs<=8?'var(--good)':r.abs<=20?'var(--warn)':'var(--bad)'}">${errTxt}</span></span>
+      </div>
+      <div class="rank-bar-track" style="position:relative">
+        <div class="rank-bar-fill" style="width:0%"></div>
+        <div style="position:absolute;top:-3px;bottom:-3px;left:${(actual/maxVal*100).toFixed(1)}%;width:2px;background:var(--ink)"></div>
+      </div>`;
+    mb.appendChild(row);
+    requestAnimationFrame(() => { row.querySelector('.rank-bar-fill').style.width = (r.fc / maxVal * 100) + '%'; });
+  });
+  document.getElementById('models-note').innerHTML =
+    `Bars show each forecast; the solid vertical line is the actual (${fmt(actual)}). Judgment models swing with rep optimism; formula models are systematic — and calibrating stage probabilities to your own history usually wins.`;
+
+  // Monte Carlo
+  const mc = monteCarlo();
+  const hit = mc.totals.filter(t => t >= target).length / mc.totals.length * 100;
+  document.getElementById('mc-mean').textContent = fmt(mc.mean);
+  document.getElementById('mc-band').textContent = fmt(mc.p10) + '–' + fmt(mc.p90);
+  const mch = document.getElementById('mc-hit');
+  mch.textContent = hit.toFixed(0) + '%';
+  mch.className = 'm-num ' + (hit >= 70 ? 'good' : hit >= 40 ? 'warn' : 'bad');
+  document.getElementById('mc-hit-label').textContent = `Chance of hitting ${fmt(target)}`;
+  drawHisto(mc.totals, actual, target);
+
+  // Gap copy
+  document.getElementById('gap-text').textContent =
+    `Notice the commit and best-case numbers are the furthest from reality — they move with how reps feel, not with evidence. The Monte Carlo says there's a ${hit.toFixed(0)}% chance of clearing ${fmt(target)}, yet a commit call would have you reporting ${fmt(results.find(r=>r.id==='commit').fc)} to the board with false confidence. The model didn't fail. The inputs — stage discipline, honest categories, clean close dates — are where forecasts actually break.`;
+
+  document.getElementById('result').classList.add('show');
+  document.getElementById('result').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function drawHisto(totals, actual, target) {
+  const W = 700, H = 260, padB = 34, padT = 10, padX = 8;
+  const min = Math.min(...totals), max = Math.max(...totals);
+  const BINS = 26;
+  const span = (max - min) || 1;
+  const binW = span / BINS;
+  const counts = new Array(BINS).fill(0);
+  totals.forEach(t => { let b = Math.floor((t - min) / binW); if (b >= BINS) b = BINS - 1; counts[b]++; });
+  const maxC = Math.max(...counts);
+  const x = v => padX + (v - min) / span * (W - 2 * padX);
+  const plotH = H - padB - padT;
+  let bars = '';
+  const bw = (W - 2 * padX) / BINS;
+  counts.forEach((c, i) => {
+    const bh = c / maxC * plotH;
+    bars += `<rect x="${(padX + i * bw).toFixed(1)}" y="${(padT + plotH - bh).toFixed(1)}" width="${(bw - 1.5).toFixed(1)}" height="${bh.toFixed(1)}" fill="var(--rule-strong)" rx="1"></rect>`;
+  });
+  const line = (val, color, label, dash) => {
+    const px = x(val).toFixed(1);
+    return `<line x1="${px}" y1="${padT}" x2="${px}" y2="${padT + plotH}" stroke="${color}" stroke-width="2" ${dash ? 'stroke-dasharray="4 3"' : ''}></line>
+      <text x="${px}" y="${H - 18}" fill="${color}" font-family="var(--font-mono)" font-size="10" text-anchor="middle">${label}</text>
+      <text x="${px}" y="${H - 6}" fill="${color}" font-family="var(--font-mono)" font-size="10" text-anchor="middle">${fmtK(val)}</text>`;
+  };
+  const svg = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Distribution of 5,000 simulated quarter outcomes">
+    ${bars}
+    <line x1="${padX}" y1="${padT + plotH}" x2="${W - padX}" y2="${padT + plotH}" stroke="var(--rule)" stroke-width="1"></line>
+    ${line(actual, 'var(--accent)', 'ACTUAL', false)}
+    ${target >= min && target <= max ? line(target, 'var(--ink)', 'QUOTA', true) : ''}
+  </svg>`;
+  document.getElementById('histo').innerHTML = svg;
+}
+
+document.getElementById('run-btn').addEventListener('click', run);
+document.getElementById('add-row').addEventListener('click', () => {
+  deals.push({ name: 'New deal', amt: 50000, stage: 'Discovery', cat: 'Pipeline', won: false });
+  renderPipe();
+});
+
+renderModelCards();
+renderPipe();
+</script>
+
+</body>
+</html>

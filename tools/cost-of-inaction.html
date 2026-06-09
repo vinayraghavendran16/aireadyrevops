@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FAF8F3">
+<title>Cost-of-Inaction Calculator — AI-Ready RevOps</title>
+<meta name="description" content="Put a number on what a shaky revenue foundation costs you every year: forecast error exposure, wasted stack spend, and the data-quality tax. Live, auditable math. Free, no email.">
+<link rel="canonical" href="https://aireadyrevops.com/tools/cost-of-inaction.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cost-of-Inaction Calculator — AI-Ready RevOps">
+<meta property="og:description" content="What does a broken revenue foundation cost you per year? Three line items, auditable math.">
+<meta property="og:url" content="https://aireadyrevops.com/tools/cost-of-inaction.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,30..100;1,9..144,300..700,30..100&family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/tools.css">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="/"><span class="brand-mark"></span><span>AI-Ready RevOps</span></a>
+    <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    <ul class="nav-links" id="primary-nav">
+      <li><a href="/framework.html">Framework</a></li>
+      <li><a href="/services.html">Services</a></li>
+      <li><a href="/blog/">Articles</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a class="nav-cta" href="/assessment.html">Take the Assessment</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+
+<section class="tool-hero">
+  <div class="container narrow">
+    <span class="eyebrow">Free Tool · RevOps Foundation</span>
+    <h1>What a broken foundation <span class="italic-serif" style="color:var(--accent)">costs you a year</span>.</h1>
+    <p class="lead">"Fix the data later" is a number, and it's bigger than the fix. This puts three defensible figures on the table — forecast error exposure, wasted stack spend, and the data-quality tax — and recalculates as you move the sliders. No magic multipliers. Every line is shown.</p>
+    <div class="tool-meta">
+      <span><strong>Live</strong> math</span>
+      <span><strong>3</strong> exposure lines</span>
+      <span><strong>Auditable</strong> formulas</span>
+      <span>No email required</span>
+    </div>
+  </div>
+</section>
+
+<section class="tool-app">
+  <div class="container narrow">
+
+    <div class="tool-panel">
+      <div class="tool-step-label">Your numbers</div>
+      <h2>Rough is fine. Honest is better.</h2>
+      <p class="hint">Estimates beat blanks. The defaults mirror a $20M plan with the forecast error this site quotes — change anything to fit your business.</p>
+
+      <div class="field-grid">
+        <div class="field">
+          <label>Annual revenue plan <span class="sub">This year's target.</span></label>
+          <input type="number" id="plan" value="20000000" step="500000">
+        </div>
+        <div class="field">
+          <label>Forecast error <span class="sub">How far off your call typically lands.</span></label>
+          <div class="range-row"><span class="sub">Tighter</span><span class="range-val" id="error-v">9%</span></div>
+          <input type="range" id="error" min="2" max="35" value="9">
+        </div>
+        <div class="field">
+          <label>CRM data quality <span class="sub">Share of records you'd actually trust.</span></label>
+          <div class="range-row"><span class="sub">Worse</span><span class="range-val" id="dq-v">65%</span></div>
+          <input type="range" id="dq" min="20" max="98" value="65">
+        </div>
+        <div class="field">
+          <label>Tool adoption <span class="sub">Share of paid seats actually used.</span></label>
+          <div class="range-row"><span class="sub">Lower</span><span class="range-val" id="ad-v">55%</span></div>
+          <input type="range" id="ad" min="15" max="100" value="55">
+        </div>
+        <div class="field">
+          <label>Quota-carrying reps <span class="sub">People who sell.</span></label>
+          <input type="number" id="reps" value="25" step="1">
+        </div>
+        <div class="field">
+          <label>GTM tools per rep <span class="sub">Average B2B rep juggles 7–10.</span></label>
+          <input type="number" id="tools" value="8" step="1">
+        </div>
+        <div class="field">
+          <label>Cost per tool · per rep · month <span class="sub">Blended seat price.</span></label>
+          <input type="number" id="toolcost" value="180" step="10">
+        </div>
+        <div class="field">
+          <label>Fully-loaded cost per rep / year <span class="sub">Salary + benefits + overhead.</span></label>
+          <input type="number" id="repcost" value="150000" step="5000">
+        </div>
+      </div>
+    </div>
+
+    <div class="tool-result show" id="result">
+
+      <div class="result-headline">
+        <div class="result-metric">
+          <span class="pill">Annual cost of inaction</span>
+          <div class="num"><span class="unit">$</span><span id="total">0</span></div>
+          <div class="cap" id="total-sub">leaking from the revenue stack each year</div>
+        </div>
+        <div>
+          <h2 id="head-line">That's what the foundation costs while it waits.</h2>
+          <p id="head-body">—</p>
+        </div>
+      </div>
+
+      <div class="tool-panel" style="margin-top:1.25rem">
+        <div class="tool-step-label" style="color:var(--muted)"><span style="background:var(--muted)"></span>Where it comes from</div>
+        <div class="metric-strip">
+          <div class="metric-cell"><div class="m-num bad" id="c1">$0</div><div class="m-label"><strong>Forecast error exposure</strong><br>plan × error rate · <em>Forecasting Trust</em></div></div>
+          <div class="metric-cell"><div class="m-num warn" id="c2">$0</div><div class="m-label"><strong>Wasted stack spend</strong><br>unused seats per year · <em>AI Stack Fit</em></div></div>
+          <div class="metric-cell"><div class="m-num warn" id="c3">$0</div><div class="m-label"><strong>Data-quality tax</strong><br>rep hours lost to bad data · <em>Data Foundation</em></div></div>
+        </div>
+        <p class="tool-note" id="formula-note">—</p>
+      </div>
+
+      <div class="tool-panel">
+        <div class="tool-step-label">The trade</div>
+        <h2 id="roi-head">An audit is a rounding error against this.</h2>
+        <p class="hint" id="roi-body">—</p>
+        <div class="bridge-meta" style="max-width:420px">
+          <div><span>Annual exposure</span><strong id="roi-exp">$0</strong></div>
+          <div><span>Full Audit (Tier 2)</span><strong>$12,500</strong></div>
+          <div><span>Audit as % of exposure</span><strong id="roi-pct">0%</strong></div>
+          <div><span>Recover 10% → return</span><strong id="roi-ret">0×</strong></div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <p><strong>The catch:</strong> <span id="gap-text">—</span></p>
+      </div>
+
+      <div class="tool-bridge">
+        <div>
+          <div class="dim-link">↳ Spans Data Foundation · AI Stack Fit · Forecasting Trust</div>
+          <h2>This is an estimate. The audit is the evidence.</h2>
+          <p>Sliders give you the order of magnitude. The paid audit replaces every assumption here with measured numbers from your actual systems — and hands you a 90-day roadmap and a cost-of-inaction analysis your CFO can act on. Start free: see your Readiness Index across all six dimensions.</p>
+          <div class="bridge-actions">
+            <a class="btn btn-accent btn-arrow" href="/assessment.html">Take the free assessment</a>
+            <a class="btn btn-secondary" href="/services.html">See the paid audits</a>
+          </div>
+        </div>
+        <div class="bridge-meta">
+          <div><span>Format</span><strong>15 questions</strong></div>
+          <div><span>Time</span><strong>~4 minutes</strong></div>
+          <div><span>Output</span><strong>Index 0–100 + radar</strong></div>
+          <div><span>Cost</span><strong>Free</strong></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">AI-Ready RevOps</div>
+        <p class="footer-tag">A diagnostic and remediation methodology for the modern revenue stack.</p>
+      </div>
+      <div class="footer-col"><h4>The Framework</h4><ul><li><a href="/framework.html">Methodology</a></li><li><a href="/assessment.html">Free assessment</a></li><li><a href="/services.html">Paid audits</a></li></ul></div>
+      <div class="footer-col"><h4>Read</h4><ul><li><a href="/blog/">Articles</a></li></ul></div>
+      <div class="footer-col"><h4>About</h4><ul><li><a href="/about.html">About the author</a></li><li><a href="mailto:hello@aireadyrevops.com">Contact</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 AI-Ready RevOps · WhizzLead</span><span>aireadyrevops.com</span></div>
+  </div>
+</footer>
+
+<script>
+  const tog = document.querySelector('.menu-toggle');
+  const links = document.getElementById('primary-nav');
+  if (tog && links) tog.addEventListener('click', () => { const o = links.classList.toggle('open'); tog.setAttribute('aria-expanded', o ? 'true' : 'false'); });
+</script>
+
+<script>
+/* ---------- Cost-of-Inaction Calculator ---------- */
+const $ = id => document.getElementById(id);
+const fmt = n => '$' + Math.round(n).toLocaleString();
+const WEEKS = 46, HRS_PER_YR = 1880, MAX_HRS_WK = 6, AUDIT = 12500;
+
+function calc() {
+  const plan = +$('plan').value || 0;
+  const error = (+$('error').value || 0) / 100;
+  const dq = (+$('dq').value || 0) / 100;
+  const ad = (+$('ad').value || 0) / 100;
+  const reps = +$('reps').value || 0;
+  const tools = +$('tools').value || 0;
+  const toolcost = +$('toolcost').value || 0;
+  const repcost = +$('repcost').value || 0;
+
+  // live slider labels
+  $('error-v').textContent = (+$('error').value) + '%';
+  $('dq-v').textContent = (+$('dq').value) + '%';
+  $('ad-v').textContent = (+$('ad').value) + '%';
+
+  // 1. Forecast error exposure
+  const c1 = plan * error;
+  // 2. Wasted stack spend = annual stack spend × unused share
+  const stackSpend = reps * tools * toolcost * 12;
+  const c2 = stackSpend * (1 - ad);
+  // 3. Data-quality tax = rep hours lost to bad data, valued at loaded hourly cost
+  const hourly = repcost / HRS_PER_YR;
+  const hrsLostWk = MAX_HRS_WK * (1 - dq);
+  const c3 = hrsLostWk * WEEKS * reps * hourly;
+
+  const total = c1 + c2 + c3;
+
+  $('total').textContent = Math.round(total).toLocaleString();
+  $('c1').textContent = fmt(c1);
+  $('c2').textContent = fmt(c2);
+  $('c3').textContent = fmt(c3);
+
+  const biggest = [['forecast error', c1], ['wasted stack spend', c2], ['the data-quality tax', c3]]
+    .sort((a, b) => b[1] - a[1])[0][0];
+  $('head-body').textContent =
+    `The largest single leak is ${biggest}. None of these show up as a line item anyone owns — which is exactly why they compound. Layer AI on top of this and you don't fix it; you automate it.`;
+
+  $('formula-note').textContent =
+    `Forecast exposure = ${fmt(plan)} plan × ${(error*100).toFixed(0)}% error. ` +
+    `Wasted spend = ${reps} reps × ${tools} tools × ${fmt(toolcost)}/mo × 12 = ${fmt(stackSpend)} stack, × ${((1-ad)*100).toFixed(0)}% unused. ` +
+    `Data tax = ${hrsLostWk.toFixed(1)} hrs/wk lost per rep at ${(dq*100).toFixed(0)}% data quality × ${WEEKS} wks × ${reps} reps × ${fmt(hourly)}/hr.`;
+
+  // ROI framing
+  $('roi-exp').textContent = fmt(total);
+  const pct = total ? (AUDIT / total * 100) : 0;
+  $('roi-pct').textContent = pct.toFixed(pct < 1 ? 1 : 0) + '%';
+  const ret = total ? (total * 0.10 / AUDIT) : 0;
+  $('roi-ret').textContent = ret.toFixed(1) + '×';
+  $('roi-body').textContent =
+    `The Full Audit costs ${pct.toFixed(pct < 1 ? 1 : 0)}% of your annual exposure. Recover just a tenth of what's leaking and it returns ${ret.toFixed(1)}× its price — before counting the AI ROI you unlock by fixing the foundation first.`;
+
+  $('gap-text').textContent =
+    `These are estimates built from your sliders, not measurements. The danger isn't that the number is wrong — it's that no one has ever put it on a slide. A foundation that quietly costs ${fmt(total)} a year never makes the roadmap, because "the CRM is a bit messy" doesn't sound like ${fmt(total)}.`;
+}
+
+document.querySelectorAll('#result, .tool-panel input').forEach(() => {});
+['plan','error','dq','ad','reps','tools','toolcost','repcost'].forEach(id => {
+  $(id).addEventListener('input', calc);
+});
+calc();
+</script>
+
+</body>
+</html>
