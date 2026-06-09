@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FAF8F3">
+<title>Health Score Model Builder — AI-Ready RevOps</title>
+<meta name="description" content="Weight the signals that predict retention, score a live account, and see the model your data can actually support. Free, no email.">
+<link rel="canonical" href="https://aireadyrevops.com/tools/health-score-builder.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Health Score Model Builder — AI-Ready RevOps">
+<meta property="og:description" content="Weight the signals that predict retention, score a live account, and see the model your data can actually support. Free, no email.">
+<meta property="og:url" content="https://aireadyrevops.com/tools/health-score-builder.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,30..100;1,9..144,300..700,30..100&family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/tools.css">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="/"><span class="brand-mark"></span><span>AI-Ready RevOps</span></a>
+    <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    <ul class="nav-links" id="primary-nav">
+      <li><a href="/framework.html">Framework</a></li>
+      <li><a href="/tools/" aria-current="page">Free Tools</a></li>
+      <li><a href="/services.html">Services</a></li>
+      <li><a href="/blog/">Articles</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a class="nav-cta" href="/assessment.html">Take the Assessment</a></li>
+    </ul>
+  </nav>
+</header>
+<main id="main">
+
+<section class="tool-hero">
+  <div class="container narrow">
+    <span class="eyebrow">Free Tool · Customer Success</span>
+    <h1>Build a health score <span class="italic-serif" style="color:var(--accent)">your data can back up.</span></h1>
+    <p class="lead">Most health scores are a gut feeling wearing a number. Weight the signals that actually predict retention, then score a live account and watch the model work — and notice which signals you can truly measure versus the ones you’re guessing at.</p>
+    <div class="tool-meta"><span><strong>6</strong> signals</span><span>Weighted model</span><span>Live account score</span><span>No email required</span></div>
+  </div>
+</section>
+
+<section class="tool-app"><div class="container narrow">
+  <div class="tool-panel">
+    <div class="tool-step-label">Step 1 — Weight the signals</div>
+    <h2>What actually predicts a renewal?</h2>
+    <p class="hint">Set how much each signal matters. Weights normalise to 100% automatically — the relative sizes are what count.</p>
+    <div id="weights"></div>
+  </div>
+  <div class="tool-panel">
+    <div class="tool-step-label">Step 2 — Score an account</div>
+    <h2>Now rate one real customer, 0–100 per signal.</h2>
+    <p class="hint">Use an account you know. Where you have to guess instead of pull the number, that’s a data gap the score is quietly hiding.</p>
+    <div id="values"></div>
+  </div>
+  <div class="tool-result show" id="result">
+    <div class="result-headline">
+      <div class="result-metric"><span class="pill">Account health</span><div class="num"><span id="score">0</span><span class="unit"> / 100</span></div><div class="cap" id="tier-cap">composite health</div></div>
+      <div><h2 id="tier-h">—</h2><p id="tier-b">—</p></div>
+    </div>
+    <div class="tool-panel">
+      <div class="tool-step-label" style="color:var(--muted)"><span style="background:var(--muted)"></span>What’s driving the score</div>
+      <div class="rank-bars" id="contrib"></div>
+      <p class="tool-note">Each bar is that signal’s contribution = its weight × the account’s value. The biggest bar is what’s holding the score up; the smallest is your first intervention.</p>
+    </div>
+    <div class="callout"><p><strong>The catch:</strong> <span id="gap">—</span></p></div>
+    
+      <div class="tool-bridge">
+        <div>
+          <div class="dim-link">↳ Maps to Dimension 01 · Data Foundation</div>
+          <h2>A health score is only as honest as the data feeding it.</h2>
+          <p>If “executive engagement” or “usage” isn’t a real, current field, that weight is fiction — and the score launders a guess into a number people trust. Whether your signals are actually captured and reliable is Data Foundation, the heaviest dimension in the Readiness Index. See how solid yours is.</p>
+          <div class="bridge-actions">
+            <a class="btn btn-accent btn-arrow" href="/assessment.html">Take the free assessment</a>
+            <a class="btn btn-secondary" href="/services.html">See the paid audits</a>
+          </div>
+        </div>
+        <div class="bridge-meta">
+          <div><span>Format</span><strong>15 questions</strong></div>
+          <div><span>Time</span><strong>~4 minutes</strong></div>
+          <div><span>Output</span><strong>Index 0–100 + radar</strong></div>
+          <div><span>Cost</span><strong>Free</strong></div>
+        </div>
+      </div>
+
+  </div>
+</div></section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">AI-Ready RevOps</div>
+        <p class="footer-tag">A diagnostic and remediation methodology for the modern revenue stack.</p>
+      </div>
+      <div class="footer-col"><h4>The Framework</h4><ul><li><a href="/framework.html">Methodology</a></li><li><a href="/tools/">Free tools</a></li><li><a href="/assessment.html">Free assessment</a></li><li><a href="/services.html">Paid audits</a></li></ul></div>
+      <div class="footer-col"><h4>Read</h4><ul><li><a href="/blog/">Articles</a></li></ul></div>
+      <div class="footer-col"><h4>About</h4><ul><li><a href="/about.html">About the author</a></li><li><a href="mailto:hello@aireadyrevops.com">Contact</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 AI-Ready RevOps · WhizzLead</span><span>aireadyrevops.com</span></div>
+  </div>
+</footer>
+<script>
+  var tog=document.querySelector('.menu-toggle'),lk=document.getElementById('primary-nav');
+  if(tog&&lk)tog.addEventListener('click',function(){var o=lk.classList.toggle('open');tog.setAttribute('aria-expanded',o?'true':'false');});
+</script>
+<script>
+
+var SIG=[
+ ['Product usage','Logins and core-action frequency vs plan'],
+ ['Adoption breadth','How many paid features are in real use'],
+ ['Support sentiment','Ticket volume, severity, and tone'],
+ ['Executive engagement','Sponsor responsiveness and QBR attendance'],
+ ['Invoice timeliness','On-time payment and billing disputes'],
+ ['Stakeholder coverage','Multiple champions vs single point of failure']
+];
+var W=[30,20,15,15,10,10], V=[70,55,60,40,90,35];
+function renderW(){
+  var h=document.getElementById('weights'); h.innerHTML='';
+  SIG.forEach(function(s,i){
+    var row=document.createElement('div'); row.className='wrow';
+    row.innerHTML='<div class="wname">'+s[0]+'<span class="sub">'+s[1]+'</span></div><div class="wval" id="wv'+i+'">0%</div><input type="range" min="0" max="50" value="'+W[i]+'" id="w'+i+'">';
+    h.appendChild(row);
+    row.querySelector('#w'+i).addEventListener('input',function(e){W[i]=+e.target.value;calc();});
+  });
+}
+function renderV(){
+  var h=document.getElementById('values'); h.innerHTML='';
+  SIG.forEach(function(s,i){
+    var row=document.createElement('div'); row.className='wrow';
+    row.innerHTML='<div class="wname">'+s[0]+'</div><div class="wval" id="vv'+i+'">0</div><input type="range" min="0" max="100" value="'+V[i]+'" id="v'+i+'">';
+    h.appendChild(row);
+    row.querySelector('#v'+i).addEventListener('input',function(e){V[i]=+e.target.value;calc();});
+  });
+}
+function calc(){
+  var sumW=W.reduce(function(a,b){return a+b;},0)||1;
+  var score=0, contrib=[];
+  for(var i=0;i<SIG.length;i++){
+    var nw=W[i]/sumW;
+    document.getElementById('wv'+i).textContent=Math.round(nw*100)+'%';
+    document.getElementById('vv'+i).textContent=V[i];
+    var c=nw*V[i]; score+=c; contrib.push([SIG[i][0],c,V[i]]);
+  }
+  score=Math.round(score);
+  document.getElementById('score').textContent=score;
+  var tier=score>=70?['Healthy. Renewal is the base case.','Strong signals across the board. Protect this account by keeping the relationship wide \u2014 single-threaded accounts churn when the champion leaves.']:score>=40?['At risk. This one needs a play.','The composite is soft enough that renewal is not safe. Work the lowest-contributing signal first \u2014 that is where the score is bleeding.']:['Critical. Escalate now.','Multiple weak signals. Without intervention this is a likely churn or down-sell. Get a senior sponsor involved this week.'];
+  document.getElementById('tier-h').textContent=tier[0]; document.getElementById('tier-b').textContent=tier[1];
+  var host=document.getElementById('contrib'); host.innerHTML='';
+  var max=Math.max.apply(null,contrib.map(function(c){return c[1];}))||1;
+  var sorted=contrib.slice().sort(function(a,b){return a[1]-b[1];}); var weak=sorted[0][0];
+  contrib.forEach(function(c){
+    var row=document.createElement('div'); row.className='rank-bar'+(c[0]===weak?' top':'');
+    var cls=c[2]>=70?'var(--good)':c[2]>=40?'var(--warn)':'var(--bad)';
+    row.innerHTML='<div class="rank-bar-head"><span class="rank-bar-name">'+c[0]+(c[0]===weak?'<span class="winner">intervene here</span>':'')+'</span><span class="rank-bar-score">'+c[1].toFixed(1)+' pts</span></div><div class="rank-bar-track"><div class="rank-bar-fill" style="width:0%;background:'+cls+'"></div></div>';
+    host.appendChild(row);
+    requestAnimationFrame(function(){row.querySelector('.rank-bar-fill').style.width=(c[1]/max*100)+'%';});
+  });
+  document.getElementById('gap').textContent='This account scores '+score+'/100 on your model. But ask of each signal: is that number pulled from a system, or typed from memory? A health score built on fields no one maintains doesn\u2019t reduce churn risk \u2014 it hides it behind a confident number, which is worse than no score at all.';
+}
+renderW(); renderV(); calc();
+
+</script>
+</body>
+</html>

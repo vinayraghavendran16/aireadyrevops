@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FAF8F3">
+<title>CRM Data Quality Scorecard — AI-Ready RevOps</title>
+<meta name="description" content="Rate six dimensions of CRM hygiene and get a weighted data-quality score with your weakest link surfaced. Free, no email.">
+<link rel="canonical" href="https://aireadyrevops.com/tools/crm-data-quality.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="CRM Data Quality Scorecard — AI-Ready RevOps">
+<meta property="og:description" content="Rate six dimensions of CRM hygiene and get a weighted data-quality score with your weakest link surfaced. Free, no email.">
+<meta property="og:url" content="https://aireadyrevops.com/tools/crm-data-quality.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,30..100;1,9..144,300..700,30..100&family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/tools.css">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="/"><span class="brand-mark"></span><span>AI-Ready RevOps</span></a>
+    <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    <ul class="nav-links" id="primary-nav">
+      <li><a href="/framework.html">Framework</a></li>
+      <li><a href="/tools/" aria-current="page">Free Tools</a></li>
+      <li><a href="/services.html">Services</a></li>
+      <li><a href="/blog/">Articles</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a class="nav-cta" href="/assessment.html">Take the Assessment</a></li>
+    </ul>
+  </nav>
+</header>
+<main id="main">
+
+<section class="tool-hero">
+  <div class="container narrow">
+    <span class="eyebrow">Free Tool · RevOps Foundation</span>
+    <h1>Is your CRM <span class="italic-serif" style="color:var(--accent)">good enough for AI?</span></h1>
+    <p class="lead">AI doesn’t fix bad data — it scales it. Rate your CRM across the six dimensions of data quality and get a weighted score, your weakest link, and a clear read on whether your foundation can carry automation. Slide each to your honest estimate.</p>
+    <div class="tool-meta"><span><strong>6</strong> dimensions</span><span>Live scoring</span><span>Weighted index</span><span>No email required</span></div>
+  </div>
+</section>
+
+<section class="tool-app"><div class="container narrow">
+  <div class="tool-panel">
+    <div class="tool-step-label">Your honest estimate</div>
+    <h2>Rate each dimension, 0 to 100.</h2>
+    <p class="hint">Rough is fine. If you’re guessing high, you already know the answer — that gap is the point of the tool.</p>
+    <div class="field-grid">
+      <div class="field">
+        <label>Completeness <span class="sub">Share of key fields populated on active records.</span></label>
+        <div class="range-row"><span class="sub">Weight 20%</span><span class="range-val" id="dq-v0">60%</span></div>
+        <input type="range" id="dq0" min="0" max="100" value="60">
+      </div>
+      <div class="field">
+        <label>Accuracy <span class="sub">Share of values that are correct and not stale.</span></label>
+        <div class="range-row"><span class="sub">Weight 20%</span><span class="range-val" id="dq-v1">60%</span></div>
+        <input type="range" id="dq1" min="0" max="100" value="60">
+      </div>
+      <div class="field">
+        <label>Consistency <span class="sub">Standardized picklists, formats, and naming.</span></label>
+        <div class="range-row"><span class="sub">Weight 15%</span><span class="range-val" id="dq-v2">60%</span></div>
+        <input type="range" id="dq2" min="0" max="100" value="60">
+      </div>
+      <div class="field">
+        <label>Uniqueness <span class="sub">Freedom from duplicate accounts and contacts.</span></label>
+        <div class="range-row"><span class="sub">Weight 15%</span><span class="range-val" id="dq-v3">60%</span></div>
+        <input type="range" id="dq3" min="0" max="100" value="60">
+      </div>
+      <div class="field">
+        <label>Timeliness <span class="sub">Records updated recently enough to trust.</span></label>
+        <div class="range-row"><span class="sub">Weight 15%</span><span class="range-val" id="dq-v4">60%</span></div>
+        <input type="range" id="dq4" min="0" max="100" value="60">
+      </div>
+      <div class="field">
+        <label>Validation <span class="sub">Rules that stop bad data being entered at all.</span></label>
+        <div class="range-row"><span class="sub">Weight 15%</span><span class="range-val" id="dq-v5">60%</span></div>
+        <input type="range" id="dq5" min="0" max="100" value="60">
+      </div></div>
+  </div>
+  <div class="tool-result show" id="result">
+    <div class="result-headline">
+      <div class="result-metric"><span class="pill">Data quality index</span><div class="num"><span id="score">0</span><span class="unit"> / 100</span></div><div class="cap" id="cap">weighted across six dimensions</div></div>
+      <div><h2 id="tier-h">—</h2><p id="tier-b">—</p></div>
+    </div>
+    <div class="tool-panel">
+      <div class="tool-step-label" style="color:var(--muted)"><span style="background:var(--muted)"></span>By dimension</div>
+      <div class="rank-bars" id="bars"></div>
+      <p class="tool-note">Each dimension is scored on your input and weighted by its impact on downstream reporting, forecasting, and AI. Lowest bar is your binding constraint — fix that first.</p>
+    </div>
+    <div class="callout"><p><strong>The catch:</strong> <span id="gap">—</span></p></div>
+    
+      <div class="tool-bridge">
+        <div>
+          <div class="dim-link">↳ Maps to Dimension 01 · Data Foundation</div>
+          <h2>Every AI use case you have sits on top of this number.</h2>
+          <p>Data Foundation is the heaviest-weighted dimension in the Readiness Index for a reason: forecasting, scoring, routing, and every AI feature inherit its quality. The assessment measures it in context with five other dimensions. See your full foundation.</p>
+          <div class="bridge-actions">
+            <a class="btn btn-accent btn-arrow" href="/assessment.html">Take the free assessment</a>
+            <a class="btn btn-secondary" href="/services.html">See the paid audits</a>
+          </div>
+        </div>
+        <div class="bridge-meta">
+          <div><span>Format</span><strong>15 questions</strong></div>
+          <div><span>Time</span><strong>~4 minutes</strong></div>
+          <div><span>Output</span><strong>Index 0–100 + radar</strong></div>
+          <div><span>Cost</span><strong>Free</strong></div>
+        </div>
+      </div>
+
+  </div>
+</div></section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">AI-Ready RevOps</div>
+        <p class="footer-tag">A diagnostic and remediation methodology for the modern revenue stack.</p>
+      </div>
+      <div class="footer-col"><h4>The Framework</h4><ul><li><a href="/framework.html">Methodology</a></li><li><a href="/tools/">Free tools</a></li><li><a href="/assessment.html">Free assessment</a></li><li><a href="/services.html">Paid audits</a></li></ul></div>
+      <div class="footer-col"><h4>Read</h4><ul><li><a href="/blog/">Articles</a></li></ul></div>
+      <div class="footer-col"><h4>About</h4><ul><li><a href="/about.html">About the author</a></li><li><a href="mailto:hello@aireadyrevops.com">Contact</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 AI-Ready RevOps · WhizzLead</span><span>aireadyrevops.com</span></div>
+  </div>
+</footer>
+<script>
+  var tog=document.querySelector('.menu-toggle'),lk=document.getElementById('primary-nav');
+  if(tog&&lk)tog.addEventListener('click',function(){var o=lk.classList.toggle('open');tog.setAttribute('aria-expanded',o?'true':'false');});
+</script>
+<script>
+
+var CATS=[['Completeness',20],['Accuracy',20],['Consistency',15],['Uniqueness',15],['Timeliness',15],['Validation',15]];
+function dqCalc(){
+  var tot=0,wsum=0,vals=[];
+  for(var i=0;i<CATS.length;i++){
+    var v=+document.getElementById('dq'+i).value;
+    document.getElementById('dq-v'+i).textContent=v+'%';
+    vals.push([CATS[i][0],v,CATS[i][1]]);
+    tot+=v*CATS[i][1]; wsum+=CATS[i][1];
+  }
+  var score=Math.round(tot/wsum);
+  document.getElementById('score').textContent=score;
+  var tier = score>=80?['Solid foundation. Safe to build on.','Your data can carry forecasting and AI without amplifying errors. Keep validation tight as volume grows.']
+           : score>=55?['Workable, with known cracks.','Good enough for reporting, risky for automation. Fix your weakest dimension before layering AI on top, or you will scale its mistakes.']
+           : ['Fragile. AI will scale the mess.','At this level, automation inherits and multiplies bad data. The foundation needs work before any AI use case will return what it promises.'];
+  document.getElementById('tier-h').textContent=tier[0];
+  document.getElementById('tier-b').textContent=tier[1];
+  var bars=document.getElementById('bars'); bars.innerHTML='';
+  var sorted=vals.slice().sort(function(a,b){return a[1]-b[1];});
+  var weak=sorted[0][0];
+  vals.forEach(function(v){
+    var row=document.createElement('div'); row.className='rank-bar'+(v[0]===weak?' top':'');
+    var cls=v[1]>=80?'var(--good)':v[1]>=55?'var(--warn)':'var(--bad)';
+    row.innerHTML='<div class="rank-bar-head"><span class="rank-bar-name">'+v[0]+(v[0]===weak?'<span class="winner">weakest link</span>':'')+'</span><span class="rank-bar-score">'+v[1]+'</span></div><div class="rank-bar-track"><div class="rank-bar-fill" style="width:0%;background:'+cls+'"></div></div>';
+    bars.appendChild(row);
+    requestAnimationFrame(function(){row.querySelector('.rank-bar-fill').style.width=v[1]+'%';});
+  });
+  document.getElementById('gap').textContent='A weighted data-quality index of '+score+' out of 100 says your CRM is '+(score>=80?'in good shape \u2014 protect it with validation as you scale.':score>=55?'usable but uneven; your '+weak.toLowerCase()+' is the binding constraint.':'not yet ready to carry automation; '+weak.toLowerCase()+' is the first thing to fix.')+' Either way, the danger is averaging: one strong dimension hides a weak one, and AI fails on the weak one.';
+}
+for(var i=0;i<CATS.length;i++){document.getElementById('dq'+i).addEventListener('input',dqCalc);}
+dqCalc();
+
+</script>
+</body>
+</html>

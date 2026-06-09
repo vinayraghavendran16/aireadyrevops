@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FAF8F3">
+<title>Churn Risk Simulator — AI-Ready RevOps</title>
+<meta name="description" content="Simulate your renewal book thousands of times to see expected retained ARR, at-risk accounts, and the honest range. Free, no email.">
+<link rel="canonical" href="https://aireadyrevops.com/tools/churn-risk-simulator.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Churn Risk Simulator — AI-Ready RevOps">
+<meta property="og:description" content="Simulate your renewal book thousands of times to see expected retained ARR, at-risk accounts, and the honest range. Free, no email.">
+<meta property="og:url" content="https://aireadyrevops.com/tools/churn-risk-simulator.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,30..100;1,9..144,300..700,30..100&family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/tools.css">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="/"><span class="brand-mark"></span><span>AI-Ready RevOps</span></a>
+    <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    <ul class="nav-links" id="primary-nav">
+      <li><a href="/framework.html">Framework</a></li>
+      <li><a href="/tools/" aria-current="page">Free Tools</a></li>
+      <li><a href="/services.html">Services</a></li>
+      <li><a href="/blog/">Articles</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a class="nav-cta" href="/assessment.html">Take the Assessment</a></li>
+    </ul>
+  </nav>
+</header>
+<main id="main">
+
+<section class="tool-hero">
+  <div class="container narrow">
+    <span class="eyebrow">Free Tool · Customer Success</span>
+    <h1>How much of your book <span class="italic-serif" style="color:var(--accent)">renews?</span></h1>
+    <p class="lead">A single retention forecast is a wish. Split your book by health, then simulate the renewal year five thousand times to see your expected retained ARR, the accounts most likely to churn, and — crucially — the range you should actually be planning around.</p>
+    <div class="tool-meta"><span><strong>5,000</strong>-run simulation</span><span>At-risk ARR</span><span>Honest range</span><span>No email required</span></div>
+  </div>
+</section>
+
+<section class="tool-app"><div class="container narrow">
+  <div class="tool-panel">
+    <div class="tool-step-label">Your renewal book</div>
+    <h2>Size it and split it by health.</h2>
+    <p class="hint">Healthy accounts renew ~95% of the time, neutral ~85%, at-risk ~60%. Adjust the mix to match your book.</p>
+    <div class="field-grid">
+      <div class="field"><label>Accounts up for renewal <span class="sub">This period.</span></label><input type="number" id="n" value="120" step="5"></div>
+      <div class="field"><label>Average ARR per account <span class="sub">Annual value.</span></label><input type="number" id="arr" value="40000" step="5000"></div>
+      <div class="field"><label>Healthy share <span class="sub">Strong signals.</span></label><div class="range-row"><span class="sub">of book</span><span class="range-val" id="h-v">50%</span></div><input type="range" id="ph" min="0" max="100" value="50"></div>
+      <div class="field"><label>At-risk share <span class="sub">Weak signals.</span></label><div class="range-row"><span class="sub">of book</span><span class="range-val" id="r-v">20%</span></div><input type="range" id="pr" min="0" max="100" value="20"></div>
+    </div>
+    <p class="tool-note" id="mix-note">—</p>
+    <div class="tool-actions"><button class="btn btn-primary btn-arrow" id="ch-run">Simulate the renewal year</button></div>
+  </div>
+  <div class="tool-result" id="result">
+    <div class="result-headline">
+      <div class="result-metric"><span class="pill">Expected retained ARR</span><div class="num"><span class="unit">$</span><span id="ret">0</span></div><div class="cap" id="grr-cap">gross retention</div></div>
+      <div><h2 id="head-h">—</h2><p id="head-b">—</p></div>
+    </div>
+    <div class="metric-strip">
+      <div class="metric-cell"><div class="m-num bad" id="m-churn">$0</div><div class="m-label">Expected churned ARR</div></div>
+      <div class="metric-cell"><div class="m-num warn" id="m-atrisk">$0</div><div class="m-label">ARR sitting in at-risk accounts</div></div>
+      <div class="metric-cell"><div class="m-num" id="m-acct">0</div><div class="m-label">Accounts likely to churn (expected)</div></div>
+    </div>
+    <div class="tool-panel">
+      <div class="tool-step-label">The range you should plan around</div>
+      <h2>Retained ARR, 5,000 simulated years.</h2>
+      <p class="hint">Each run renews every account at its segment’s probability. The spread is the point: your retention is a distribution, and planning to the mean alone ignores the downside.</p>
+      <div class="histo-wrap" id="histo"></div>
+      <div class="metric-strip" style="margin-top:1.5rem">
+        <div class="metric-cell"><div class="m-num" id="mc-mean">$0</div><div class="m-label">Expected (mean)</div></div>
+        <div class="metric-cell"><div class="m-num" id="mc-band">$0–$0</div><div class="m-label">80% range (P10–P90)</div></div>
+        <div class="metric-cell"><div class="m-num" id="mc-worst">$0</div><div class="m-label">Bad year (P10 downside)</div></div>
+      </div>
+    </div>
+    <div class="callout"><p><strong>The catch:</strong> <span id="gap">—</span></p></div>
+    
+      <div class="tool-bridge">
+        <div>
+          <div class="dim-link">↳ Maps to Dimension 06 · Forecasting Trust</div>
+          <h2>Retention is a forecast too — and usually a worse one than new business.</h2>
+          <p>Net revenue retention now drives valuation, yet most teams forecast it with a single optimistic number and no range. Whether your retention forecast is trusted, evidenced, and segmented is part of Forecasting Trust, one of six dimensions in the Readiness Index. See where it stands.</p>
+          <div class="bridge-actions">
+            <a class="btn btn-accent btn-arrow" href="/assessment.html">Take the free assessment</a>
+            <a class="btn btn-secondary" href="/services.html">See the paid audits</a>
+          </div>
+        </div>
+        <div class="bridge-meta">
+          <div><span>Format</span><strong>15 questions</strong></div>
+          <div><span>Time</span><strong>~4 minutes</strong></div>
+          <div><span>Output</span><strong>Index 0–100 + radar</strong></div>
+          <div><span>Cost</span><strong>Free</strong></div>
+        </div>
+      </div>
+
+  </div>
+</div></section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">AI-Ready RevOps</div>
+        <p class="footer-tag">A diagnostic and remediation methodology for the modern revenue stack.</p>
+      </div>
+      <div class="footer-col"><h4>The Framework</h4><ul><li><a href="/framework.html">Methodology</a></li><li><a href="/tools/">Free tools</a></li><li><a href="/assessment.html">Free assessment</a></li><li><a href="/services.html">Paid audits</a></li></ul></div>
+      <div class="footer-col"><h4>Read</h4><ul><li><a href="/blog/">Articles</a></li></ul></div>
+      <div class="footer-col"><h4>About</h4><ul><li><a href="/about.html">About the author</a></li><li><a href="mailto:hello@aireadyrevops.com">Contact</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 AI-Ready RevOps · WhizzLead</span><span>aireadyrevops.com</span></div>
+  </div>
+</footer>
+<script>
+  var tog=document.querySelector('.menu-toggle'),lk=document.getElementById('primary-nav');
+  if(tog&&lk)tog.addEventListener('click',function(){var o=lk.classList.toggle('open');tog.setAttribute('aria-expanded',o?'true':'false');});
+</script>
+<script>
+
+function fmt(n){return '$'+Math.round(n).toLocaleString();}
+function fmtK(n){return '$'+Math.round(n/1000)+'k';}
+function pct(){
+  var ph=+document.getElementById('ph').value, pr=+document.getElementById('pr').value;
+  if(ph+pr>100){ if(document.activeElement&&document.activeElement.id==='ph'){pr=100-ph;document.getElementById('pr').value=pr;} else {ph=100-pr;document.getElementById('ph').value=ph;} }
+  document.getElementById('h-v').textContent=ph+'%'; document.getElementById('r-v').textContent=pr+'%';
+  var pn=100-ph-pr;
+  document.getElementById('mix-note').textContent='Mix: '+ph+'% healthy \u00b7 '+pn+'% neutral \u00b7 '+pr+'% at-risk. Renewal probabilities used: healthy 95%, neutral 85%, at-risk 60%.';
+  return {ph:ph/100,pr:pr/100,pn:pn/100};
+}
+['ph','pr'].forEach(function(id){document.getElementById(id).addEventListener('input',pct);});
+function run(){
+  var m=pct(); var N=+document.getElementById('n').value||0, arr=+document.getElementById('arr').value||0;
+  var nH=Math.round(N*m.ph), nR=Math.round(N*m.pr), nN=N-nH-nR;
+  var P={h:0.95,n:0.85,r:0.60};
+  var runs=5000, totals=new Array(runs);
+  for(var k=0;k<runs;k++){
+    var renew=0;
+    for(var i=0;i<nH;i++) if(Math.random()<P.h) renew++;
+    for(var j=0;j<nN;j++) if(Math.random()<P.n) renew++;
+    for(var q=0;q<nR;q++) if(Math.random()<P.r) renew++;
+    totals[k]=renew*arr;
+  }
+  totals.sort(function(a,b){return a-b;});
+  var mean=totals.reduce(function(s,x){return s+x;},0)/runs;
+  var p=function(q){return totals[Math.floor(q*runs)];};
+  var book=N*arr;
+  var grr=mean/book*100;
+  var churned=book-mean;
+  var atrisk=nR*arr;
+  var expChurnAcct=Math.round(nH*(1-P.h)+nN*(1-P.n)+nR*(1-P.r));
+  document.getElementById('ret').textContent=Math.round(mean).toLocaleString();
+  document.getElementById('grr-cap').textContent=grr.toFixed(0)+'% gross retention of '+fmt(book);
+  document.getElementById('m-churn').textContent=fmt(churned);
+  document.getElementById('m-atrisk').textContent=fmt(atrisk);
+  document.getElementById('m-acct').textContent=expChurnAcct;
+  document.getElementById('mc-mean').textContent=fmt(mean);
+  document.getElementById('mc-band').textContent=fmt(p(0.1))+'–'+fmt(p(0.9));
+  document.getElementById('mc-worst').textContent=fmt(p(0.1));
+  document.getElementById('head-h').textContent='You can expect about '+fmt(mean)+' to renew \u2014 but plan for '+fmt(p(0.1))+'.';
+  document.getElementById('head-b').textContent='Gross retention centres near '+grr.toFixed(0)+'%, yet one year in ten lands at or below '+fmt(p(0.1))+'. That '+fmt(mean-p(0.1))+' swing is the gap between a forecast and a single hopeful number \u2014 and it usually comes from the at-risk segment.';
+  drawHisto(totals,mean,book);
+  document.getElementById('gap').textContent='You hold '+fmt(atrisk)+' of ARR in at-risk accounts and can expect roughly '+expChurnAcct+' logos to churn. The simulation assumes you can even classify accounts as healthy or at-risk reliably \u2014 if that segmentation lives in a CSM\u2019s head rather than scored data, your real range is wider than this, and the surprise always lands in the back half of the year.';
+  document.getElementById('result').classList.add('show');
+  document.getElementById('result').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function drawHisto(totals,mean,book){
+  var W=700,H=260,padB=34,padT=10,padX=8;
+  var min=totals[0],max=totals[totals.length-1],span=(max-min)||1,BINS=26,binW=span/BINS;
+  var counts=new Array(BINS).fill(0);
+  totals.forEach(function(t){var b=Math.floor((t-min)/binW);if(b>=BINS)b=BINS-1;counts[b]++;});
+  var maxC=Math.max.apply(null,counts),plotH=H-padB-padT,bw=(W-2*padX)/BINS;
+  function x(v){return padX+(v-min)/span*(W-2*padX);}
+  var bars='';
+  counts.forEach(function(c,i){var bh=c/maxC*plotH;bars+='<rect x="'+(padX+i*bw).toFixed(1)+'" y="'+(padT+plotH-bh).toFixed(1)+'" width="'+(bw-1.5).toFixed(1)+'" height="'+bh.toFixed(1)+'" fill="var(--rule-strong)" rx="1"></rect>';});
+  function line(v,col,lab,dash){var px=x(v).toFixed(1);return '<line x1="'+px+'" y1="'+padT+'" x2="'+px+'" y2="'+(padT+plotH)+'" stroke="'+col+'" stroke-width="2" '+(dash?'stroke-dasharray="4 3"':'')+'></line><text x="'+px+'" y="'+(H-18)+'" fill="'+col+'" font-family="var(--font-mono)" font-size="10" text-anchor="middle">'+lab+'</text><text x="'+px+'" y="'+(H-6)+'" fill="'+col+'" font-family="var(--font-mono)" font-size="10" text-anchor="middle">'+fmtK(v)+'</text>';}
+  var svg='<svg viewBox="0 0 '+W+' '+H+'" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Distribution of simulated retained ARR">'+bars+'<line x1="'+padX+'" y1="'+(padT+plotH)+'" x2="'+(W-padX)+'" y2="'+(padT+plotH)+'" stroke="var(--rule)"></line>'+line(mean,'var(--accent)','EXPECTED',false)+(book<=max?line(book,'var(--ink)','FULL BOOK',true):'')+'</svg>';
+  document.getElementById('histo').innerHTML=svg;
+}
+document.getElementById('ch-run').addEventListener('click',run);
+pct();
+
+</script>
+</body>
+</html>
