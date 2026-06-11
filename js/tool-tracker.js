@@ -1,13 +1,14 @@
 /* ===================================================================
    AI-Ready RevOps · Tool Analytics Tracker
-   Fires GA4 custom events for tool usage, completion, and dropoff.
+   Fires events to both GA4 and the CRM (D1 via /api/tool-event).
    Include AFTER the gtag snippet on every tool page.
    =================================================================== */
 
 (function () {
   'use strict';
 
-  // ---- helpers ----
+  var CRM_URL = 'https://airr-crm.pages.dev/api/tool-event';
+
   var TOOL = (function () {
     var m = location.pathname.match(/\/tools\/([a-z0-9-]+)\.html/);
     return m ? m[1] : 'unknown';
@@ -23,16 +24,35 @@
     params = params || {};
     params.tool_name = TOOL;
     params.time_on_tool = Math.round((Date.now() - _started) / 1000);
+
+    // GA4
     if (typeof gtag === 'function') {
       gtag('event', name, params);
     }
+
+    // CRM beacon (fire-and-forget)
+    try {
+      var payload = { tool_name: TOOL, event: name };
+      if (params.score) payload.score = params.score;
+      if (params.recommendation) payload.recommendation = params.recommendation;
+      if (params.tier) payload.tier = params.tier;
+      if (params.destination) payload.destination = params.destination;
+      if (params.interacted !== undefined) payload.interacted = params.interacted;
+      payload.time_on_tool = params.time_on_tool;
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon(CRM_URL, JSON.stringify(payload));
+      } else {
+        fetch(CRM_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload), keepalive: true }).catch(function(){});
+      }
+    } catch (e) {}
+
     if (window.__TT_DEBUG) console.log('[tracker]', name, params);
   }
 
-  // ---- 1. Tool loaded ----
+  // 1. Tool loaded
   fire('tool_loaded');
 
-  // ---- 2. First interaction (any click/input inside .tool-app) ----
+  // 2. First interaction
   var app = document.querySelector('.tool-app');
   if (app) {
     app.addEventListener('click', function () {
@@ -43,34 +63,23 @@
     }, true);
   }
 
-  // ---- 3. Tool completed (result shown) ----
-  // Uses a MutationObserver watching for .tool-result gaining .show,
-  // or the result element becoming visible.
+  // 3. Tool completed (result shown)
   var result = document.getElementById('result');
   if (result) {
     var observer = new MutationObserver(function (muts) {
       muts.forEach(function (m) {
         if (m.attributeName === 'class' && result.classList.contains('show') && !_completed) {
           _completed = true;
-          // Read the score if present
           var scoreEl = document.getElementById('score');
           var score = scoreEl ? scoreEl.textContent.trim() : null;
           _lastScore = score;
-
-          // Read framework/model name if present
           var recEl = document.getElementById('rec-name');
           var rec = recEl ? recEl.textContent.trim() : null;
-
-          // Read tier headline if present
           var tierEl = document.getElementById('tier-h');
           var tier = tierEl ? tierEl.textContent.trim() : null;
-
-          // Read verdict if present (build-vs-buy)
           var verdictEl = document.getElementById('verdict');
           var verdict = verdictEl ? verdictEl.textContent.trim() : null;
-
           _lastMeta = { score: score, recommendation: rec || verdict, tier: tier };
-
           fire('tool_completed', {
             score: score,
             recommendation: rec || verdict || '',
@@ -82,9 +91,7 @@
     observer.observe(result, { attributes: true });
   }
 
-  // ---- 4. Always-visible tools (no .show toggle — CRM scorecard, build-vs-buy, health score, cost-of-inaction) ----
-  // These show results immediately; track meaningful interaction instead.
-  // For sliders: fire completion after 3+ distinct input events.
+  // 4. Always-visible tools (live-updating)
   var inputCount = 0;
   var _completedLive = false;
   if (result && result.classList.contains('show')) {
@@ -99,29 +106,26 @@
             score: scoreEl ? scoreEl.textContent.trim() : '',
             recommendation: '',
             tier: '',
-            live_tool: true,
           });
         }
       });
     }
   }
 
-  // ---- 5. Framework/model switch (qualification builder, forecast simulator) ----
+  // 5. Framework/model switch
   document.addEventListener('click', function (e) {
     var btn = e.target;
-    // Framework switcher chips
     var sw = document.getElementById('fw-switch');
     if (sw && sw.contains(btn) && btn.tagName === 'BUTTON') {
       fire('framework_switched', { framework: btn.textContent.trim() });
     }
-    // Motion switcher (PLG/Hybrid/Sales-led)
     var ms = document.getElementById('motion-switch');
     if (ms && ms.contains(btn) && btn.tagName === 'BUTTON') {
       fire('motion_switched', { motion: btn.textContent.trim() });
     }
   }, true);
 
-  // ---- 6. Segmented control selections ----
+  // 6. Segmented control selections
   document.addEventListener('click', function (e) {
     var btn = e.target;
     if (btn.tagName === 'BUTTON' && btn.parentElement && btn.parentElement.classList.contains('seg')) {
@@ -131,7 +135,7 @@
     }
   }, true);
 
-  // ---- 7. Checklist toggles ----
+  // 7. Checklist toggles
   document.addEventListener('click', function (e) {
     var chk = e.target.closest('.chk');
     if (chk) {
@@ -142,7 +146,7 @@
     }
   }, true);
 
-  // ---- 8. CTA clicks (assessment, services) ----
+  // 8. CTA clicks
   document.addEventListener('click', function (e) {
     var a = e.target.closest('a');
     if (!a) return;
@@ -154,7 +158,7 @@
     }
   }, true);
 
-  // ---- 9. Print / save ----
+  // 9. Print / save
   document.addEventListener('click', function (e) {
     var btn = e.target.closest('button');
     if (btn && btn.textContent.indexOf('Print') > -1) {
@@ -162,7 +166,7 @@
     }
   }, true);
 
-  // ---- 10. Dropoff detection (page unload without completion) ----
+  // 10. Dropoff detection
   window.addEventListener('beforeunload', function () {
     if (!_completed && !_completedLive) {
       fire('tool_abandoned', {
@@ -172,7 +176,7 @@
     }
   });
 
-  // ---- 11. Scroll depth (25/50/75/100) ----
+  // 11. Scroll depth
   var _depths = {};
   function checkScroll() {
     var h = document.documentElement.scrollHeight - window.innerHeight;
@@ -187,7 +191,6 @@
   }
   window.addEventListener('scroll', checkScroll, { passive: true });
 
-  // expose for debugging: add ?tt_debug=1 to URL
   if (location.search.indexOf('tt_debug') > -1) window.__TT_DEBUG = true;
 
 })();
