@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FAF8F3">
+<title>The Founding Three — A Free $12,500 AI-Readiness Audit | AI-Ready RevOps</title>
+<meta name="description" content="Three companies get a complete AI-Readiness Audit (normally $12,500) at no cost — as founding case studies. Apply for one of three spots.">
+<link rel="canonical" href="https://aireadyrevops.com/founding.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Founding Three — A Free $12,500 AI-Readiness Audit">
+<meta property="og:description" content="Three companies. One complete audit each. Zero cost. In exchange for three peer introductions and a case study. Three spots, one time.">
+<meta property="og:url" content="https://aireadyrevops.com/founding.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,30..100;1,9..144,300..700,30..100&family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+
+<!-- ============================================================
+     PAGE-SPECIFIC STYLES (extends the global design system)
+     ============================================================ -->
+<style>
+  .fhero{ position:relative; overflow:hidden; padding:clamp(3rem,6vw,5rem) 0 clamp(2rem,4vw,3rem); }
+  .fhero::before{ content:'III'; position:absolute; top:2rem; right:-1rem; font-family:var(--font-display);
+    font-size:clamp(8rem,26vw,22rem); font-style:italic; font-weight:300; color:var(--accent-soft);
+    line-height:1; pointer-events:none; z-index:0; letter-spacing:-0.05em; }
+  .fhero > .container{ position:relative; z-index:1; }
+  .fhero h1{ max-width:18ch; margin-top:0.75rem; }
+  .fhero .lead{ max-width:54ch; margin-top:1.5rem; }
+  .why-free{ border-left:3px solid var(--accent); background:var(--accent-soft);
+    padding:1.1rem 1.4rem; margin:1.75rem 0; border-radius:0 var(--radius) var(--radius) 0;
+    font-family:var(--font-display); font-style:italic; font-size:1.15rem; line-height:1.45; color:var(--ink); max-width:60ch; }
+
+  /* scarcity bar: spots + countdown */
+  .scarcity{ display:flex; flex-wrap:wrap; gap:1.5rem 2.5rem; align-items:center;
+    margin-top:2rem; padding:1.25rem 1.5rem; border:1px solid var(--rule); border-radius:var(--radius-lg); background:var(--bg-card); }
+  .spots-label,.timer-label{ font-family:var(--font-mono); font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); margin-bottom:0.5rem; }
+  .pips{ display:flex; gap:0.5rem; align-items:center; }
+  .pip{ width:18px; height:18px; border-radius:50%; border:2px solid var(--accent); background:var(--accent); }
+  .pip.empty{ background:transparent; opacity:0.35; }
+  .spots-text{ font-family:var(--font-display); font-size:1.05rem; margin-left:0.25rem; }
+  .timer{ display:flex; gap:0.75rem; }
+  .timer .unit{ text-align:center; min-width:46px; }
+  .timer .num{ font-family:var(--font-display); font-size:1.8rem; line-height:1; color:var(--ink); }
+  .timer .cap{ font-family:var(--font-mono); font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-top:0.35rem; }
+  .hero-actions{ display:flex; flex-wrap:wrap; gap:0.75rem; margin-top:2rem; }
+
+  /* value stack */
+  .stack{ border:1px solid var(--rule); border-radius:var(--radius-lg); overflow:hidden; background:var(--bg-card); }
+  .stack-row{ display:flex; justify-content:space-between; align-items:flex-start; gap:1rem;
+    padding:1.1rem 1.4rem; border-bottom:1px solid var(--rule); }
+  .stack-row:last-of-type{ border-bottom:0; }
+  .stack-row .what{ font-size:1rem; }
+  .stack-row .what .sub{ display:block; color:var(--muted); font-size:0.85rem; margin-top:0.25rem; max-width:46ch; }
+  .stack-row .what .badge{ display:inline-block; font-family:var(--font-mono); font-size:0.62rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent); border:1px solid var(--accent); border-radius:3px; padding:0.05rem 0.4rem; margin-left:0.5rem; vertical-align:middle; }
+  .stack-row .val{ font-family:var(--font-mono); font-size:0.95rem; color:var(--ink); white-space:nowrap; }
+  .stack-row .val.free{ color:var(--good); }
+  .stack-total{ display:flex; justify-content:space-between; align-items:center; padding:1.3rem 1.4rem; background:var(--ink); color:var(--bg); }
+  .stack-total .lbl{ font-family:var(--font-display); font-size:1.25rem; }
+  .stack-total .amt{ text-align:right; }
+  .stack-total .amt .strike{ font-family:var(--font-mono); font-size:0.9rem; color:#B8AC95; text-decoration:line-through; display:block; }
+  .stack-total .amt .now{ font-family:var(--font-display); font-size:1.8rem; color:#fff; }
+
+  /* steps */
+  .steps{ display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:1.25rem; margin-top:2rem; counter-reset:step; }
+  .step{ position:relative; padding:1.5rem; border:1px solid var(--rule); border-radius:var(--radius-lg); background:var(--bg-card); }
+  .step::before{ counter-increment:step; content:'0' counter(step); font-family:var(--font-display); font-size:1.6rem; color:var(--accent); display:block; margin-bottom:0.5rem; }
+  .step h4{ font-family:var(--font-display); font-weight:500; font-size:1.1rem; margin-bottom:0.4rem; }
+  .step p{ font-size:0.9rem; color:var(--ink-2); line-height:1.5; }
+
+  /* qualify self-check */
+  .qualify{ border:1px solid var(--rule); border-radius:var(--radius-lg); padding:clamp(1.5rem,3vw,2.25rem); background:var(--bg-card); }
+  .qcheck{ display:flex; align-items:flex-start; gap:0.85rem; padding:0.85rem 0; border-bottom:1px solid var(--rule); cursor:pointer; }
+  .qcheck:last-of-type{ border-bottom:0; }
+  .qcheck input{ width:22px; height:22px; margin-top:0.1rem; accent-color:var(--accent); cursor:pointer; flex:none; }
+  .qcheck span{ font-size:1rem; line-height:1.45; }
+  .qverdict{ margin-top:1.25rem; padding:1rem 1.25rem; border-radius:var(--radius); font-size:0.95rem;
+    background:var(--bg-alt); color:var(--muted); transition:all 0.2s ease; }
+  .qverdict.fit{ background:#E7F1EA; color:var(--good); border:1px solid #BFE0CB; font-weight:500; }
+  .qverdict.partial{ background:var(--accent-soft); color:var(--accent-2); }
+
+  /* dimensions mini */
+  .dims6{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:0.75rem; margin-top:1.5rem; }
+  .d6{ border-left:2px solid var(--accent); padding:0.4rem 0 0.4rem 0.85rem; }
+  .d6 .n{ font-size:0.95rem; }
+  .d6 .w{ font-family:var(--font-mono); font-size:0.72rem; color:var(--muted); }
+
+  /* application form */
+  .apply-wrap{ border:1px solid var(--rule); border-radius:var(--radius-lg); padding:clamp(1.5rem,3vw,2.5rem); background:var(--bg-card); }
+  .field{ margin-bottom:1.1rem; }
+  .field label{ display:block; font-family:var(--font-mono); font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--muted); margin-bottom:0.4rem; }
+  .field input, .field select, .field textarea{ width:100%; padding:0.8rem 1rem; border:1px solid var(--rule-strong);
+    border-radius:var(--radius); font-family:var(--font-body); font-size:1rem; background:var(--bg); color:var(--ink); }
+  .field input:focus, .field select:focus, .field textarea:focus{ outline:none; border-color:var(--ink); }
+  .field-row{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  @media (max-width:560px){ .field-row{ grid-template-columns:1fr; } }
+  .refs .field{ margin-bottom:0.6rem; }
+  .form-note{ font-size:0.82rem; color:var(--muted); margin-top:0.5rem; }
+  .apply-success{ display:none; text-align:center; padding:1rem; }
+  .apply-success h3{ margin-bottom:0.75rem; }
+  .apply-success .btnrow{ display:flex; flex-wrap:wrap; gap:0.75rem; justify-content:center; margin-top:1.5rem; }
+
+  .closed-banner{ display:none; background:var(--ink); color:var(--bg); text-align:center; padding:0.75rem 1rem;
+    font-family:var(--font-mono); font-size:0.8rem; letter-spacing:0.04em; }
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<div class="closed-banner" id="closedBanner">All three founding spots are filled — take the assessment to join the waitlist for the next cohort.</div>
+
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="/"><span class="brand-mark"></span><span>AI-Ready RevOps</span></a>
+    <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    <ul class="nav-links" id="primary-nav">
+      <li><a href="/framework.html">Framework</a></li>
+      <li><a href="/services.html">Services</a></li>
+      <li><a href="/blog/">Articles</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a class="nav-cta" href="#apply">Apply</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="fhero">
+  <div class="container">
+    <span class="kicker">Founding Program · 3 spots · one time</span>
+    <h1>Three companies. One complete audit each. <span class="italic-serif" style="color:var(--accent)">Zero cost.</span></h1>
+    <p class="lead muted">I'm giving three companies the full AI-Readiness Audit — normally <strong style="color:var(--ink)">$12,500</strong> — at no charge, as founding case studies. Evidence-based scoring, a 90-day remediation roadmap, and a cost-of-inaction analysis your CFO can fund Phase 2 from.</p>
+
+    <div class="why-free">"I'd rather have three undeniable case studies than three more discovery calls. So for one window, I'm trading my best work for your proof. After these three, the audit is $12,500 again."</div>
+
+    <div class="scarcity">
+      <div>
+        <div class="spots-label">Founding spots</div>
+        <div class="pips" id="pips" aria-hidden="true"></div>
+        <div class="spots-text" id="spotsText">3 of 3 open</div>
+      </div>
+      <div>
+        <div class="timer-label">Applications close in</div>
+        <div class="timer" id="timer">
+          <div class="unit"><div class="num" id="t-d">–</div><div class="cap">Days</div></div>
+          <div class="unit"><div class="num" id="t-h">–</div><div class="cap">Hrs</div></div>
+          <div class="unit"><div class="num" id="t-m">–</div><div class="cap">Min</div></div>
+          <div class="unit"><div class="num" id="t-s">–</div><div class="cap">Sec</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-actions">
+      <a href="#apply" class="btn btn-accent btn-lg btn-arrow">Apply for a founding spot</a>
+      <a href="/assessment.html" class="btn btn-secondary btn-lg">Take the 4-min assessment first</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE DEAL / VALUE STACK ============ -->
+<section class="section-tight">
+  <div class="container narrow">
+    <div class="section-head">
+      <span class="eyebrow">What a founding spot includes</span>
+      <h2>$14,500 of work. Yours for three introductions.</h2>
+      <p>The complete audit, plus founding-only bonuses. Every line is real, fixed-scope work.</p>
+    </div>
+
+    <div class="stack">
+      <div class="stack-row"><div class="what">Full AI-Readiness Audit <span class="badge">core</span><span class="sub">Evidence-based scoring across 24 criteria and 6 weighted dimensions — with read-only system access, not a self-report.</span></div><div class="val">$12,500</div></div>
+      <div class="stack-row"><div class="what">90-day remediation roadmap<span class="sub">Every fix sequenced by impact, with effort estimates. The working document your team runs.</span></div><div class="val">included</div></div>
+      <div class="stack-row"><div class="what">Cost-of-inaction analysis<span class="sub">The CFO-ready number that funds Phase 2.</span></div><div class="val">included</div></div>
+      <div class="stack-row"><div class="what">60-min executive readout + recorded Loom<span class="sub">For the stakeholders who can't make the call.</span></div><div class="val">included</div></div>
+      <div class="stack-row"><div class="what">Bonus · Personalized AI-Readiness Report in 24h <span class="badge">founding</span><span class="sub">You get value the day you apply — not when the audit finishes.</span></div><div class="val">$500</div></div>
+      <div class="stack-row"><div class="what">Bonus · 30-day post-audit check-in <span class="badge">founding</span><span class="sub">A working session once you've started executing the roadmap.</span></div><div class="val">$1,500</div></div>
+      <div class="stack-row"><div class="what">Bonus · Founding-client status <span class="badge">founding</span><span class="sub">First right to Phase 2 at founding rates, locked in.</span></div><div class="val free">priceless</div></div>
+      <div class="stack-total">
+        <div class="lbl">Your cost as a founding client</div>
+        <div class="amt"><span class="strike">$14,500</span><span class="now" id="freeNow">$0</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="section-tight">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">How a founding spot works</span>
+      <h2>Four steps. The only currency is introductions.</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><h4>Take the assessment</h4><p>Four minutes. It scores your stack across the six dimensions and gives me a baseline to audit against.</p></div>
+      <div class="step"><h4>Introduce 3 peers</h4><p>The price of free: warm intros to three revenue leaders who should know their own score. They take the assessment too.</p></div>
+      <div class="step"><h4>Get selected</h4><p>I pick three companies that fit and are ready to act. You'll hear back within days, not weeks.</p></div>
+      <div class="step"><h4>Get the audit</h4><p>The complete engagement — scoring, roadmap, readout — at no cost, in exchange for a short case study.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT THE AUDIT ACTUALLY IS ============ -->
+<section style="background:var(--bg-alt); border-top:1px solid var(--rule); border-bottom:1px solid var(--rule)">
+  <div class="container narrow">
+    <div class="section-head">
+      <span class="eyebrow">What you're actually getting</span>
+      <h2>This isn't a sales call dressed as an audit.</h2>
+      <p>It's the same $12,500 engagement clients pay for — scored against 24 published criteria across six weighted dimensions.</p>
+    </div>
+    <div class="dims6">
+      <div class="d6"><div class="n">Data Foundation</div><div class="w">20% weight</div></div>
+      <div class="d6"><div class="n">AI Stack Fit</div><div class="w">20% weight</div></div>
+      <div class="d6"><div class="n">Integration Architecture</div><div class="w">15% weight</div></div>
+      <div class="d6"><div class="n">Process Standardization</div><div class="w">15% weight</div></div>
+      <div class="d6"><div class="n">Governance &amp; Access</div><div class="w">15% weight</div></div>
+      <div class="d6"><div class="n">Forecasting Trust</div><div class="w">15% weight</div></div>
+    </div>
+    <div class="callout" style="margin-top:2rem"><p><strong>Why I can give this away.</strong> A founding case study is worth more to me right now than the fee. You get the full engagement; I get proof the framework works. Once I have three, this offer is gone.</p></div>
+  </div>
+</section>
+
+<!-- ============ DO YOU QUALIFY ============ -->
+<section class="section-tight">
+  <div class="container narrow">
+    <div class="section-head">
+      <span class="eyebrow">Before you apply</span>
+      <h2>Is a founding spot right for you?</h2>
+      <p>Tick what's true. This is the same bar I'll apply when selecting.</p>
+    </div>
+    <div class="qualify">
+      <label class="qcheck"><input type="checkbox" data-q><span>We've already deployed or are actively buying AI into our revenue / GTM stack.</span></label>
+      <label class="qcheck"><input type="checkbox" data-q><span>We run on Salesforce or HubSpot (other stacks case-by-case).</span></label>
+      <label class="qcheck"><input type="checkbox" data-q><span>I can grant read-only system access for the audit.</span></label>
+      <label class="qcheck"><input type="checkbox" data-q><span>I want the honest score, not a vanity number — and I'm ready to act on it.</span></label>
+      <label class="qcheck"><input type="checkbox" data-q><span>We're open to being a named or anonymized case study.</span></label>
+      <div class="qverdict" id="qverdict">Tick the boxes above to see if you're a fit.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ APPLY ============ -->
+<section class="section-tight" id="apply">
+  <div class="container narrow">
+    <div class="section-head">
+      <span class="eyebrow">Apply</span>
+      <h2>Claim one of three founding spots.</h2>
+      <p>Two minutes to apply. The three peer introductions move you to the front of the line.</p>
+    </div>
+
+    <div class="apply-wrap">
+      <form id="applyForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <input type="hidden" name="_subject" value="Founding Three — new application">
+        <div class="field-row">
+          <div class="field"><label for="name">Your name</label><input id="name" name="name" type="text" required></div>
+          <div class="field"><label for="company">Company</label><input id="company" name="company" type="text" required></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="email">Work email</label><input id="email" name="email" type="email" required></div>
+          <div class="field"><label for="role">Your role</label>
+            <select id="role" name="role" required>
+              <option value="" selected disabled>Select…</option>
+              <option>CRO / VP Revenue</option><option>RevOps leader</option><option>VP / Head of Marketing</option>
+              <option>VP / Head of Sales</option><option>Founder / CEO</option><option>Ops / IT</option><option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="field"><label for="ai">What AI have you deployed into the revenue stack? (the more specific, the stronger the application)</label>
+          <textarea id="ai" name="ai_deployed" rows="2" placeholder="e.g. Agentforce, an AI SDR, a forecasting copilot…" required></textarea></div>
+
+        <div class="refs">
+          <label style="font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;display:block">The price of free · 3 peer introductions</label>
+          <div class="field"><input name="referral_1" type="email" placeholder="Peer 1 — work email"></div>
+          <div class="field"><input name="referral_2" type="email" placeholder="Peer 2 — work email"></div>
+          <div class="field"><input name="referral_3" type="email" placeholder="Peer 3 — work email"></div>
+          <p class="form-note">Revenue / RevOps / marketing leaders who should know their own AI-readiness score. They'll get the same free 4-minute assessment — no obligation on them.</p>
+        </div>
+
+        <input type="hidden" name="source" value="founding-three">
+        <button type="submit" class="btn btn-accent btn-lg btn-arrow" style="width:100%;justify-content:center;margin-top:0.5rem">Submit my application</button>
+        <p class="form-note" id="formError" style="color:var(--bad);display:none">Something went wrong — please email ready@aireadyrevops.com directly.</p>
+      </form>
+
+      <div class="apply-success" id="applySuccess">
+        <span class="eyebrow">You're in the running</span>
+        <h3>Application received. One final step.</h3>
+        <p class="muted" style="max-width:46ch;margin:0 auto">Take the 4-minute assessment now so I have your baseline score — applications with a completed assessment are reviewed first.</p>
+        <div class="btnrow">
+          <a href="/assessment.html" class="btn btn-accent btn-lg btn-arrow">Take the assessment</a>
+          <a href="https://calendly.com/ready-aireadyrevops/ai-ready-revops-discovery-call" class="btn btn-secondary btn-lg">Book a founding call</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section>
+  <div class="container narrow">
+    <div class="section-head"><span class="eyebrow">Honest answers</span><h2>Questions before you apply</h2></div>
+    <div class="faq">
+      <details><summary>Why would you give away a $12,500 audit?</summary><p>Because right now a founding case study is worth more to me than the fee. The framework is published; what I need is undeniable proof it works on real companies. Three founding clients get the full engagement free; I get three case studies. After that, the price is $12,500 — this isn't a recurring discount.</p></details>
+      <details><summary>What's the actual catch?</summary><p>Three things, none of them money: you take the 4-minute assessment, you introduce three peers who should know their own score, and — if selected — you let me write up the engagement as a case study (named or anonymized, your call).</p></details>
+      <details><summary>Do my three referrals have to buy anything?</summary><p>No. They get the same free 4-minute assessment, no obligation. The introductions just show me you're serious and help me reach the leaders this is built for.</p></details>
+      <details><summary>How much of my time does the audit take?</summary><p>Minimal. It's async-first: read-only system access, a couple of short interviews in your timezone, and a 60-minute readout. You don't build anything — I do the analysis.</p></details>
+      <details><summary>What if I'm not selected?</summary><p>You keep your assessment score and personalized report regardless, and you'll have first access to the paid audit. No spot lost, nothing wasted.</p></details>
+      <details><summary>Is this really limited to three?</summary><p>Yes. I can only deliver a small number of audits at this depth at once, and the offer exists to generate three case studies — not a pipeline of free work. When the third is locked, it closes.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section style="background:var(--ink);color:var(--bg)">
+  <div class="container narrow" style="text-align:center">
+    <h2 style="color:var(--bg)">Three spots. One time. Then it's $12,500.</h2>
+    <p style="color:#B8AC95;max-width:50ch;margin:1.25rem auto 2rem;line-height:1.5">If your AI spend is real but you're not sure the foundation underneath can carry it — this is the cheapest way to find out the truth.</p>
+    <a href="#apply" class="btn btn-accent btn-lg btn-arrow">Apply for a founding spot</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">AI-Ready RevOps</div>
+        <p class="footer-tag">A diagnostic and remediation methodology for the modern revenue stack.</p>
+      </div>
+      <div class="footer-col"><h4>The Framework</h4><ul><li><a href="/framework.html">Methodology</a></li><li><a href="/assessment.html">Free assessment</a></li><li><a href="/services.html">Paid audits</a></li></ul></div>
+      <div class="footer-col"><h4>Read</h4><ul><li><a href="/blog/">Articles</a></li></ul></div>
+      <div class="footer-col"><h4>About</h4><ul><li><a href="/about.html">About the author</a></li><li><a href="mailto:ready@aireadyrevops.com">Contact</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 AI-Ready RevOps · WhizzLead</span><span>aireadyrevops.com</span></div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     INTERACTIVITY  —  EDIT THE THREE CONSTANTS BELOW
+     ============================================================ -->
+<script>
+  /* ====== EDIT THESE THREE ====== */
+  const DEADLINE = '2026-06-20T23:59:00+05:30';   // application close (IST). Set a REAL date ~7 days out.
+  const SPOTS_REMAINING = 3;                        // 3, 2, 1, or 0 — update as spots fill.
+  // Form posts to the action="" on the <form> above — replace YOUR_FORM_ID with your Formspree form id
+  // (or reuse your existing assessment form id). The hidden _subject tags it as a Founding application.
+  /* ============================== */
+
+  // --- Spots ---
+  (function(){
+    const pips = document.getElementById('pips');
+    const txt = document.getElementById('spotsText');
+    const total = 3, open = Math.max(0, Math.min(3, SPOTS_REMAINING));
+    for(let i=0;i<total;i++){ const d=document.createElement('div'); d.className='pip'+(i>=open?' empty':''); pips.appendChild(d); }
+    txt.textContent = open===0 ? 'All spots filled' : open+' of '+total+' open';
+    if(open===0){
+      document.getElementById('closedBanner').style.display='block';
+      document.querySelectorAll('a.btn-accent').forEach(b=>{ if(b.getAttribute('href')==='#apply'){ b.textContent='Join the waitlist'; }});
+    }
+  })();
+
+  // --- Countdown ---
+  (function(){
+    const end = new Date(DEADLINE).getTime();
+    const el = {d:'t-d',h:'t-h',m:'t-m',s:'t-s'};
+    function tick(){
+      const now = Date.now(), diff = end - now;
+      if(diff <= 0){
+        ['t-d','t-h','t-m','t-s'].forEach(id=>document.getElementById(id).textContent='0');
+        document.querySelector('.timer-label').textContent='Applications closed';
+        return;
+      }
+      const d=Math.floor(diff/86400000), h=Math.floor(diff%86400000/3600000), m=Math.floor(diff%3600000/60000), s=Math.floor(diff%60000/1000);
+      document.getElementById('t-d').textContent=d;
+      document.getElementById('t-h').textContent=String(h).padStart(2,'0');
+      document.getElementById('t-m').textContent=String(m).padStart(2,'0');
+      document.getElementById('t-s').textContent=String(s).padStart(2,'0');
+    }
+    tick(); setInterval(tick,1000);
+  })();
+
+  // --- Value tally count-up ---
+  (function(){
+    const el = document.getElementById('freeNow'); if(!el) return;
+    // stays $0 (it's free) — small celebratory pulse
+    el.animate?.([{opacity:0.4,transform:'scale(0.9)'},{opacity:1,transform:'scale(1)'}],{duration:600,easing:'cubic-bezier(.2,.8,.2,1)'});
+  })();
+
+  // --- Qualify self-check ---
+  (function(){
+    const boxes = [...document.querySelectorAll('[data-q]')];
+    const v = document.getElementById('qverdict');
+    function update(){
+      const n = boxes.filter(b=>b.checked).length;
+      if(n===0){ v.className='qverdict'; v.textContent='Tick the boxes above to see if you\u2019re a fit.'; }
+      else if(n>=4){ v.className='qverdict fit'; v.textContent='\u2713 You\u2019re exactly who this is built for. Apply below \u2014 the three intros move you to the front.'; }
+      else { v.className='qverdict partial'; v.textContent='Close. The more of these that are true, the stronger your application. Apply anyway and we\u2019ll talk.'; }
+    }
+    boxes.forEach(b=>b.addEventListener('change',update));
+  })();
+
+  // --- Application form (Formspree fetch + inline success) ---
+  (function(){
+    const form = document.getElementById('applyForm'); if(!form) return;
+    form.addEventListener('submit', async function(e){
+      e.preventDefault();
+      const err = document.getElementById('formError'); err.style.display='none';
+      const btn = form.querySelector('button[type=submit]'); const orig = btn.textContent;
+      btn.textContent='Submitting…'; btn.disabled=true;
+      try{
+        const r = await fetch(form.action,{ method:'POST', body:new FormData(form), headers:{'Accept':'application/json'} });
+        if(!r.ok) throw new Error('bad status');
+        form.style.display='none';
+        const ok = document.getElementById('applySuccess'); ok.style.display='block';
+        ok.scrollIntoView({behavior:'smooth',block:'center'});
+      }catch(_){
+        err.style.display='block'; btn.textContent=orig; btn.disabled=false;
+      }
+    });
+  })();
+
+  // --- nav + smooth scroll ---
+  (function(){
+    const tog=document.querySelector('.menu-toggle'), links=document.getElementById('primary-nav');
+    if(tog&&links) tog.addEventListener('click',()=>{const o=links.classList.toggle('open');tog.setAttribute('aria-expanded',o?'true':'false');});
+    document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
+      const id=a.getAttribute('href'); if(id.length<2) return;
+      const t=document.querySelector(id); if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth'}); }
+    }));
+  })();
+</script>
+</body>
+</html>
