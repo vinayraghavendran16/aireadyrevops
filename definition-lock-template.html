@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Definition Lock — Signed Definitions Sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400&family=Geist:wght@300..600&family=Geist+Mono:wght@400..500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAF8F3; --bg-alt:#F2EFE7; --card:#FFFFFF;
+    --ink:#0E1116; --ink-2:#1F242E; --muted:#5C6473;
+    --rule:#DFD9CC; --rule-strong:#C9C2B0;
+    --accent:#B23A1E; --accent-2:#8E2D17; --accent-soft:#F4E4DE;
+    --display:'Fraunces','Iowan Old Style',Georgia,serif;
+    --body:'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    --mono:'Geist Mono','JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--bg-alt); color:var(--ink);
+    font-family:var(--body); font-size:13.5px; line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* On-screen instruction bar (never prints) */
+  .toolbar{
+    max-width:820px; margin:0 auto; padding:1rem 1.25rem;
+    display:flex; gap:1rem; align-items:center; justify-content:space-between;
+    flex-wrap:wrap;
+  }
+  .toolbar p{margin:0; color:var(--muted); font-size:12.5px; max-width:58ch}
+  .toolbar strong{color:var(--ink)}
+  .btn-print{
+    font-family:var(--body); font-weight:500; font-size:13px;
+    background:var(--accent); color:#fff; border:0; border-radius:6px;
+    padding:0.6rem 1.1rem; cursor:pointer; white-space:nowrap;
+  }
+  .btn-print:hover{background:var(--accent-2)}
+
+  /* The sheet */
+  .sheet{
+    max-width:820px; margin:0 auto 3rem; background:var(--card);
+    box-shadow:0 4px 24px rgba(14,17,22,0.08); border:1px solid var(--rule);
+    padding:0;
+  }
+
+  /* Header */
+  .head{background:var(--ink); color:#fff; padding:1.5rem 2rem 1.6rem}
+  .brand{
+    font-family:var(--mono); font-size:10.5px; letter-spacing:0.12em;
+    text-transform:uppercase; color:#E8946A; margin-bottom:0.9rem;
+    display:flex; align-items:center; gap:0.5rem;
+  }
+  .brand .dot{width:8px;height:8px;background:#E8946A;border-radius:50%;display:inline-block}
+  .head h1{
+    font-family:var(--display); font-weight:500; font-size:30px;
+    line-height:1.05; letter-spacing:-0.01em; margin:0 0 0.25rem;
+  }
+  .head .sub{color:#B8AC95; font-size:13px; margin:0}
+  .meta{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:var(--rule-strong); border-top:1px solid var(--rule-strong);
+  }
+  .meta div{background:var(--bg); padding:0.7rem 2rem}
+  .meta .lbl{font-family:var(--mono); font-size:9.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); display:block; margin-bottom:0.15rem}
+  .meta:first-of-type{margin-top:0}
+
+  .body{padding:1.6rem 2rem 2rem}
+  .intro{color:var(--ink-2); font-size:13px; margin:0 0 1.5rem; padding-bottom:1.1rem; border-bottom:1px solid var(--rule)}
+
+  /* Sections */
+  section{margin-bottom:1.5rem; break-inside:avoid}
+  .sec-head{display:flex; align-items:baseline; gap:0.6rem; margin-bottom:0.7rem}
+  .sec-num{font-family:var(--mono); font-size:11px; color:var(--accent); font-weight:500}
+  .sec-head h2{font-family:var(--display); font-weight:500; font-size:18px; letter-spacing:-0.01em; margin:0}
+
+  .field{margin-bottom:0.7rem}
+  .field .q{font-size:11.5px; color:var(--muted); margin-bottom:0.2rem}
+
+  /* Editable fill areas */
+  .fill{
+    display:block; min-height:1.5em; padding:0.3rem 0.5rem;
+    border:0; border-bottom:1px solid var(--rule-strong); background:var(--bg);
+    font-family:var(--body); font-size:13px; color:var(--ink); border-radius:3px 3px 0 0;
+    outline:none;
+  }
+  .fill:focus{border-bottom-color:var(--accent); background:#fff}
+  .fill[contenteditable][data-ph]:empty:before{
+    content:attr(data-ph); color:var(--muted); font-style:italic; opacity:0.8;
+  }
+
+  /* Tables */
+  table{width:100%; border-collapse:collapse; font-size:12.5px}
+  th{
+    font-family:var(--mono); font-size:9.5px; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--muted); text-align:left; font-weight:500; padding:0.35rem 0.5rem;
+    border-bottom:1.5px solid var(--rule-strong);
+  }
+  td{padding:0; border-bottom:1px solid var(--rule); vertical-align:top}
+  td .fill{border-bottom:0; border-radius:0; background:transparent; min-height:2.1em; padding:0.45rem 0.5rem}
+  td .fill:focus{background:var(--accent-soft)}
+  td.term{
+    width:24%; font-family:var(--mono); font-size:11px; color:var(--ink-2);
+    padding:0.5rem 0.5rem; font-weight:500; background:var(--bg);
+    border-right:1px solid var(--rule);
+  }
+
+  /* Sign-off */
+  .signoff{margin-top:1.75rem; padding-top:1.25rem; border-top:2px solid var(--ink)}
+  .signoff h2{font-family:var(--display); font-weight:500; font-size:18px; margin:0 0 0.3rem}
+  .signoff .note{color:var(--muted); font-size:11.5px; margin:0 0 1.1rem}
+  .sigs{display:grid; grid-template-columns:1fr 1fr; gap:1.1rem 2rem}
+  .sig{break-inside:avoid}
+  .sig .role{font-family:var(--mono); font-size:10px; letter-spacing:0.06em; text-transform:uppercase; color:var(--accent); margin-bottom:0.55rem}
+  .sig .line{border-bottom:1px solid var(--ink); height:1.7rem; margin-bottom:0.25rem}
+  .sig .cap{display:flex; justify-content:space-between; font-size:9.5px; color:var(--muted); font-family:var(--mono); letter-spacing:0.04em; text-transform:uppercase}
+
+  .foot{
+    margin-top:1.6rem; padding-top:1rem; border-top:1px solid var(--rule);
+    font-size:11px; color:var(--muted); line-height:1.5;
+  }
+  .foot strong{color:var(--ink-2)}
+
+  /* Print */
+  @media print{
+    @page{size:A4; margin:14mm}
+    body{background:#fff; font-size:11.5px}
+    .no-print{display:none !important}
+    .sheet{box-shadow:none; border:0; margin:0; max-width:none}
+    .head{padding:1rem 0 1.1rem; background:#fff; color:var(--ink); border-bottom:2px solid var(--ink)}
+    .head h1{font-size:26px}
+    .head .sub{color:var(--muted)}
+    .brand{color:var(--accent)}
+    .brand .dot{background:var(--accent)}
+    .meta{background:#fff; border-top:1px solid var(--rule)}
+    .meta div{background:#fff; padding:0.55rem 0}
+    .body{padding:1.1rem 0 0}
+    .fill{background:transparent; border-bottom:1px solid var(--rule-strong)}
+    td .fill{background:transparent}
+    section, .sig, .signoff{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<!-- Screen-only instructions -->
+<div class="toolbar no-print">
+  <p><strong>How to use:</strong> Click any field and type the agreed definition — fill it live in the session, or right after. Then <strong>Print → Save as PDF</strong> and send for signature. Nothing is saved in the browser, so print before you close the tab.</p>
+  <button class="btn-print" onclick="window.print()">Print / Save as PDF</button>
+</div>
+
+<div class="sheet">
+
+  <!-- HEADER -->
+  <div class="head">
+    <div class="brand"><span class="dot"></span>AI-Ready RevOps · Definition Lock</div>
+    <h1>Signed Definitions Sheet</h1>
+    <p class="sub">The agreed source of truth for how this company defines its revenue. Every number in the AI Revenue Verdict traces back to this page.</p>
+  </div>
+  <div class="meta">
+    <div><span class="lbl">Company</span><span class="fill" contenteditable="true" data-ph="Company name"></span></div>
+    <div><span class="lbl">Workshop date</span><span class="fill" contenteditable="true" data-ph="DD Mon 2026"></span></div>
+    <div><span class="lbl">Effective from</span><span class="fill" contenteditable="true" data-ph="DD Mon 2026"></span></div>
+  </div>
+
+  <div class="body">
+    <p class="intro">These definitions were agreed in a working session with the leaders below across Sales, Marketing, Customer Success, Finance, and RevOps. Where they previously disagreed, this sheet records the single definition the company now operates on. It supersedes prior informal definitions until formally revised.</p>
+
+    <!-- 1. QUALIFIED LEAD -->
+    <section>
+      <div class="sec-head"><span class="sec-num">01</span><h2>The Qualified Lead</h2></div>
+      <div class="field">
+        <div class="q">A lead is a <strong>Marketing Qualified Lead (MQL)</strong> when…</div>
+        <span class="fill" contenteditable="true" data-ph="The exact, testable criteria — fit attributes + behavior — that promote a lead to MQL."></span>
+      </div>
+      <div class="field">
+        <div class="q">An MQL becomes a <strong>Sales Qualified Lead (SQL)</strong> when…</div>
+        <span class="fill" contenteditable="true" data-ph="What sales must verify before accepting. The gate, not a vibe."></span>
+      </div>
+      <div class="field">
+        <div class="q">Owner of the MQL→SQL handoff, the SLA, and what happens if it's missed</div>
+        <span class="fill" contenteditable="true" data-ph="Named owner · response SLA · consequence when breached."></span>
+      </div>
+    </section>
+
+    <!-- 2. PIPELINE STAGES -->
+    <section>
+      <div class="sec-head"><span class="sec-num">02</span><h2>Pipeline Stages &amp; Exit Criteria</h2></div>
+      <table>
+        <thead><tr><th style="width:24%">Stage</th><th>What must be true to ENTER this stage (exit criteria of the prior one)</th></tr></thead>
+        <tbody>
+          <tr><td class="term"><span class="fill" contenteditable="true" data-ph="e.g. Discovery"></span></td><td><span class="fill" contenteditable="true" data-ph="Required, verifiable conditions"></span></td></tr>
+          <tr><td class="term"><span class="fill" contenteditable="true" data-ph="e.g. Qualification"></span></td><td><span class="fill" contenteditable="true" data-ph="Required, verifiable conditions"></span></td></tr>
+          <tr><td class="term"><span class="fill" contenteditable="true" data-ph="e.g. Proposal"></span></td><td><span class="fill" contenteditable="true" data-ph="Required, verifiable conditions"></span></td></tr>
+          <tr><td class="term"><span class="fill" contenteditable="true" data-ph="e.g. Negotiation"></span></td><td><span class="fill" contenteditable="true" data-ph="Required, verifiable conditions"></span></td></tr>
+          <tr><td class="term"><span class="fill" contenteditable="true" data-ph="e.g. Closed Won"></span></td><td><span class="fill" contenteditable="true" data-ph="Required, verifiable conditions"></span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 3. REVENUE TERMS -->
+    <section>
+      <div class="sec-head"><span class="sec-num">03</span><h2>Revenue Terms</h2></div>
+      <table>
+        <thead><tr><th style="width:24%">Term</th><th>Agreed definition (and what is explicitly excluded)</th></tr></thead>
+        <tbody>
+          <tr><td class="term">ARR</td><td><span class="fill" contenteditable="true" data-ph="Annual recurring revenue — what counts, what doesn't (one-time, services, usage)."></span></td></tr>
+          <tr><td class="term">MRR</td><td><span class="fill" contenteditable="true" data-ph="Monthly recurring revenue and how it reconciles to ARR."></span></td></tr>
+          <tr><td class="term">Bookings</td><td><span class="fill" contenteditable="true" data-ph="Signed contract value vs. recognized — when a booking is counted."></span></td></tr>
+          <tr><td class="term">TCV / ACV</td><td><span class="fill" contenteditable="true" data-ph="Total vs. annual contract value, and which one reporting uses by default."></span></td></tr>
+          <tr><td class="term"><span class="fill" contenteditable="true" data-ph="Other (e.g. Pipeline)"></span></td><td><span class="fill" contenteditable="true" data-ph="Any other term the team kept arguing about."></span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 4. AI-INFLUENCED REVENUE -->
+    <section>
+      <div class="sec-head"><span class="sec-num">04</span><h2>AI-Influenced Revenue</h2></div>
+      <div class="field">
+        <div class="q">Revenue counts as <strong>AI-influenced</strong> when…</div>
+        <span class="fill" contenteditable="true" data-ph="The attribution rule — what an AI tool must have touched, and how it's evidenced, for a deal to count toward AI ROI."></span>
+      </div>
+      <div class="field">
+        <div class="q">What is explicitly <strong>NOT</strong> counted as AI-influenced</div>
+        <span class="fill" contenteditable="true" data-ph="The line that stops AI ROI from being inflated — exclusions everyone agreed to."></span>
+      </div>
+    </section>
+
+    <!-- 5. SOURCE OF TRUTH -->
+    <section>
+      <div class="sec-head"><span class="sec-num">05</span><h2>Source of Truth</h2></div>
+      <table>
+        <thead><tr><th style="width:40%">Metric / object</th><th>System of record (the one system that wins in a conflict)</th></tr></thead>
+        <tbody>
+          <tr><td class="term" style="width:40%"><span class="fill" contenteditable="true" data-ph="e.g. Pipeline & forecast"></span></td><td><span class="fill" contenteditable="true" data-ph="e.g. Salesforce Opportunity"></span></td></tr>
+          <tr><td class="term" style="width:40%"><span class="fill" contenteditable="true" data-ph="e.g. ARR / recurring revenue"></span></td><td><span class="fill" contenteditable="true" data-ph="e.g. Billing system / finance"></span></td></tr>
+          <tr><td class="term" style="width:40%"><span class="fill" contenteditable="true" data-ph="e.g. Lead / MQL data"></span></td><td><span class="fill" contenteditable="true" data-ph="e.g. Marketing automation"></span></td></tr>
+          <tr><td class="term" style="width:40%"><span class="fill" contenteditable="true" data-ph="e.g. Customer / account health"></span></td><td><span class="fill" contenteditable="true" data-ph="e.g. CS platform"></span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SIGN-OFF -->
+    <div class="signoff">
+      <h2>Sign-off</h2>
+      <p class="note">By signing, each leader confirms these are the definitions their function will operate on. Disagreements are resolved here, not in the next forecast meeting.</p>
+      <div class="sigs">
+        <div class="sig">
+          <div class="role">Sales</div>
+          <div class="line"></div>
+          <div class="cap"><span>Name &amp; signature</span><span>Date</span></div>
+        </div>
+        <div class="sig">
+          <div class="role">Marketing</div>
+          <div class="line"></div>
+          <div class="cap"><span>Name &amp; signature</span><span>Date</span></div>
+        </div>
+        <div class="sig">
+          <div class="role">Customer Success</div>
+          <div class="line"></div>
+          <div class="cap"><span>Name &amp; signature</span><span>Date</span></div>
+        </div>
+        <div class="sig">
+          <div class="role">Finance</div>
+          <div class="line"></div>
+          <div class="cap"><span>Name &amp; signature</span><span>Date</span></div>
+        </div>
+        <div class="sig">
+          <div class="role">RevOps</div>
+          <div class="line"></div>
+          <div class="cap"><span>Name &amp; signature</span><span>Date</span></div>
+        </div>
+        <div class="sig">
+          <div class="role">Facilitator · AI-Ready RevOps</div>
+          <div class="line"></div>
+          <div class="cap"><span>Vinay Raghavendran</span><span>Date</span></div>
+        </div>
+      </div>
+    </div>
+
+    <p class="foot"><strong>What this unlocks.</strong> Every figure in your AI Revenue Verdict — what the AI spend returned, where it's leaking, what recovers it — is computed against these definitions, so the number holds up in front of a board. Your Definition Lock fee credits 100% toward the Verdict within 60 days.<br>
+    © 2026 AI-Ready RevOps · WhizzLead · ready@aireadyrevops.com</p>
+
+  </div>
+</div>
+
+</body>
+</html>
