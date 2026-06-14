@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Definition Gap Check — Does Your Revenue Team Actually Agree?</title>
+<meta name="description" content="A free 3-minute check. Send it to your CRO, CFO, and Head of CS — each answers on their own — and see exactly where your team defines its numbers differently.">
+<meta property="og:title" content="Does your revenue team actually agree on what the numbers mean?">
+<meta property="og:description" content="Free 3-minute Gap Check. Send it to your team, see where you split. The disagreements are the point.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400&family=Geist:wght@300..600&family=Geist+Mono:wght@400..500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAF8F3; --bg-alt:#F2EFE7; --card:#FFFFFF;
+    --ink:#0E1116; --ink-2:#1F242E; --muted:#5C6473;
+    --rule:#DFD9CC; --rule-strong:#C9C2B0;
+    --accent:#B23A1E; --accent-2:#8E2D17; --accent-soft:#F4E4DE; --good:#1F5A3A;
+    --display:'Fraunces','Iowan Old Style',Georgia,serif;
+    --body:'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    --mono:'Geist Mono','JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:var(--bg-alt); color:var(--ink); font-family:var(--body); font-size:15px; line-height:1.55; -webkit-font-smoothing:antialiased}
+  .wrap{max-width:680px; margin:0 auto; padding:0 1rem 4rem}
+  .topbrand{display:flex; align-items:center; gap:0.5rem; padding:1.4rem 0 0; font-family:var(--display); font-weight:500; font-size:18px}
+  .topbrand .ring{width:18px;height:18px;border:2px solid var(--accent);border-radius:50%}
+  .sheet{background:var(--card); border:1px solid var(--rule); box-shadow:0 4px 24px rgba(14,17,22,0.07); margin-top:1rem}
+  .head{background:var(--ink); color:#fff; padding:1.6rem 1.75rem}
+  .kicker{font-family:var(--mono); font-size:10.5px; letter-spacing:0.12em; text-transform:uppercase; color:#E8946A; margin-bottom:0.8rem}
+  .head h1{font-family:var(--display); font-weight:500; font-size:28px; line-height:1.1; letter-spacing:-0.01em; margin:0 0 0.4rem}
+  .head p{color:#B8AC95; font-size:14px; margin:0; max-width:54ch}
+  .body{padding:1.5rem 1.75rem 2rem}
+
+  /* Share box */
+  .share{background:var(--accent-soft); border:1px solid #EBC9BD; border-radius:8px; padding:1rem 1.1rem; margin-bottom:1.6rem}
+  .share .lbl{font-weight:600; font-size:13.5px; color:var(--ink); margin-bottom:0.15rem}
+  .share .desc{font-size:12.5px; color:var(--ink-2); margin-bottom:0.7rem}
+  .linkrow{display:flex; gap:0.5rem; flex-wrap:wrap}
+  .linkbox{flex:1 1 240px; min-width:0; font-family:var(--mono); font-size:12px; color:var(--ink-2); background:#fff; border:1px solid var(--rule-strong); border-radius:7px; padding:0.6rem 0.7rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+  .copybtn{font-family:var(--body); font-weight:500; font-size:13.5px; background:var(--accent); color:#fff; border:0; border-radius:7px; padding:0.6rem 1.05rem; cursor:pointer; white-space:nowrap}
+  .copybtn:hover{background:var(--accent-2)} .copybtn.ok{background:var(--good)}
+
+  .row2{display:grid; grid-template-columns:1fr 1fr; gap:0.9rem; margin-bottom:1.4rem}
+  @media(max-width:520px){.row2{grid-template-columns:1fr}}
+  label.txtlbl{display:block; font-size:12px; color:var(--muted); margin-bottom:0.25rem}
+  input[type=text], input[type=email], select{width:100%; font-family:var(--body); font-size:14.5px; color:var(--ink); background:var(--bg); border:1px solid var(--rule-strong); border-radius:6px; padding:0.6rem 0.7rem; outline:none}
+  input:focus, select:focus{border-color:var(--accent); background:#fff}
+
+  .q{margin-bottom:1.4rem}
+  .q .qt{font-size:14.5px; font-weight:500; margin-bottom:0.6rem; line-height:1.4}
+  .q .qt .scenario{font-weight:400; color:var(--ink-2)}
+  .opts{display:flex; flex-direction:column; gap:0.5rem}
+  .opt{display:block; cursor:pointer}
+  .opt input{position:absolute; opacity:0; pointer-events:none}
+  .opt span{display:block; border:1px solid var(--rule-strong); border-radius:7px; padding:0.6rem 0.8rem; font-size:14px; color:var(--ink-2); background:var(--bg); transition:all 0.12s ease}
+  .opt:hover span{border-color:var(--accent)}
+  .opt input:checked + span{border-color:var(--accent); background:var(--accent-soft); color:var(--ink); font-weight:500; box-shadow:inset 0 0 0 1px var(--accent)}
+
+  .submit{width:100%; font-family:var(--body); font-weight:500; font-size:16px; background:var(--accent); color:#fff; border:0; border-radius:8px; padding:0.9rem; cursor:pointer; margin-top:0.3rem}
+  .submit:hover{background:var(--accent-2)} .submit:disabled{opacity:0.6}
+  .err{color:var(--accent); font-size:13px; margin-top:0.6rem; display:none}
+  .note{font-size:11.5px; color:var(--muted); margin-top:1rem; text-align:center}
+
+  /* Results */
+  #results{display:none}
+  .scorecard{text-align:center; padding:0.5rem 0 1.4rem; border-bottom:1px solid var(--rule); margin-bottom:1.4rem}
+  .scorecard .big{font-family:var(--display); font-size:46px; font-weight:500; color:var(--accent); line-height:1}
+  .scorecard .lbl{font-size:14px; color:var(--ink-2); margin-top:0.3rem}
+  .scorecard .sub{font-family:var(--mono); font-size:11px; letter-spacing:0.04em; text-transform:uppercase; color:var(--muted); margin-top:0.5rem}
+
+  .rq{margin-bottom:1.1rem; padding-bottom:1.1rem; border-bottom:1px solid var(--rule)}
+  .rq .rqt{font-size:13.5px; font-weight:500; margin-bottom:0.5rem}
+  .rq .flag{font-family:var(--mono); font-size:10px; letter-spacing:0.04em; text-transform:uppercase; padding:2px 7px; border-radius:999px; margin-left:0.4rem; vertical-align:middle}
+  .flag.split{background:var(--accent-soft); color:var(--accent); border:1px solid #EBC9BD}
+  .flag.agree{background:#E7F0EA; color:var(--good); border:1px solid #C5DBCB}
+  .bar{display:flex; height:26px; border-radius:5px; overflow:hidden; border:1px solid var(--rule); background:var(--bg)}
+  .seg{display:flex; align-items:center; justify-content:center; font-size:11px; color:#fff; white-space:nowrap; min-width:2px}
+  .legend{display:flex; flex-wrap:wrap; gap:0.5rem 1rem; margin-top:0.45rem; font-size:11.5px; color:var(--muted)}
+  .legend i{display:inline-block; width:9px;height:9px;border-radius:2px;margin-right:0.3rem;vertical-align:baseline}
+
+  .cta{background:var(--ink); color:#fff; border-radius:10px; padding:1.5rem; margin-top:1.5rem; text-align:center}
+  .cta h3{font-family:var(--display); font-weight:500; font-size:22px; margin:0 0 0.5rem; color:#fff}
+  .cta p{color:#B8AC95; font-size:14px; max-width:48ch; margin:0 auto 1.1rem}
+  .cta .btns{display:flex; gap:0.6rem; justify-content:center; flex-wrap:wrap}
+  .btn-a{font-family:var(--body); font-weight:500; font-size:14.5px; padding:0.7rem 1.2rem; border-radius:8px; text-decoration:none; cursor:pointer; border:0; display:inline-block}
+  .btn-primary{background:var(--accent); color:#fff} .btn-primary:hover{background:var(--accent-2)}
+  .btn-ghost{background:transparent; color:#fff; border:1px solid #3A3F49} .btn-ghost:hover{border-color:#E8946A}
+
+  .leadbox{margin-top:1.3rem; padding-top:1.2rem; border-top:1px solid var(--rule)}
+  .leadbox .lh{font-size:13.5px; color:var(--ink-2); margin-bottom:0.6rem}
+  .leadrow{display:flex; gap:0.5rem; flex-wrap:wrap}
+  .leadrow input{flex:1 1 220px}
+  .foot{margin-top:1.4rem; font-size:11px; color:var(--muted); text-align:center}
+  .waiting{font-size:12.5px; color:var(--muted); text-align:center; margin-top:0.9rem}
+  .viewlink{display:inline-block; margin-top:0.4rem; color:var(--accent); cursor:pointer; font-size:13px; text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbrand"><span class="ring"></span>AI-Ready RevOps</div>
+
+  <div class="sheet">
+    <div class="head">
+      <div class="kicker">Free · 3 minutes</div>
+      <h1>Does your revenue team actually agree on what the numbers mean?</h1>
+      <p>Most teams are sure they do. Send this to your CRO, CFO, and Head of CS — each answers alone — and watch what comes back.</p>
+    </div>
+
+    <div class="body">
+
+      <!-- FORM -->
+      <div id="formView">
+        <div class="share">
+          <div class="lbl">Step 1 — Send this link to your team</div>
+          <div class="desc">Have each leader answer on their own, <strong>without comparing notes.</strong> Then come back to this same link to see where you split. The disagreements are the whole point.</div>
+          <div class="linkrow">
+            <div class="linkbox" id="shareLink">…</div>
+            <button class="copybtn" id="copyBtn" type="button">Copy link</button>
+          </div>
+          <div id="waitingBanner" class="waiting" style="display:none"></div>
+        </div>
+
+        <form id="gapForm">
+          <div class="row2">
+            <div>
+              <label class="txtlbl" for="name">Your name *</label>
+              <input type="text" id="name" required>
+            </div>
+            <div>
+              <label class="txtlbl" for="role">Your function *</label>
+              <select id="role" required>
+                <option value="">Select…</option>
+                <option>Sales</option><option>Marketing</option>
+                <option>Customer Success</option><option>Finance</option>
+                <option>RevOps</option><option>Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="questions"></div>
+
+          <button type="submit" class="submit" id="submitBtn">See where my team stands</button>
+          <div class="err" id="errMsg"></div>
+          <p class="note">Individual answers are never shown by name — only the split across the team.</p>
+        </form>
+      </div>
+
+      <!-- RESULTS -->
+      <div id="results">
+        <div class="scorecard">
+          <div class="big" id="scoreBig">—</div>
+          <div class="lbl" id="scoreLbl">of 6 definitions your team disagrees on</div>
+          <div class="sub" id="scoreSub">based on 1 response so far</div>
+        </div>
+        <div id="resultList"></div>
+
+        <div class="waiting" id="moreWaiting">More teammates haven't answered yet — the gaps usually widen as they do. Share the link again from the top.</div>
+
+        <div class="cta">
+          <h3>Knowing you disagree is the easy part.</h3>
+          <p>Resolving it — across all 13 definitions, with a neutral referee, signed and enforced so your AI and your board can trust the numbers — is the Definition Lock.</p>
+          <div class="btns">
+            <a class="btn-a btn-primary" href="/services.html#tier-1">See the Definition Lock</a>
+            <a class="btn-a btn-ghost" href="/assessment.html">Take the free assessment</a>
+          </div>
+        </div>
+
+        <div class="leadbox">
+          <div class="lh">Want the full 13-question version and a shareable gap report for your team?</div>
+          <div class="leadrow">
+            <input type="email" id="leadEmail" placeholder="you@company.com">
+            <button class="copybtn" id="leadBtn" type="button">Send it to me</button>
+          </div>
+          <div class="err" id="leadMsg"></div>
+        </div>
+      </div>
+
+      <p class="foot">© 2026 AI-Ready RevOps · WhizzLead</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const API = "/api/gap-check";
+
+  const QUESTIONS = [
+    { key:"q1", prompt:'<span class="scenario">A $100K customer cuts back to $50K but stays on.</span> That\'s…',
+      options:[["Churn","Churn"],["Contraction","Contraction"],["Neither","Neither"]] },
+    { key:"q2", prompt:'<span class="scenario">An existing customer\'s new subsidiary signs a separate deal.</span> It\'s booked as…',
+      options:[["NewBiz","New Business — Sales gets credit"],["Expansion","Expansion — CS/AM gets credit"]] },
+    { key:"q3", prompt:'<span class="scenario">A contract ends Dec 31 but the renewal closes Jan 15.</span> That revenue lands in…',
+      options:[["Q4","Q4 (period it ended)"],["Q1","Q1 (period it closed)"]] },
+    { key:"q4", prompt:'<span class="scenario">An open deal has had zero activity for 45 days.</span> It is…',
+      options:[["Live","Still live pipeline"],["Nurture","Nurture / stalled"],["Lost","Closed Lost"]] },
+    { key:"q5", prompt:'<span class="scenario">A customer signs a 3-year deal worth $300K total.</span> The ARR is…',
+      options:[["100k","$100K"],["300k","$300K"],["Depends","Depends"]] },
+    { key:"q6", prompt:'<span class="scenario">A lead requests a demo but has no budget and no authority.</span> Right now it\'s…',
+      options:[["MQL","An MQL"],["SQL","An SQL"],["Neither","Neither"]] }
+  ];
+
+  // Palette for result bars
+  const COLORS = ["#B23A1E","#1F5A3A","#B07A1A","#5C6473","#8E2D17"];
+
+  // ----- room id -----
+  const params = new URLSearchParams(location.search);
+  let room = (params.get("room") || "").replace(/[^a-zA-Z0-9]/g,"").slice(0,32);
+  if (!room) {
+    room = Math.random().toString(36).slice(2,10);
+    const u = new URL(location.href); u.searchParams.set("room", room);
+    history.replaceState({}, "", u);
+  }
+  const shareUrl = location.origin + location.pathname + "?room=" + room;
+  document.getElementById("shareLink").textContent = shareUrl;
+
+  // ----- build questions -----
+  const qWrap = document.getElementById("questions");
+  QUESTIONS.forEach(q => {
+    const div = document.createElement("div");
+    div.className = "q";
+    div.innerHTML = '<div class="qt">'+q.prompt+'</div><div class="opts">' +
+      q.options.map(o => '<label class="opt"><input type="radio" name="'+q.key+'" value="'+o[0]+'"><span>'+o[1]+'</span></label>').join("") +
+      '</div>';
+    qWrap.appendChild(div);
+  });
+
+  const labelFor = (key,val) => {
+    const q = QUESTIONS.find(x=>x.key===key); if(!q) return val;
+    const o = q.options.find(x=>x[0]===val); return o ? o[1] : val;
+  };
+  const promptFor = (key) => { const q = QUESTIONS.find(x=>x.key===key); return q ? q.prompt : key; };
+
+  // ----- copy link -----
+  function wireCopy(btn){
+    btn.addEventListener("click", async () => {
+      try { await navigator.clipboard.writeText(shareUrl); btn.textContent="Copied ✓"; btn.classList.add("ok"); setTimeout(()=>{btn.textContent="Copy link"; btn.classList.remove("ok");},2200); }
+      catch(e){ const r=document.createRange(); r.selectNode(document.getElementById("shareLink")); getSelection().removeAllRanges(); getSelection().addRange(r); }
+    });
+  }
+  wireCopy(document.getElementById("copyBtn"));
+
+  // ----- on load: if room already has responses, nudge -----
+  (async function checkExisting(){
+    try{
+      const res = await fetch(API + "?room=" + encodeURIComponent(room));
+      if(!res.ok) return;
+      const d = await res.json();
+      if(d && d.respondents > 0){
+        const b = document.getElementById("waitingBanner");
+        b.style.display = "block";
+        b.innerHTML = d.respondents + " teammate"+(d.respondents>1?"s have":" has")+" already answered. Add yours below to see the split — or <span class='viewlink' id='viewNow'>view it now</span>.";
+        const v = document.getElementById("viewNow");
+        if(v) v.addEventListener("click", ()=> renderResults(d));
+      }
+    }catch(e){/* silent */}
+  })();
+
+  // ----- submit -----
+  const form = document.getElementById("gapForm");
+  const submitBtn = document.getElementById("submitBtn");
+  const errMsg = document.getElementById("errMsg");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    errMsg.style.display = "none";
+    const name = document.getElementById("name").value.trim();
+    const role = document.getElementById("role").value;
+    const answers = {};
+    QUESTIONS.forEach(q => { const sel = form.querySelector('input[name="'+q.key+'"]:checked'); if(sel) answers[q.key]=sel.value; });
+
+    if(!name || !role){ showErr(errMsg,"Add your name and function first."); return; }
+    if(Object.keys(answers).length < QUESTIONS.length){ showErr(errMsg,"Please answer all six — it only takes a moment."); return; }
+
+    submitBtn.disabled = true; submitBtn.textContent = "Tallying…";
+    try{
+      const res = await fetch(API, { method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify({ room, name, role, answers }) });
+      if(!res.ok) throw new Error("bad");
+      renderResults(await res.json());
+    }catch(err){
+      submitBtn.disabled = false; submitBtn.textContent = "See where my team stands";
+      showErr(errMsg,"Couldn't reach the server. Try again in a moment.");
+    }
+  });
+
+  function renderResults(d){
+    document.getElementById("formView").style.display = "none";
+    const r = document.getElementById("results");
+    r.style.display = "block";
+    window.scrollTo({top:0, behavior:"smooth"});
+
+    document.getElementById("scoreBig").textContent = d.disagreements;
+    document.getElementById("scoreSub").textContent = "based on " + d.respondents + " response" + (d.respondents===1?"":"s") + " so far";
+    document.getElementById("moreWaiting").style.display = d.respondents < 3 ? "block" : "none";
+
+    const list = document.getElementById("resultList");
+    list.innerHTML = "";
+    QUESTIONS.forEach(q => {
+      const counts = (d.distribution && d.distribution[q.key]) || {};
+      const entries = Object.entries(counts);
+      const total = entries.reduce((s,[,c])=>s+c,0) || 1;
+      const split = entries.length >= 2;
+
+      const seg = entries.map(([val,c],i) => {
+        const pct = Math.round(c/total*100);
+        return '<div class="seg" style="width:'+pct+'%;background:'+COLORS[i%COLORS.length]+'" title="'+labelFor(q.key,val)+': '+c+'">'+(pct>=14?pct+"%":"")+'</div>';
+      }).join("");
+      const legend = entries.map(([val,c],i) => '<span><i style="background:'+COLORS[i%COLORS.length]+'"></i>'+labelFor(q.key,val)+' · '+c+'</span>').join("");
+
+      const div = document.createElement("div");
+      div.className = "rq";
+      div.innerHTML = '<div class="rqt">'+promptFor(q.key)+
+        '<span class="flag '+(split?"split":"agree")+'">'+(split?"⚠ Disagreement":"Aligned")+'</span></div>'+
+        '<div class="bar">'+(seg||'<div class="seg" style="width:100%;background:var(--rule-strong)"></div>')+'</div>'+
+        '<div class="legend">'+legend+'</div>';
+      list.appendChild(div);
+    });
+  }
+
+  // ----- lead capture -----
+  const leadBtn = document.getElementById("leadBtn");
+  const leadMsg = document.getElementById("leadMsg");
+  leadBtn.addEventListener("click", async () => {
+    const email = document.getElementById("leadEmail").value.trim();
+    leadMsg.style.display = "none";
+    if(!email || email.indexOf("@") < 1){ showErr(leadMsg,"Enter a valid email."); return; }
+    leadBtn.disabled = true; leadBtn.textContent = "Sending…";
+    try{
+      const res = await fetch(API, { method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify({ type:"lead", room, email }) });
+      if(!res.ok) throw new Error("bad");
+      leadBtn.textContent = "Sent ✓"; leadBtn.classList.add("ok");
+      leadMsg.style.color = "var(--good)"; showErr(leadMsg,"Done — we'll be in touch.");
+    }catch(e){
+      leadBtn.disabled = false; leadBtn.textContent = "Send it to me";
+      showErr(leadMsg,"Couldn't send. Try again or email ready@aireadyrevops.com.");
+    }
+  });
+
+  function showErr(el,msg){ el.textContent = msg; el.style.display = "block"; }
+</script>
+</body>
+</html>
