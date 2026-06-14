@@ -31,7 +31,7 @@
     display:flex; gap:1rem; align-items:center; justify-content:space-between;
     flex-wrap:wrap;
   }
-  .toolbar p{margin:0; color:var(--muted); font-size:12.5px; max-width:58ch}
+  .toolbar p{margin:0; color:var(--muted); font-size:12.5px; max-width:62ch}
   .toolbar strong{color:var(--ink)}
   .btn-print{
     font-family:var(--body); font-weight:500; font-size:13px;
@@ -44,7 +44,6 @@
   .sheet{
     max-width:820px; margin:0 auto 3rem; background:var(--card);
     box-shadow:0 4px 24px rgba(14,17,22,0.08); border:1px solid var(--rule);
-    padding:0;
   }
 
   /* Header */
@@ -59,26 +58,33 @@
     font-family:var(--display); font-weight:500; font-size:30px;
     line-height:1.05; letter-spacing:-0.01em; margin:0 0 0.25rem;
   }
-  .head .sub{color:#B8AC95; font-size:13px; margin:0}
+  .head .sub{color:#B8AC95; font-size:13px; margin:0; max-width:64ch}
   .meta{
     display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
     background:var(--rule-strong); border-top:1px solid var(--rule-strong);
   }
   .meta div{background:var(--bg); padding:0.7rem 2rem}
   .meta .lbl{font-family:var(--mono); font-size:9.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); display:block; margin-bottom:0.15rem}
-  .meta:first-of-type{margin-top:0}
 
   .body{padding:1.6rem 2rem 2rem}
   .intro{color:var(--ink-2); font-size:13px; margin:0 0 1.5rem; padding-bottom:1.1rem; border-bottom:1px solid var(--rule)}
+  .intro .skip{display:block; margin-top:0.5rem; font-size:11.5px; color:var(--muted)}
 
   /* Sections */
   section{margin-bottom:1.5rem; break-inside:avoid}
-  .sec-head{display:flex; align-items:baseline; gap:0.6rem; margin-bottom:0.7rem}
+  .sec-head{display:flex; align-items:baseline; gap:0.6rem; margin-bottom:0.7rem; flex-wrap:wrap}
   .sec-num{font-family:var(--mono); font-size:11px; color:var(--accent); font-weight:500}
   .sec-head h2{font-family:var(--display); font-weight:500; font-size:18px; letter-spacing:-0.01em; margin:0}
+  .tag{
+    font-family:var(--mono); font-size:8.5px; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--muted); background:var(--bg-alt); border:1px solid var(--rule);
+    padding:2px 7px; border-radius:999px; align-self:center;
+  }
+  .tag.core{color:var(--accent); background:var(--accent-soft); border-color:#EBC9BD}
 
   .field{margin-bottom:0.7rem}
   .field .q{font-size:11.5px; color:var(--muted); margin-bottom:0.2rem}
+  .field .q strong{color:var(--ink-2)}
 
   /* Editable fill areas */
   .fill{
@@ -91,6 +97,8 @@
   .fill[contenteditable][data-ph]:empty:before{
     content:attr(data-ph); color:var(--muted); font-style:italic; opacity:0.8;
   }
+  .fill.sm{display:inline-block; min-width:58px; max-width:120px; text-align:center; min-height:1.3em; vertical-align:baseline; border-radius:3px; border:1px solid var(--rule-strong); padding:0.15rem 0.4rem}
+  .fill.sm:focus{border-color:var(--accent)}
 
   /* Tables */
   table{width:100%; border-collapse:collapse; font-size:12.5px}
@@ -103,13 +111,24 @@
   td .fill{border-bottom:0; border-radius:0; background:transparent; min-height:2.1em; padding:0.45rem 0.5rem}
   td .fill:focus{background:var(--accent-soft)}
   td.term{
-    width:24%; font-family:var(--mono); font-size:11px; color:var(--ink-2);
+    font-family:var(--mono); font-size:11px; color:var(--ink-2);
     padding:0.5rem 0.5rem; font-weight:500; background:var(--bg);
-    border-right:1px solid var(--rule);
+    border-right:1px solid var(--rule); vertical-align:top;
   }
 
+  /* Inline threshold/definition rows */
+  .rowline{display:flex; align-items:baseline; gap:0.5rem; flex-wrap:wrap; margin-bottom:0.55rem; font-size:12.5px; color:var(--ink-2)}
+  .rowline .unit{color:var(--muted); font-size:11.5px}
+
+  /* Thresholds grid */
+  .thresholds{display:grid; grid-template-columns:1fr 1fr; gap:0.55rem 1.5rem; margin-top:0.3rem}
+  .th{display:flex; align-items:center; justify-content:space-between; gap:0.6rem; border-bottom:1px solid var(--rule); padding:0.4rem 0}
+  .th .thl{font-size:12px; color:var(--ink-2); line-height:1.3}
+  .th .thr{display:flex; align-items:baseline; gap:0.35rem; white-space:nowrap}
+  .th .unit{font-size:10.5px; color:var(--muted); font-family:var(--mono)}
+
   /* Sign-off */
-  .signoff{margin-top:1.75rem; padding-top:1.25rem; border-top:2px solid var(--ink)}
+  .signoff{margin-top:1.75rem; padding-top:1.25rem; border-top:2px solid var(--ink); break-inside:avoid}
   .signoff h2{font-family:var(--display); font-weight:500; font-size:18px; margin:0 0 0.3rem}
   .signoff .note{color:var(--muted); font-size:11.5px; margin:0 0 1.1rem}
   .sigs{display:grid; grid-template-columns:1fr 1fr; gap:1.1rem 2rem}
@@ -126,21 +145,22 @@
 
   /* Print */
   @media print{
-    @page{size:A4; margin:14mm}
-    body{background:#fff; font-size:11.5px}
+    @page{size:A4; margin:13mm}
+    body{background:#fff; font-size:11px}
     .no-print{display:none !important}
     .sheet{box-shadow:none; border:0; margin:0; max-width:none}
-    .head{padding:1rem 0 1.1rem; background:#fff; color:var(--ink); border-bottom:2px solid var(--ink)}
-    .head h1{font-size:26px}
+    .head{padding:0.6rem 0 1rem; background:#fff; color:var(--ink); border-bottom:2px solid var(--ink)}
+    .head h1{font-size:25px}
     .head .sub{color:var(--muted)}
     .brand{color:var(--accent)}
     .brand .dot{background:var(--accent)}
     .meta{background:#fff; border-top:1px solid var(--rule)}
-    .meta div{background:#fff; padding:0.55rem 0}
-    .body{padding:1.1rem 0 0}
+    .meta div{background:#fff; padding:0.5rem 0}
+    .body{padding:1rem 0 0}
     .fill{background:transparent; border-bottom:1px solid var(--rule-strong)}
     td .fill{background:transparent}
     section, .sig, .signoff{break-inside:avoid}
+    h2, .sec-head{break-after:avoid}
   }
 </style>
 </head>
@@ -148,7 +168,7 @@
 
 <!-- Screen-only instructions -->
 <div class="toolbar no-print">
-  <p><strong>How to use:</strong> Click any field and type the agreed definition — fill it live in the session, or right after. Then <strong>Print → Save as PDF</strong> and send for signature. Nothing is saved in the browser, so print before you close the tab.</p>
+  <p><strong>How to use:</strong> Click any field and type the agreed definition — fill it live in the session, or right after. Sections tagged <em>"if applicable"</em> can be skipped when they don't fit the business. Then <strong>Print → Save as PDF</strong> and send for signature. Nothing is saved in the browser, so print before you close the tab.</p>
   <button class="btn-print" onclick="window.print()">Print / Save as PDF</button>
 </div>
 
@@ -167,11 +187,13 @@
   </div>
 
   <div class="body">
-    <p class="intro">These definitions were agreed in a working session with the leaders below across Sales, Marketing, Customer Success, Finance, and RevOps. Where they previously disagreed, this sheet records the single definition the company now operates on. It supersedes prior informal definitions until formally revised.</p>
+    <p class="intro">These definitions were agreed in a working session with the leaders below across Sales, Marketing, Customer Success, Finance, and RevOps. Where they previously disagreed, this sheet records the single definition the company now operates on. It supersedes prior informal definitions until formally revised.
+      <span class="skip">Not every row applies to every business. Sections marked <strong>"if applicable"</strong> are for recurring-revenue or multi-product models — skip what doesn't fit.</span>
+    </p>
 
     <!-- 1. QUALIFIED LEAD -->
     <section>
-      <div class="sec-head"><span class="sec-num">01</span><h2>The Qualified Lead</h2></div>
+      <div class="sec-head"><span class="sec-num">01</span><h2>The Qualified Lead</h2><span class="tag core">Core</span></div>
       <div class="field">
         <div class="q">A lead is a <strong>Marketing Qualified Lead (MQL)</strong> when…</div>
         <span class="fill" contenteditable="true" data-ph="The exact, testable criteria — fit attributes + behavior — that promote a lead to MQL."></span>
@@ -186,9 +208,9 @@
       </div>
     </section>
 
-    <!-- 2. PIPELINE STAGES -->
+    <!-- 2. PIPELINE -->
     <section>
-      <div class="sec-head"><span class="sec-num">02</span><h2>Pipeline Stages &amp; Exit Criteria</h2></div>
+      <div class="sec-head"><span class="sec-num">02</span><h2>Pipeline Stages &amp; Hygiene</h2><span class="tag core">Core</span></div>
       <table>
         <thead><tr><th style="width:24%">Stage</th><th>What must be true to ENTER this stage (exit criteria of the prior one)</th></tr></thead>
         <tbody>
@@ -199,11 +221,19 @@
           <tr><td class="term"><span class="fill" contenteditable="true" data-ph="e.g. Closed Won"></span></td><td><span class="fill" contenteditable="true" data-ph="Required, verifiable conditions"></span></td></tr>
         </tbody>
       </table>
+      <div class="field" style="margin-top:0.9rem">
+        <div class="q"><strong>Pipeline generation date</strong> — pipeline counts toward target on the day the…</div>
+        <span class="fill" contenteditable="true" data-ph="Meeting is booked / meeting is held / AE accepts the opp and assigns a value. Pick one."></span>
+      </div>
+      <div class="field">
+        <div class="q"><strong>Closed Lost vs. Stalled / Nurture</strong> — an open opp auto-moves to Closed Lost after the idle period below; a deal is parked as Stalled/Nurture (not Lost) when…</div>
+        <span class="fill" contenteditable="true" data-ph="The condition that keeps a quiet deal alive vs. kills it (e.g. confirmed future budget cycle). Idle auto-close threshold lives in §07."></span>
+      </div>
     </section>
 
     <!-- 3. REVENUE TERMS -->
     <section>
-      <div class="sec-head"><span class="sec-num">03</span><h2>Revenue Terms</h2></div>
+      <div class="sec-head"><span class="sec-num">03</span><h2>Revenue Terms</h2><span class="tag core">Core</span></div>
       <table>
         <thead><tr><th style="width:24%">Term</th><th>Agreed definition (and what is explicitly excluded)</th></tr></thead>
         <tbody>
@@ -211,36 +241,82 @@
           <tr><td class="term">MRR</td><td><span class="fill" contenteditable="true" data-ph="Monthly recurring revenue and how it reconciles to ARR."></span></td></tr>
           <tr><td class="term">Bookings</td><td><span class="fill" contenteditable="true" data-ph="Signed contract value vs. recognized — when a booking is counted."></span></td></tr>
           <tr><td class="term">TCV / ACV</td><td><span class="fill" contenteditable="true" data-ph="Total vs. annual contract value, and which one reporting uses by default."></span></td></tr>
-          <tr><td class="term"><span class="fill" contenteditable="true" data-ph="Other (e.g. Pipeline)"></span></td><td><span class="fill" contenteditable="true" data-ph="Any other term the team kept arguing about."></span></td></tr>
+          <tr><td class="term">Product / add-on ARR</td><td><span class="fill" contenteditable="true" data-ph="If multi-product: do we track ARR per product/module/add-on, and how is bundled or discounted pricing split across lines?"></span></td></tr>
+          <tr><td class="term"><span class="fill" contenteditable="true" data-ph="Other"></span></td><td><span class="fill" contenteditable="true" data-ph="Any other term the team kept arguing about."></span></td></tr>
         </tbody>
       </table>
     </section>
 
-    <!-- 4. AI-INFLUENCED REVENUE -->
+    <!-- 4. RETENTION & EXPANSION -->
     <section>
-      <div class="sec-head"><span class="sec-num">04</span><h2>AI-Influenced Revenue</h2></div>
+      <div class="sec-head"><span class="sec-num">04</span><h2>Retention &amp; Expansion</h2><span class="tag">If recurring revenue</span></div>
+      <table>
+        <thead><tr><th style="width:24%">Term</th><th>Agreed definition</th></tr></thead>
+        <tbody>
+          <tr><td class="term">Logo churn</td><td><span class="fill" contenteditable="true" data-ph="A customer is a lost logo when… (fully gone, not downgraded)."></span></td></tr>
+          <tr><td class="term">Gross rev. churn</td><td><span class="fill" contenteditable="true" data-ph="Lost recurring revenue from churn + contraction; excludes expansion."></span></td></tr>
+          <tr><td class="term">Net rev. churn</td><td><span class="fill" contenteditable="true" data-ph="Churn + contraction minus expansion. Can be negative (good)."></span></td></tr>
+          <tr><td class="term">Contraction vs. churn</td><td><span class="fill" contenteditable="true" data-ph="A downgrade is 'contraction'; a full non-renewal is 'churn'. The % drop that flips one to the other lives in §07."></span></td></tr>
+          <tr><td class="term">Renewal timing</td><td><span class="fill" contenteditable="true" data-ph="A renewal that closes after the contract end date counts in the period of: contract end date OR close date. Pick one (the Q4-vs-Q1 fight)."></span></td></tr>
+          <tr><td class="term">Expansion vs. New Business</td><td><span class="fill" contenteditable="true" data-ph="An existing account adding a department/subsidiary/product is classified as ___ and credited to ___ (Sales / AM / CS)."></span></td></tr>
+        </tbody>
+      </table>
+      <div class="field" style="margin-top:0.9rem">
+        <div class="q"><strong>Gross Retention (GRR)</strong> — agreed formula</div>
+        <span class="fill" contenteditable="true" data-ph="e.g. (Starting ARR − churn − contraction) ÷ starting ARR, over the period."></span>
+      </div>
+      <div class="field">
+        <div class="q"><strong>Net Retention (NRR / NDR)</strong> — agreed formula</div>
+        <span class="fill" contenteditable="true" data-ph="e.g. (Starting ARR − churn − contraction + expansion) ÷ starting ARR. Define the cohort + window."></span>
+      </div>
+    </section>
+
+    <!-- 5. AI-INFLUENCED REVENUE -->
+    <section>
+      <div class="sec-head"><span class="sec-num">05</span><h2>AI-Influenced Revenue</h2><span class="tag core">Core</span></div>
       <div class="field">
         <div class="q">Revenue counts as <strong>AI-influenced</strong> when…</div>
         <span class="fill" contenteditable="true" data-ph="The attribution rule — what an AI tool must have touched, and how it's evidenced, for a deal to count toward AI ROI."></span>
       </div>
       <div class="field">
+        <div class="q"><strong>Attribution model</strong> — when a deal has human, marketing, and AI touches, credit is split by…</div>
+        <span class="fill" contenteditable="true" data-ph="First-touch / last-touch / multi-touch even / multi-touch weighted. Pick one, and state the weighting if used."></span>
+      </div>
+      <div class="field">
         <div class="q">What is explicitly <strong>NOT</strong> counted as AI-influenced</div>
-        <span class="fill" contenteditable="true" data-ph="The line that stops AI ROI from being inflated — exclusions everyone agreed to."></span>
+        <span class="fill" contenteditable="true" data-ph="The line that stops AI ROI from being inflated — exclusions everyone agreed to. Lookback window lives in §07."></span>
       </div>
     </section>
 
-    <!-- 5. SOURCE OF TRUTH -->
+    <!-- 6. SOURCE OF TRUTH -->
     <section>
-      <div class="sec-head"><span class="sec-num">05</span><h2>Source of Truth</h2></div>
+      <div class="sec-head"><span class="sec-num">06</span><h2>Source of Truth &amp; Tiebreakers</h2><span class="tag core">Core</span></div>
       <table>
-        <thead><tr><th style="width:40%">Metric / object</th><th>System of record (the one system that wins in a conflict)</th></tr></thead>
+        <thead><tr><th style="width:30%">Metric / object</th><th style="width:32%">System of record</th><th>Tiebreaker — which value/date wins in a conflict</th></tr></thead>
         <tbody>
-          <tr><td class="term" style="width:40%"><span class="fill" contenteditable="true" data-ph="e.g. Pipeline & forecast"></span></td><td><span class="fill" contenteditable="true" data-ph="e.g. Salesforce Opportunity"></span></td></tr>
-          <tr><td class="term" style="width:40%"><span class="fill" contenteditable="true" data-ph="e.g. ARR / recurring revenue"></span></td><td><span class="fill" contenteditable="true" data-ph="e.g. Billing system / finance"></span></td></tr>
-          <tr><td class="term" style="width:40%"><span class="fill" contenteditable="true" data-ph="e.g. Lead / MQL data"></span></td><td><span class="fill" contenteditable="true" data-ph="e.g. Marketing automation"></span></td></tr>
-          <tr><td class="term" style="width:40%"><span class="fill" contenteditable="true" data-ph="e.g. Customer / account health"></span></td><td><span class="fill" contenteditable="true" data-ph="e.g. CS platform"></span></td></tr>
+          <tr><td class="term">Pipeline &amp; forecast</td><td><span class="fill" contenteditable="true" data-ph="e.g. Salesforce Opportunity"></span></td><td><span class="fill" contenteditable="true" data-ph="Rule"></span></td></tr>
+          <tr><td class="term">ARR / recurring revenue</td><td><span class="fill" contenteditable="true" data-ph="e.g. Billing / finance"></span></td><td><span class="fill" contenteditable="true" data-ph="Rule"></span></td></tr>
+          <tr><td class="term">Lead / MQL data</td><td><span class="fill" contenteditable="true" data-ph="e.g. Marketing automation"></span></td><td><span class="fill" contenteditable="true" data-ph="Rule"></span></td></tr>
+          <tr><td class="term">Customer / account health</td><td><span class="fill" contenteditable="true" data-ph="e.g. CS platform"></span></td><td><span class="fill" contenteditable="true" data-ph="Rule"></span></td></tr>
+          <tr><td class="term">Active customer count</td><td><span class="fill" contenteditable="true" data-ph="CRM / billing engine / product DB?"></span></td><td><span class="fill" contenteditable="true" data-ph="Which one is authoritative"></span></td></tr>
+          <tr><td class="term">Contract close date</td><td><span class="fill" contenteditable="true" data-ph="CRM Closed-Won / signed DocuSign to Finance?"></span></td><td><span class="fill" contenteditable="true" data-ph="Date that counts at quarter-end"></span></td></tr>
         </tbody>
       </table>
+    </section>
+
+    <!-- 7. KEY THRESHOLDS -->
+    <section>
+      <div class="sec-head"><span class="sec-num">07</span><h2>Key Thresholds</h2><span class="tag core">The numbers everyone signs</span></div>
+      <div class="thresholds">
+        <div class="th"><span class="thl">Renewal grace period before a customer is marked Churned</span><span class="thr"><span class="fill sm" contenteditable="true" data-ph="30"></span><span class="unit">days</span></span></div>
+        <div class="th"><span class="thl">Opp auto-moves to Closed Lost after zero activity for</span><span class="thr"><span class="fill sm" contenteditable="true" data-ph="60"></span><span class="unit">days</span></span></div>
+        <div class="th"><span class="thl">Downgrade that counts as Contraction (not Churn) below</span><span class="thr"><span class="fill sm" contenteditable="true" data-ph="100"></span><span class="unit">% drop</span></span></div>
+        <div class="th"><span class="thl">AI-influence lookback window from the AI touch</span><span class="thr"><span class="fill sm" contenteditable="true" data-ph="60"></span><span class="unit">days</span></span></div>
+        <div class="th"><span class="thl">MQL→SQL response SLA</span><span class="thr"><span class="fill sm" contenteditable="true" data-ph="24"></span><span class="unit">hours</span></span></div>
+        <div class="th"><span class="thl">Forecast / pipeline review cadence</span><span class="thr"><span class="fill sm" contenteditable="true" data-ph="weekly"></span><span class="unit"></span></span></div>
+        <div class="th"><span class="thl"><span class="fill sm" contenteditable="true" data-ph="Custom threshold"></span></span><span class="thr"><span class="fill sm" contenteditable="true" data-ph="—"></span><span class="unit"></span></span></div>
+        <div class="th"><span class="thl"><span class="fill sm" contenteditable="true" data-ph="Custom threshold"></span></span><span class="thr"><span class="fill sm" contenteditable="true" data-ph="—"></span><span class="unit"></span></span></div>
+      </div>
     </section>
 
     <!-- SIGN-OFF -->
