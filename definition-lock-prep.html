@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Definition Lock — Pre-Session Workbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400&family=Geist:wght@300..600&family=Geist+Mono:wght@400..500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAF8F3; --bg-alt:#F2EFE7; --card:#FFFFFF;
+    --ink:#0E1116; --ink-2:#1F242E; --muted:#5C6473;
+    --rule:#DFD9CC; --rule-strong:#C9C2B0;
+    --accent:#B23A1E; --accent-2:#8E2D17; --accent-soft:#F4E4DE;
+    --display:'Fraunces','Iowan Old Style',Georgia,serif;
+    --body:'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    --mono:'Geist Mono','JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:var(--bg-alt); color:var(--ink); font-family:var(--body); font-size:15px; line-height:1.55; -webkit-font-smoothing:antialiased}
+
+  .wrap{max-width:680px; margin:0 auto; padding:0 1rem 4rem}
+  .sheet{background:var(--card); border:1px solid var(--rule); box-shadow:0 4px 24px rgba(14,17,22,0.07); margin-top:1.5rem}
+
+  /* Header */
+  .head{background:var(--ink); color:#fff; padding:1.5rem 1.75rem}
+  .brand{font-family:var(--mono); font-size:10.5px; letter-spacing:0.12em; text-transform:uppercase; color:#E8946A; margin-bottom:0.8rem; display:flex; align-items:center; gap:0.5rem}
+  .brand .dot{width:8px;height:8px;background:#E8946A;border-radius:50%}
+  .head h1{font-family:var(--display); font-weight:500; font-size:27px; line-height:1.08; letter-spacing:-0.01em; margin:0 0 0.3rem}
+  .head .sub{color:#B8AC95; font-size:13.5px; margin:0}
+
+  .body{padding:1.5rem 1.75rem 2rem}
+
+  .intro{background:var(--accent-soft); border-left:4px solid var(--accent); padding:1rem 1.1rem; border-radius:6px; margin-bottom:1.75rem; font-size:13.5px; color:var(--ink-2)}
+  .intro strong{color:var(--ink)}
+  .intro .big{font-weight:600; color:var(--accent); display:block; margin-bottom:0.3rem; font-size:13px}
+
+  fieldset{border:0; margin:0 0 1.6rem; padding:0}
+  .grp-label{font-family:var(--mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent); margin-bottom:0.9rem; padding-bottom:0.4rem; border-bottom:1px solid var(--rule)}
+
+  .q{margin-bottom:1.4rem}
+  .q .qt{font-size:14.5px; font-weight:500; color:var(--ink); margin-bottom:0.6rem; line-height:1.4}
+  .q .qt .scenario{font-weight:400; color:var(--ink-2)}
+
+  /* Inputs */
+  label.txtlbl{display:block; font-size:12px; color:var(--muted); margin-bottom:0.25rem}
+  input[type=text], select, textarea{
+    width:100%; font-family:var(--body); font-size:14.5px; color:var(--ink);
+    background:var(--bg); border:1px solid var(--rule-strong); border-radius:6px;
+    padding:0.6rem 0.7rem; outline:none;
+  }
+  input[type=text]:focus, select:focus, textarea:focus{border-color:var(--accent); background:#fff}
+  textarea{resize:vertical; min-height:62px}
+  .row2{display:grid; grid-template-columns:1fr 1fr; gap:0.9rem}
+  @media(max-width:520px){.row2{grid-template-columns:1fr}}
+
+  /* Option pills (radios) */
+  .opts{display:flex; flex-direction:column; gap:0.5rem}
+  .opt{display:block; cursor:pointer}
+  .opt input{position:absolute; opacity:0; pointer-events:none}
+  .opt span{
+    display:block; border:1px solid var(--rule-strong); border-radius:7px;
+    padding:0.6rem 0.8rem; font-size:14px; color:var(--ink-2); background:var(--bg);
+    transition:all 0.12s ease;
+  }
+  .opt:hover span{border-color:var(--accent)}
+  .opt input:checked + span{
+    border-color:var(--accent); background:var(--accent-soft); color:var(--ink); font-weight:500;
+    box-shadow:inset 0 0 0 1px var(--accent);
+  }
+  .opt input:focus-visible + span{outline:2px solid var(--accent); outline-offset:2px}
+
+  .submit{
+    width:100%; font-family:var(--body); font-weight:500; font-size:16px;
+    background:var(--accent); color:#fff; border:0; border-radius:8px;
+    padding:0.9rem 1rem; cursor:pointer; margin-top:0.5rem;
+  }
+  .submit:hover{background:var(--accent-2)}
+  .submit:disabled{opacity:0.6; cursor:default}
+  .err{color:var(--accent); font-size:13px; margin-top:0.6rem; display:none}
+
+  .foot{margin-top:1.4rem; padding-top:1rem; border-top:1px solid var(--rule); font-size:11.5px; color:var(--muted); line-height:1.5}
+
+  /* Thank-you */
+  .thanks{display:none; text-align:center; padding:2.5rem 1rem}
+  .thanks h2{font-family:var(--display); font-weight:500; font-size:26px; margin:0 0 0.6rem}
+  .thanks p{color:var(--muted); max-width:42ch; margin:0 auto; font-size:14.5px}
+  .thanks .check{width:54px; height:54px; border-radius:50%; background:var(--accent-soft); color:var(--accent); display:flex; align-items:center; justify-content:center; font-size:26px; margin:0 auto 1.1rem; border:2px solid var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="sheet">
+    <div class="head">
+      <div class="brand"><span class="dot"></span>AI-Ready RevOps · Definition Lock</div>
+      <h1>Before your session: 10 quiet minutes</h1>
+      <p class="sub" id="subline">Answer from your own seat — the disagreements are the point.</p>
+    </div>
+
+    <div class="body">
+
+      <!-- FORM -->
+      <form id="prepForm">
+        <div class="intro">
+          <span class="big">Why this matters</span>
+          Fill this on your own, <strong>without checking with colleagues</strong>. In most companies, five leaders quietly define the same numbers five different ways — and that's exactly what your AI inherits. Your honest answers let us walk into the session already knowing where the gaps are, so we spend the 90 minutes resolving them, not finding them. ~10 minutes. There are no wrong answers here.
+        </div>
+
+        <!-- Respondent -->
+        <fieldset>
+          <div class="grp-label">You</div>
+          <div class="row2" style="margin-bottom:0.9rem">
+            <div>
+              <label class="txtlbl" for="name">Name *</label>
+              <input type="text" id="name" name="Name" required>
+            </div>
+            <div>
+              <label class="txtlbl" for="role">Your function *</label>
+              <select id="role" name="Function" required>
+                <option value="">Select…</option>
+                <option>Sales</option>
+                <option>Marketing</option>
+                <option>Customer Success</option>
+                <option>Finance</option>
+                <option>RevOps</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label class="txtlbl" for="title">Title (optional)</label>
+            <input type="text" id="title" name="Title">
+          </div>
+        </fieldset>
+
+        <!-- 1. Qualified lead -->
+        <fieldset>
+          <div class="grp-label">01 · The Qualified Lead</div>
+          <div class="q">
+            <div class="qt"><span class="scenario">A lead requests a demo but has no budget and no authority to buy.</span> Right now, it's a…</div>
+            <div class="opts">
+              <label class="opt"><input type="radio" name="Q1_demo_no_budget" value="MQL"><span>Marketing Qualified Lead (MQL)</span></label>
+              <label class="opt"><input type="radio" name="Q1_demo_no_budget" value="SQL"><span>Sales Qualified Lead (SQL)</span></label>
+              <label class="opt"><input type="radio" name="Q1_demo_no_budget" value="Neither"><span>Neither — not qualified yet</span></label>
+            </div>
+          </div>
+          <div class="q">
+            <div class="qt">In one sentence, what makes a lead <strong>sales-qualified</strong> at your company?</div>
+            <textarea name="Q2_sql_definition" placeholder="Your definition, in your own words."></textarea>
+          </div>
+        </fieldset>
+
+        <!-- 2. Pipeline -->
+        <fieldset>
+          <div class="grp-label">02 · Pipeline</div>
+          <div class="q">
+            <div class="qt">New pipeline should count toward target on the day…</div>
+            <div class="opts">
+              <label class="opt"><input type="radio" name="Q3_pipeline_date" value="Meeting booked"><span>An SDR books the meeting</span></label>
+              <label class="opt"><input type="radio" name="Q3_pipeline_date" value="Meeting held"><span>The meeting actually happens</span></label>
+              <label class="opt"><input type="radio" name="Q3_pipeline_date" value="AE accepts and values"><span>The AE accepts it and assigns a dollar value</span></label>
+            </div>
+          </div>
+          <div class="q">
+            <div class="qt"><span class="scenario">An open opportunity has had zero activity for 45 days.</span> It is…</div>
+            <div class="opts">
+              <label class="opt"><input type="radio" name="Q4_stale_deal" value="Still open pipeline"><span>Still live pipeline</span></label>
+              <label class="opt"><input type="radio" name="Q4_stale_deal" value="Nurture/stalled"><span>Parked as nurture / stalled (not in the forecast)</span></label>
+              <label class="opt"><input type="radio" name="Q4_stale_deal" value="Closed Lost"><span>Closed Lost</span></label>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- 3. Revenue -->
+        <fieldset>
+          <div class="grp-label">03 · Revenue</div>
+          <div class="q">
+            <div class="qt"><span class="scenario">A customer signs a 3-year deal worth $300K total.</span> The ARR is…</div>
+            <div class="opts">
+              <label class="opt"><input type="radio" name="Q5_arr" value="100k"><span>$100K</span></label>
+              <label class="opt"><input type="radio" name="Q5_arr" value="300k"><span>$300K</span></label>
+              <label class="opt"><input type="radio" name="Q5_arr" value="depends"><span>Depends / I'm not sure</span></label>
+            </div>
+          </div>
+          <div class="q">
+            <div class="qt">What's included in ARR — and what's explicitly <strong>excluded</strong> (services, one-time fees, usage)?</div>
+            <textarea name="Q6_arr_definition" placeholder="Your understanding of what counts."></textarea>
+          </div>
+        </fieldset>
+
+        <!-- 4. Retention & expansion -->
+        <fieldset>
+          <div class="grp-label">04 · Retention &amp; Expansion</div>
+          <div class="q">
+            <div class="qt"><span class="scenario">A $100K customer cuts back to $50K but stays on.</span> That's…</div>
+            <div class="opts">
+              <label class="opt"><input type="radio" name="Q7_downgrade" value="Churn"><span>Churn</span></label>
+              <label class="opt"><input type="radio" name="Q7_downgrade" value="Contraction"><span>Contraction (not churn)</span></label>
+              <label class="opt"><input type="radio" name="Q7_downgrade" value="Neither"><span>Neither</span></label>
+            </div>
+          </div>
+          <div class="q">
+            <div class="qt"><span class="scenario">An existing customer's new subsidiary signs a separate deal.</span> It's booked as…</div>
+            <div class="opts">
+              <label class="opt"><input type="radio" name="Q8_new_subsidiary" value="New Business / Sales"><span>New Business — credited to Sales</span></label>
+              <label class="opt"><input type="radio" name="Q8_new_subsidiary" value="Expansion / CS-AM"><span>Expansion — credited to CS / Account Mgmt</span></label>
+            </div>
+          </div>
+          <div class="q">
+            <div class="qt"><span class="scenario">A contract ends Dec 31 but the renewal closes Jan 15.</span> That revenue lands in…</div>
+            <div class="opts">
+              <label class="opt"><input type="radio" name="Q9_renewal_timing" value="Q4"><span>Q4 (the period the contract ended)</span></label>
+              <label class="opt"><input type="radio" name="Q9_renewal_timing" value="Q1"><span>Q1 (the period it actually closed)</span></label>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- 5. Source of truth -->
+        <fieldset>
+          <div class="grp-label">05 · Source of Truth</div>
+          <div class="q">
+            <div class="qt">The authoritative count of <strong>active customers</strong> comes from…</div>
+            <div class="opts">
+              <label class="opt"><input type="radio" name="Q10_active_customers" value="CRM"><span>The CRM (Salesforce / HubSpot)</span></label>
+              <label class="opt"><input type="radio" name="Q10_active_customers" value="Billing"><span>The billing system (Stripe / Chargebee)</span></label>
+              <label class="opt"><input type="radio" name="Q10_active_customers" value="Product DB"><span>The product database / admin panel</span></label>
+            </div>
+          </div>
+          <div class="q">
+            <div class="qt">A deal is officially "closed" on the date…</div>
+            <div class="opts">
+              <label class="opt"><input type="radio" name="Q11_close_date" value="CRM Closed Won"><span>The AE marks it Closed Won in the CRM</span></label>
+              <label class="opt"><input type="radio" name="Q11_close_date" value="Signed contract to Finance"><span>The signed contract reaches Finance</span></label>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- 6. AI-influenced -->
+        <fieldset>
+          <div class="grp-label">06 · AI-Influenced Revenue</div>
+          <div class="q">
+            <div class="qt"><span class="scenario">A lead talks to your AI agent in January, then buys in October with no AI contact in between.</span> Is that deal AI-influenced?</div>
+            <div class="opts">
+              <label class="opt"><input type="radio" name="Q12_ai_influence" value="Yes"><span>Yes — AI touched it</span></label>
+              <label class="opt"><input type="radio" name="Q12_ai_influence" value="No"><span>No — too long ago</span></label>
+              <label class="opt"><input type="radio" name="Q12_ai_influence" value="Only within window"><span>Only if it's inside a defined lookback window</span></label>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- 7. Catch-all -->
+        <fieldset>
+          <div class="grp-label">07 · Your gut</div>
+          <div class="q">
+            <div class="qt">Name one number or term you suspect your team defines <strong>differently</strong> than you do.</div>
+            <textarea name="Q13_suspected_conflict" placeholder="The thing you quietly disagree on."></textarea>
+          </div>
+        </fieldset>
+
+        <input type="hidden" name="Company" id="company" value="">
+        <input type="hidden" name="_subject" id="subjectField" value="Definition Lock prep — response">
+
+        <button type="submit" class="submit" id="submitBtn">Send my answers</button>
+        <div class="err" id="errMsg">Please add your name and function before sending.</div>
+
+        <p class="foot">Your individual answers are seen only by your AI-Ready RevOps facilitator and used to prepare the session. They won't be shared back to your team attributed to you — only the patterns will.</p>
+      </form>
+
+      <!-- THANK YOU -->
+      <div class="thanks" id="thanks">
+        <div class="check">✓</div>
+        <h2>Got it — thank you.</h2>
+        <p>Your answers are in. We'll bring the real disagreements to the session so the 90 minutes goes straight to resolving them. See you there.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  // ===== CONFIG: replace with your own Formspree form ID (create a new one for prep responses) =====
+  const FORMSPREE_ENDPOINT = "https://formspree.io/f/mojzyqgr";
+
+  // Prefill company from URL (?company=Acme), so the auto-sent link carries it
+  const params = new URLSearchParams(window.location.search);
+  const company = (params.get('company') || '').trim();
+  if (company) {
+    document.getElementById('company').value = company;
+    document.getElementById('subjectField').value = 'Definition Lock prep — ' + company;
+    document.getElementById('subline').textContent = company + ' · answer from your own seat — the disagreements are the point.';
+  }
+
+  const form = document.getElementById('prepForm');
+  const errMsg = document.getElementById('errMsg');
+  const submitBtn = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    errMsg.style.display = 'none';
+
+    const name = document.getElementById('name').value.trim();
+    const role = document.getElementById('role').value;
+    if (!name || !role) { errMsg.style.display = 'block'; window.scrollTo({top:0, behavior:'smooth'}); return; }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
+    const data = new FormData(form);
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        document.getElementById('thanks').style.display = 'block';
+        window.scrollTo({top:0, behavior:'smooth'});
+      } else {
+        throw new Error('submit failed');
+      }
+    } catch (err) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send my answers';
+      errMsg.textContent = "Something went wrong sending that. Please try again, or email your answers to ready@aireadyrevops.com.";
+      errMsg.style.display = 'block';
+    }
+  });
+</script>
+</body>
+</html>
