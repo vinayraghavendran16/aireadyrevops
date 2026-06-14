@@ -110,8 +110,25 @@
 
     <div class="body">
 
+      <!-- START SCREEN (shown only on a bare visit, no ?room) -->
+      <div id="startView" style="display:none">
+        <div class="share" style="background:var(--bg-alt); border-color:var(--rule)">
+          <div class="lbl">How this works</div>
+          <div class="desc" style="margin-bottom:0">Start a check below, then send the link to your CRO, CFO, and Head of CS. <strong>Everyone who opens that one link joins the same check</strong> — and you'll see exactly where your team's definitions disagree. Opening a fresh page instead of the shared link starts a separate check, so always pass the link around.</div>
+        </div>
+        <button class="submit" id="startBtn" type="button" style="margin-top:0">Start your team's Gap Check</button>
+        <div style="text-align:center; margin-top:1.3rem">
+          <div class="lh" style="font-size:13px; color:var(--muted); margin-bottom:0.5rem">Were you sent a team link? Paste it here to join.</div>
+          <div class="leadrow" style="max-width:480px; margin:0 auto">
+            <input type="text" id="joinInput" placeholder="Paste your team's Gap Check link">
+            <button class="copybtn" id="joinBtn" type="button">Open</button>
+          </div>
+          <div class="err" id="joinMsg"></div>
+        </div>
+      </div>
+
       <!-- FORM -->
-      <div id="formView">
+      <div id="formView" style="display:none">
         <div class="share">
           <div class="lbl">Step 1 — Send this link to your team</div>
           <div class="desc">Have each leader answer on their own, <strong>without comparing notes.</strong> Then come back to this same link to see where you split. The disagreements are the whole point.</div>
@@ -203,16 +220,48 @@
   // Palette for result bars
   const COLORS = ["#B23A1E","#1F5A3A","#B07A1A","#5C6473","#8E2D17"];
 
-  // ----- room id -----
+  // ----- room handling -----
   const params = new URLSearchParams(location.search);
   let room = (params.get("room") || "").replace(/[^a-zA-Z0-9]/g,"").slice(0,32);
-  if (!room) {
-    room = Math.random().toString(36).slice(2,10);
+  let shareUrl = "";
+
+  function activateRoom(roomId){
+    room = roomId;
     const u = new URL(location.href); u.searchParams.set("room", room);
     history.replaceState({}, "", u);
+    shareUrl = location.origin + location.pathname + "?room=" + room;
+    document.getElementById("shareLink").textContent = shareUrl;
+    document.getElementById("startView").style.display = "none";
+    document.getElementById("formView").style.display = "block";
+    checkExisting();
   }
-  const shareUrl = location.origin + location.pathname + "?room=" + room;
-  document.getElementById("shareLink").textContent = shareUrl;
+
+  if (room) {
+    // Arrived via a shared link → join the existing check, go straight to the form
+    activateRoom(room);
+  } else {
+    // Bare visit → show the start screen
+    document.getElementById("startView").style.display = "block";
+    document.getElementById("formView").style.display = "none";
+  }
+
+  document.getElementById("startBtn").addEventListener("click", () => {
+    activateRoom(Math.random().toString(36).slice(2,10));
+    window.scrollTo({top:0, behavior:"smooth"});
+  });
+
+  document.getElementById("joinBtn").addEventListener("click", () => {
+    const raw = document.getElementById("joinInput").value.trim();
+    const jm = document.getElementById("joinMsg");
+    jm.style.display = "none";
+    if(!raw){ jm.textContent = "Paste the link you were sent."; jm.style.display = "block"; return; }
+    let code = "";
+    const m = raw.match(/[?&]room=([a-zA-Z0-9]+)/);
+    if(m) code = m[1];
+    else if(/^[a-zA-Z0-9]+$/.test(raw)) code = raw; // they pasted just the code
+    if(!code){ jm.textContent = "That doesn't look like a team link."; jm.style.display = "block"; return; }
+    location.href = location.origin + location.pathname + "?room=" + code;
+  });
 
   // ----- build questions -----
   const qWrap = document.getElementById("questions");
@@ -240,8 +289,8 @@
   }
   wireCopy(document.getElementById("copyBtn"));
 
-  // ----- on load: if room already has responses, nudge -----
-  (async function checkExisting(){
+  // ----- if room already has responses, nudge -----
+  async function checkExisting(){
     try{
       const res = await fetch(API + "?room=" + encodeURIComponent(room));
       if(!res.ok) return;
@@ -254,7 +303,7 @@
         if(v) v.addEventListener("click", ()=> renderResults(d));
       }
     }catch(e){/* silent */}
-  })();
+  }
 
   // ----- submit -----
   const form = document.getElementById("gapForm");
