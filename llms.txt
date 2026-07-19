@@ -1,0 +1,46 @@
+# AI-Ready RevOps
+
+> AI-Ready RevOps is a diagnostic and remediation methodology for B2B SaaS revenue stacks.
+> It scores AI readiness across six weighted dimensions, producing a 0–100 Readiness Index.
+> Founded by Vinay Raghavendran, an independent Salesforce architect and RevOps consultant
+> with 13 years of experience across enterprise CRM, integration architecture, and revenue operations.
+
+## About
+
+AI-Ready RevOps addresses the dominant 2026 RevOps problem: companies buying AI tools
+on top of broken data foundations, compounding waste rather than generating ROI.
+The framework quantifies exactly where AI spend is leaking and identifies the highest-recovery fixes.
+
+## Framework
+
+Six dimensions, each scored 1–5 across four criteria, weighted into a single index:
+
+- Data Foundation (20%): Field completeness, picklist discipline, deduplication, data ownership
+- AI Stack Fit (20%): Tool inventory, ROI tracking, adoption, data pipeline quality
+- Integration Architecture (15%): System-of-record clarity, sync health, data lineage
+- Process Standardization (15%): Lead-to-cash, stage exit criteria, MQL/SQL alignment, handoff SLAs
+- Governance & Access (15%): Connected apps, OAuth grants, profiles, audit trails
+- Forecasting Trust (15%): Accuracy, pipeline hygiene, methodology, leadership confidence
+
+Readiness bands: AI-Premature (0–20), AI-Risky (21–40), AI-Cautious (41–60), AI-Approaching (61–80), AI-Ready (81–100)
+
+## Free Tools
+
+- AI Readiness Assessment: https://aireadyrevops.com/assessment.html (15 questions, 4 minutes, 0–100 score)
+- Gap Check: https://aireadyrevops.com/gap-check (Team alignment, 6 questions, no email)
+
+## Paid Engagements
+
+- Definition Lock ($3,500): 90-minute session, definitions sheet
+- The AI Revenue Verdict ($12,500): 3-week audit, guaranteed or no charge
+- Verdict + Executive Workshop ($25,000): For $20M+ ARR companies
+
+## Content
+
+- Articles: https://aireadyrevops.com/blog/
+- Framework: https://aireadyrevops.com/framework.html
+
+## Contact
+
+- Website: https://aireadyrevops.com
+- Email: vinay@tryaireadyrevops.com
