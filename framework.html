@@ -24,11 +24,67 @@
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "The AI-Ready RevOps Framework",
-  "description": "A diagnostic and remediation methodology for the modern revenue stack.",
-  "author": { "@type": "Person", "name": "Vinay Raghavendran" },
+  "description": "A diagnostic and remediation methodology for the modern revenue stack. Six weighted dimensions, twenty-four scoring criteria, and one auditable Readiness Index scored 0 to 100.",
+  "author": { "@type": "Person", "name": "Vinay Raghavendran", "url": "https://aireadyrevops.com/about.html" },
   "publisher": { "@type": "Organization", "name": "AI-Ready RevOps" },
   "url": "https://aireadyrevops.com/framework.html",
   "mainEntityOfPage": "https://aireadyrevops.com/framework.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I know if my revenue stack is ready for AI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Score your organization across six dimensions: Data Foundation, Integration Architecture, Process Standardization, AI Stack Fit, Governance and Access, and Forecasting Trust. Each dimension has four criteria rated 1 to 5, producing a weighted Readiness Index from 0 to 100. A score above 65 indicates your foundations can support AI deployment. Below 50 means foundational work is needed before AI tools will produce reliable outputs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a good AI readiness score?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "80 to 100 is AI-Ready: foundations support deployment, focus on optimization. 65 to 79 is AI-Capable: most foundations in place, targeted remediation will unlock ROI. 50 to 64 is AI-Risky: structural remediation required before scaling. 35 to 49 is AI-Fragile: AI likely producing unreliable outputs. 0 to 34 is AI-Premature: foundational work required before any AI investment delivers ROI."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the six dimensions of AI readiness for RevOps?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The six dimensions are: Data Foundation (20% weight) covering field completeness, picklist discipline, deduplication, and data ownership; Integration Architecture (15%) covering system-of-record clarity and sync health; Process Standardization (15%) covering lead-to-cash documentation, stage definitions, and handoff SLAs; AI Stack Fit (20%) covering tool inventory, adoption, and use-case discipline; Governance and Access (15%) covering connected apps, permissions, and change management; and Forecasting Trust (15%) covering forecast accuracy, pipeline hygiene, and leadership confidence."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to become AI-ready?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For a mid-market B2B SaaS company scoring in the AI-Risky band (50 to 64), focused remediation on the two highest-impact dimensions typically takes 6 to 10 weeks. Moving from AI-Fragile to AI-Capable usually requires a 3 to 4 month foundational project. The timeline depends on the current state of CRM data quality, process documentation, and governance maturity."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do AI tools fail in RevOps?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AI tools in RevOps most commonly fail because of three upstream problems: dirty CRM data (incomplete fields, inconsistent picklists, duplicate records), undefined processes (subjective stage definitions, misaligned MQL/SQL criteria, undocumented handoffs), and governance debt (over-broad permissions, unaudited connected apps, no change management). The AI itself is rarely the problem. The foundation underneath it is."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between an AI readiness assessment and a maturity model?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A maturity model describes where you are on a generic scale. The AI-Ready RevOps Framework produces a scorecard with named criteria tied to specific evidence and specific remediation actions. It tells you which specific change will move your score, not just what level you are at. The output is a working document you can run a remediation project against."
+      }
+    }
+  ]
 }
 </script>
 <!-- GA4 -->
@@ -70,6 +126,8 @@
 <section class="section-tight">
   <div class="container narrow prose">
 
+    <p><strong>In short:</strong> The AI-Ready RevOps Framework scores your revenue stack's ability to support AI tools across six weighted dimensions, producing a 0-to-100 Readiness Index. Most mid-market B2B SaaS companies score between 35 and 60, meaning their AI investments are operating on foundations that degrade output quality. The framework identifies which specific fixes recover the most ROI.</p>
+
     <h2>The thesis</h2>
     <p>By early 2026, roughly three out of four RevOps teams had embedded AI into their go-to-market stack. The most common conversation in revenue leadership is no longer about AI strategy. It is about whether the data underneath the AI can be trusted at all.</p>
     <p>Three patterns recur across mid-market B2B companies, and they are why a generic RevOps audit produces a 60-page deck and changes nothing.</p>
@@ -109,7 +167,7 @@
     <h2>The six dimensions</h2>
 
     <h3 id="data">01 · Data Foundation <span class="tag">Weight 20%</span></h3>
-    <p>AI models are only as good as the data they consume. Every downstream dimension — forecasting, scoring, routing, agent actions — depends on this foundation. It is the highest-weighted dimension because it is the most common point of failure.</p>
+    <p>Data Foundation measures the quality, completeness, and governance of the CRM data that AI tools consume. It is the highest-weighted dimension because every downstream capability (forecasting, scoring, routing, agent actions) depends on it, and it is the most common point of failure.</p>
     <h4>Scoring criteria</h4>
     <ul>
       <li><strong>1.1 Field Completeness</strong> on Account, Contact, and Opportunity required fields.</li>
@@ -122,7 +180,7 @@
     <p class="dim-tools" style="margin:0.85rem 0 0;font-size:0.93rem;line-height:1.55"><span style="font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.09em;text-transform:uppercase;color:var(--accent);margin-right:0.5rem">Try it free →</span><a href="/tools/crm-data-quality.html">CRM Data Quality Scorecard</a> &middot; <a href="/tools/health-score-builder.html">Health Score Builder</a></p>
 
     <h3 id="integration">02 · Integration Architecture <span class="tag">Weight 15%</span></h3>
-    <p>Modern revenue stacks have 7 to 10 tools per rep. Without clear system-of-record rules and data lineage, every tool tells a different story. AI agents inherit and amplify this confusion.</p>
+    <p>Integration Architecture measures whether your revenue stack has clear system-of-record rules, reliable data syncs, and documented data lineage across tools. When every tool tells a different story about pipeline, revenue, or engagement, AI agents inherit and amplify the confusion.</p>
     <h4>Scoring criteria</h4>
     <ul>
       <li><strong>2.1 System of Record Clarity</strong>. Documented SoR per data domain.</li>
@@ -134,7 +192,7 @@
     <p class="dim-tools" style="margin:0.85rem 0 0;font-size:0.93rem;line-height:1.55"><span style="font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.09em;text-transform:uppercase;color:var(--accent);margin-right:0.5rem">Try it free →</span><a href="/tools/mql-sql-aligner.html">MQL/SQL Aligner</a></p>
 
     <h3 id="process">03 · Process Standardization <span class="tag">Weight 15%</span></h3>
-    <p>AI cannot infer process. If "MQL" means three different things across marketing, sales, and customer success, AI scoring and routing will produce three different recommendations. Standardization is what allows AI to act consistently.</p>
+    <p>Process Standardization measures whether your revenue processes are documented, consistent, and enforced in your systems. AI cannot infer process. If "MQL" means three different things across marketing, sales, and customer success, AI scoring and routing will produce three different recommendations.</p>
     <h4>Scoring criteria</h4>
     <ul>
       <li><strong>3.1 Lead-to-Cash Documentation</strong>. Living process documentation tied to systems.</li>
@@ -146,7 +204,7 @@
     <p class="dim-tools" style="margin:0.85rem 0 0;font-size:0.93rem;line-height:1.55"><span style="font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.09em;text-transform:uppercase;color:var(--accent);margin-right:0.5rem">Try it free →</span><a href="/tools/exit-criteria-designer.html">Stage Exit-Criteria Designer</a> &middot; <a href="/tools/mql-sql-aligner.html">MQL/SQL Aligner</a> &middot; <a href="/tools/qbr-builder.html">QBR Builder</a></p>
 
     <h3 id="ai">04 · AI Stack Fit <span class="tag">Weight 20%</span></h3>
-    <p>Whether AI investments are positioned to produce value. This is where wasted spend hides — overlapping tools, capabilities deployed without adoption, and pipelines that should but do not exist.</p>
+    <p>AI Stack Fit measures whether your AI tool investments are producing measurable value or accumulating as shelfware. It scores tool inventory, adoption rates, data pipeline quality, and use-case discipline. This is where wasted spend hides: overlapping tools, capabilities deployed without adoption, and pipelines that should but do not exist.</p>
     <h4>Scoring criteria</h4>
     <ul>
       <li><strong>4.1 AI Tool Inventory and ROI Tracking</strong>. Measured outcomes per tool.</li>
@@ -158,7 +216,7 @@
     <p class="dim-tools" style="margin:0.85rem 0 0;font-size:0.93rem;line-height:1.55"><span style="font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.09em;text-transform:uppercase;color:var(--accent);margin-right:0.5rem">Try it free →</span><a href="/tools/build-vs-buy.html">Build-vs-Buy Modeler</a> &middot; <a href="/tools/poc-success-criteria.html">POC Success-Criteria</a></p>
 
     <h3 id="governance">05 · Governance and Access <span class="tag">Weight 15%</span></h3>
-    <p>Post-breach, governance moved from IT concern to revenue concern. AI agents now act on systems autonomously. Without audit trails, you cannot prove what they did, attribute changes correctly, or revoke access cleanly.</p>
+    <p>Governance and Access measures your organization's control over who and what can access, modify, and act on revenue data. Post-breach, governance moved from IT concern to revenue concern. AI agents now act on systems autonomously, and without audit trails, you cannot prove what they did, attribute changes correctly, or revoke access cleanly.</p>
     <h4>Scoring criteria</h4>
     <ul>
       <li><strong>5.1 Connected App and OAuth Grant Hygiene</strong>. Inventoried; least-privilege; monitored.</li>
@@ -168,7 +226,7 @@
     </ul>
 
     <h3 id="forecast">06 · Forecasting Trust <span class="tag">Weight 15%</span></h3>
-    <p>The proof point that everything below works. If leaders do not believe the number, no other RevOps work matters. This dimension is the integration test for the rest of the framework.</p>
+    <p>Forecasting Trust measures whether your revenue forecast is accurate, believed by leadership, and used as the operating plan. It is the integration test for every other dimension: if the forecast is wrong, something upstream (data, process, pipeline hygiene) is broken. If leadership does not believe the number, no other RevOps work matters.</p>
     <h4>Scoring criteria</h4>
     <ul>
       <li><strong>6.1 Forecast Accuracy (Recent 4 Quarters)</strong>. Commit-to-actual measurement.</li>
@@ -185,6 +243,42 @@
     <p><strong>Not a maturity model.</strong> Maturity models describe where you are; they don't tell you what specific change moves the number. This framework produces a scorecard with named criteria tied to specific evidence and specific remediation.</p>
     <p><strong>Not a tech stack audit.</strong> Tool inventory is one of 24 criteria, not the focus. The question is whether the foundation is AI-ready, not whether you bought the right tools.</p>
     <p><strong>Not a strategy deck.</strong> The output is a working document the buyer can run a remediation project against — not slides that sit unread in a shared drive.</p>
+
+    <hr>
+
+    <h2>Frequently asked questions</h2>
+
+    <details>
+      <summary>How do I know if my revenue stack is ready for AI?</summary>
+      <p>Score your organization across the six dimensions above. Each dimension has four criteria rated 1 to 5, producing a weighted Readiness Index from 0 to 100. A score above 65 indicates your foundations can support AI deployment. Below 50 means foundational work is needed before AI tools will produce reliable outputs. The free <a href="/assessment.html">15-question assessment</a> gives you a directional score in about four minutes.</p>
+    </details>
+
+    <details>
+      <summary>What is a good AI readiness score?</summary>
+      <p>80 to 100 (AI-Ready) means your foundations support AI deployment. 65 to 79 (AI-Capable) means most foundations are in place and targeted remediation will unlock ROI. 50 to 64 (AI-Risky) means structural remediation is required before scaling AI. Below 50 means AI is likely producing unreliable outputs. Most mid-market B2B SaaS companies score between 35 and 60 on their first assessment.</p>
+    </details>
+
+    <details>
+      <summary>How long does it take to become AI-ready?</summary>
+      <p>For a company scoring in the AI-Risky band (50 to 64), focused remediation on the two highest-impact dimensions typically takes 6 to 10 weeks. Moving from AI-Fragile (35 to 49) to AI-Capable (65+) usually requires a 3 to 4 month foundational project. The timeline depends on CRM data quality, process documentation maturity, and governance debt.</p>
+    </details>
+
+    <details>
+      <summary>Why do AI tools fail in RevOps?</summary>
+      <p>AI tools most commonly fail because of three upstream problems: dirty CRM data (incomplete fields, inconsistent picklists, duplicate records), undefined processes (subjective stage definitions, misaligned MQL/SQL criteria, undocumented handoffs), and governance debt (over-broad permissions, unaudited connected apps, no change management). The AI itself is rarely the problem. The foundation underneath it is.</p>
+    </details>
+
+    <details>
+      <summary>What is the difference between this framework and a maturity model?</summary>
+      <p>A maturity model describes where you are on a generic scale. This framework produces a scorecard with named criteria tied to specific evidence and specific remediation actions. It tells you which specific change will move your score, not just what level you are at. The output is a working document you can run a remediation project against, not a slide that describes your current stage.</p>
+    </details>
+
+    <details>
+      <summary>Can I run this assessment myself or do I need a consultant?</summary>
+      <p>The free <a href="/assessment.html">15-question self-assessment</a> gives you a directional Readiness Index in about four minutes. For a full evidence-based audit with stakeholder interviews and system analysis, the <a href="/services.html">AI Revenue Verdict</a> engagement produces a board-grade report with specific recovery actions.</p>
+    </details>
+
+    <hr>
 
     <div class="callout">
       <h3 style="margin-bottom:0.5rem">Apply the framework to your stack.</h3>
