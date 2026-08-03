@@ -3,43 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FAF8F3">
 <title>Salesforce Picklist Hygiene: Why 'Other' Is Eating Your Data Quality | AI-Ready RevOps</title>
 <meta name="description" content="When 30-40% of your picklist records say 'Other', your CRM data is unreliable. Learn how to audit, clean, and govern Salesforce picklists for AI-ready data.">
 <link rel="canonical" href="https://aireadyrevops.com/blog/salesforce-picklist-hygiene-other-values.html">
+
+<meta property="og:type" content="article">
 <meta property="og:title" content="Salesforce Picklist Hygiene: Why 'Other' Is Eating Your Data Quality">
 <meta property="og:description" content="When 30-40% of your picklist records say 'Other', your CRM data is unreliable. Learn how to audit, clean, and govern Salesforce picklists for AI-ready data.">
-<meta property="og:type" content="article">
 <meta property="og:url" content="https://aireadyrevops.com/blog/salesforce-picklist-hygiene-other-values.html">
-<meta property="og:image" content="https://aireadyrevops.com/assets/og-image.png">
-<meta property="og:site_name" content="AI-Ready RevOps">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Salesforce Picklist Hygiene: Why 'Other' Is Eating Your Data Quality">
-<meta name="twitter:description" content="When 30-40% of your picklist records say 'Other', your CRM data is unreliable. Learn how to audit, clean, and govern Salesforce picklists for AI-ready data.">
-<meta name="twitter:image" content="https://aireadyrevops.com/assets/og-image.png">
-<meta name="theme-color" content="#FAF8F3">
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<meta property="article:published_time" content="2026-03-16">
+<meta property="article:author" content="Vinay Raghavendran">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,30..100;1,9..144,300..700,30..100&family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/style.css">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "Salesforce Picklist Hygiene: Why 'Other' Is Eating Your Data Quality",
   "description": "When 30-40% of your picklist records say 'Other', your CRM data is unreliable. Learn how to audit, clean, and govern Salesforce picklists for AI-ready data.",
+  "author": { "@type": "Person", "name": "Vinay Raghavendran", "url": "https://aireadyrevops.com/about.html" },
+  "publisher": { "@type": "Organization", "name": "AI-Ready RevOps" },
   "datePublished": "2026-03-16",
-  "dateModified": "2026-03-16",
-  "author": {
-    "@type": "Person",
-    "name": "Vinay Raghavendran",
-    "url": "https://aireadyrevops.com/about.html"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "AI-Ready RevOps",
-    "url": "https://aireadyrevops.com"
-  },
+  "url": "https://aireadyrevops.com/blog/salesforce-picklist-hygiene-other-values.html",
   "mainEntityOfPage": "https://aireadyrevops.com/blog/salesforce-picklist-hygiene-other-values.html"
 }
 </script>
@@ -70,101 +61,100 @@
 </head>
 <body>
 <a href="#main" class="skip-link">Skip to content</a>
+
 <header class="site-header">
-<nav>
-<a href="/" class="logo">AI-Ready RevOps</a>
-<ul class="nav-links">
-<li><a href="/framework.html">Framework</a></li>
-<li><a href="/tools/">Free Tools</a></li>
-<li><a href="/services.html">Services</a></li>
-<li><a href="/blog/">Articles</a></li>
-<li><a href="/about.html">About</a></li>
-</ul>
-<a href="/assessment.html" class="nav-cta">Take the Assessment</a>
-</nav>
+  <nav class="nav">
+    <a class="brand" href="/"><span class="brand-mark"></span><span>AI-Ready RevOps</span></a>
+    <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    <ul class="nav-links" id="primary-nav">
+      <li><a href="/framework.html">Framework</a></li>
+      <li><a href="/tools/">Free Tools</a></li>
+      <li><a href="/services.html">Services</a></li>
+      <li><a href="/blog/" aria-current="page">Articles</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a class="nav-cta" href="/assessment.html">Take the Assessment</a></li>
+    </ul>
+  </nav>
 </header>
 
 <main id="main">
-<article class="blog-post">
-<header class="post-header">
-<span class="post-category">Data Foundation</span>
-<h1>Salesforce Picklist Hygiene: Why 'Other' Is Eating Your Data Quality</h1>
-<div class="post-meta">
-<time datetime="2026-03-16">March 16, 2026</time>
-<span class="read-time">7 min read</span>
-</div>
-</header>
 
-<div class="prose">
-<p>Open any mid-market Salesforce org and pull a report on Lead Source, Loss Reason, or Industry. In most cases, you will find that "Other" is the second or third most common value. Sometimes it is the most common value. When 30% or more of your records say "Other," your CRM is not capturing data. It is capturing the absence of data.</p>
-<p>This matters for two reasons that go beyond reporting. First, any AI tool that reads picklist data will treat "Other" as a meaningful category. A lead scoring model that sees 35% of closed-won deals tagged as Lead Source: Other will learn that "Other" is a strong predictor of success, which is nonsensical. Second, downstream routing, assignment, and segmentation logic that depends on picklist values breaks silently when the dominant value is "Other."</p>
-<h2>Why "Other" takes over</h2>
-<p>Picklist sprawl happens for predictable reasons. The original values were defined years ago by someone who is no longer at the company. The business has changed, but the picklist has not. Reps encounter scenarios that do not fit any existing value, so they pick "Other" because it is faster than requesting a new value through an admin ticket.</p>
-<p>There is also a design problem. Many picklists are built with too few values (forcing legitimate answers into "Other") or too many values (making reps scroll through 40 options until they give up and pick "Other"). Both extremes produce the same result: unreliable data.</p>
-<h2>How to audit your picklist health</h2>
-<p>Run a distribution report on every picklist field that matters to your reporting or AI tools. For each field, calculate the percentage of records in each value. Flag any picklist where "Other" exceeds 10% and any picklist where more than 30% of values are used by fewer than 1% of records (these are zombie values that add clutter without capturing meaningful data).</p>
-<p>For fields with a free-text "Other" description field, export those descriptions and cluster them. You will almost always find that 60-80% of "Other" entries map to three or four patterns that should be their own picklist values. This clustering exercise is the fastest way to fix a broken picklist.</p>
-<h2>Fixing the picklist: a practical process</h2>
-<p>Start with your highest-impact fields: Lead Source, Loss Reason, Industry, and any field that feeds routing, scoring, or AI models. For each field, pull the current value distribution and the free-text Other descriptions.</p>
-<p>Propose a new value set based on what you find: merge rarely-used values into broader categories, promote common "Other" descriptions to named values, and retire values that represent fewer than 1% of records. Then validate the new set with three to five reps and one sales manager. If they can categorize ten recent records using the new values without hesitation, the set works.</p>
-<p>Once you update the picklist, backfill historical records where possible. A simple data update that recategorizes old "Other" records into the new values improves your historical reporting and gives AI models a richer training set.</p>
-<h2>Governance: keeping picklists clean</h2>
-<p>Set a quarterly review cadence for high-impact picklists. Check the "Other" rate, check for new patterns in free-text descriptions, and update values accordingly. Assign a named owner for each critical picklist so that requests for new values have a clear path instead of dying in a backlog.</p>
-<p>Consider dependent picklists where appropriate. If your Industry field is broad, a dependent Sub-Industry field can capture specificity without bloating the primary field. But be cautious: every layer of dependency adds complexity for reps and admins.</p>
-<h2>The AI connection</h2>
-<p>Picklist quality is one of four criteria in the Data Foundation dimension of the <a href="/framework.html">AI-Ready RevOps Framework</a>. When picklist data is clean, AI tools can segment, score, and route with precision. When 30% of records say "Other," every model built on that field inherits the ambiguity. Clean picklists are not a nice-to-have. They are a prerequisite for any AI tool that reads from your CRM.</p>
+<article>
+  <header class="article-header">
+    <div class="container narrow">
+      <div class="article-meta">
+        <span>Data Foundation</span>
+        <span>March 2026</span>
+        <span>7 min read</span>
+      </div>
+      <h1>Salesforce Picklist Hygiene: Why 'Other' Is Eating Your Data Quality</h1>
+    </div>
+  </header>
+
+  <div class="container narrow prose">
+
+    <p>Open any mid-market Salesforce org and pull a report on Lead Source, Loss Reason, or Industry. In most cases, you will find that "Other" is the second or third most common value. Sometimes it is the most common value. When 30% or more of your records say "Other," your CRM is not capturing data. It is capturing the absence of data.</p>
+    <p>This matters for two reasons that go beyond reporting. First, any AI tool that reads picklist data will treat "Other" as a meaningful category. A lead scoring model that sees 35% of closed-won deals tagged as Lead Source: Other will learn that "Other" is a strong predictor of success, which is nonsensical. Second, downstream routing, assignment, and segmentation logic that depends on picklist values breaks silently when the dominant value is "Other."</p>
+    <h2>Why "Other" takes over</h2>
+    <p>Picklist sprawl happens for predictable reasons. The original values were defined years ago by someone who is no longer at the company. The business has changed, but the picklist has not. Reps encounter scenarios that do not fit any existing value, so they pick "Other" because it is faster than requesting a new value through an admin ticket.</p>
+    <p>There is also a design problem. Many picklists are built with too few values (forcing legitimate answers into "Other") or too many values (making reps scroll through 40 options until they give up and pick "Other"). Both extremes produce the same result: unreliable data.</p>
+    <h2>How to audit your picklist health</h2>
+    <p>Run a distribution report on every picklist field that matters to your reporting or AI tools. For each field, calculate the percentage of records in each value. Flag any picklist where "Other" exceeds 10% and any picklist where more than 30% of values are used by fewer than 1% of records (these are zombie values that add clutter without capturing meaningful data).</p>
+    <p>For fields with a free-text "Other" description field, export those descriptions and cluster them. You will almost always find that 60-80% of "Other" entries map to three or four patterns that should be their own picklist values. This clustering exercise is the fastest way to fix a broken picklist.</p>
+    <h2>Fixing the picklist: a practical process</h2>
+    <p>Start with your highest-impact fields: Lead Source, Loss Reason, Industry, and any field that feeds routing, scoring, or AI models. For each field, pull the current value distribution and the free-text Other descriptions.</p>
+    <p>Propose a new value set based on what you find: merge rarely-used values into broader categories, promote common "Other" descriptions to named values, and retire values that represent fewer than 1% of records. Then validate the new set with three to five reps and one sales manager. If they can categorize ten recent records using the new values without hesitation, the set works.</p>
+    <p>Once you update the picklist, backfill historical records where possible. A simple data update that recategorizes old "Other" records into the new values improves your historical reporting and gives AI models a richer training set.</p>
+    <h2>Governance: keeping picklists clean</h2>
+    <p>Set a quarterly review cadence for high-impact picklists. Check the "Other" rate, check for new patterns in free-text descriptions, and update values accordingly. Assign a named owner for each critical picklist so that requests for new values have a clear path instead of dying in a backlog.</p>
+    <p>Consider dependent picklists where appropriate. If your Industry field is broad, a dependent Sub-Industry field can capture specificity without bloating the primary field. But be cautious: every layer of dependency adds complexity for reps and admins.</p>
+    <h2>The AI connection</h2>
+    <p>Picklist quality is one of four criteria in the Data Foundation dimension of the <a href="/framework.html">AI-Ready RevOps Framework</a>. When picklist data is clean, AI tools can segment, score, and route with precision. When 30% of records say "Other," every model built on that field inherits the ambiguity. Clean picklists are not a nice-to-have. They are a prerequisite for any AI tool that reads from your CRM.</p>
+
+    <p class="dim-tools" style="margin:0.85rem 0 0;font-size:0.93rem;line-height:1.55"><span style="font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.09em;text-transform:uppercase;color:var(--accent);margin-right:0.5rem">Try it free &rarr;</span><a href="/tools/crm-data-quality.html">CRM Data Quality Scorecard</a></p>
 
 
-<section class="faq">
-<h2>Frequently asked questions</h2>
-<details><summary>What is a healthy 'Other' rate for Salesforce picklists?</summary>
-<p>Below 5% is strong. Between 5% and 15% suggests the picklist values need updating. Above 15% means the picklist is failing as a data capture mechanism and your reporting on that field is unreliable.</p>
-</details>
-<details><summary>Should I remove the Other option from picklists?</summary>
-<p>Not necessarily. Other serves a purpose as a catch-all for genuinely rare cases. The problem is when it becomes the default because your picklist values do not reflect how reps actually describe deals, leads, or accounts. Fix the values first, then monitor the Other rate.</p>
-</details>
-</section>
+    <h2>Frequently asked questions</h2>
+    <details><summary>What is a healthy 'Other' rate for Salesforce picklists?</summary>
+    <p>Below 5% is strong. Between 5% and 15% suggests the picklist values need updating. Above 15% means the picklist is failing as a data capture mechanism and your reporting on that field is unreliable.</p>
+    </details>
 
-<div class="related-tools"><p><strong>Related free tools:</strong> <a href="/tools/crm-data-quality.html">CRM Data Quality Scorecard</a></p></div>
+    <details><summary>Should I remove the Other option from picklists?</summary>
+    <p>Not necessarily. Other serves a purpose as a catch-all for genuinely rare cases. The problem is when it becomes the default because your picklist values do not reflect how reps actually describe deals, leads, or accounts. Fix the values first, then monitor the Other rate.</p>
+    </details>
 
-<div class="post-cta">
-<h3>See where your revenue stack stands</h3>
-<p>The <a href="/assessment.html">free AI-Ready RevOps Assessment</a> scores your organization across six weighted dimensions in about four minutes. No demo, no sales call required.</p>
-<a href="/assessment.html" class="btn">Take the assessment</a>
-</div>
-</div>
+
+    <hr>
+
+    <div class="callout">
+      <h3 style="margin-bottom:0.5rem">Score your stack.</h3>
+      <p style="margin-bottom:1rem">The free 15-question assessment produces a Readiness Index in under four minutes. See where your foundation stands across six weighted dimensions.</p>
+      <a href="/assessment.html" class="btn btn-accent btn-arrow">Take the assessment</a>
+    </div>
+
+    <p style="margin-top:3rem"><a href="/blog/">&larr; All articles</a></p>
+
+  </div>
 </article>
+
 </main>
 
 <footer class="site-footer">
-<div class="footer-brand">
-<strong>AI-Ready RevOps</strong>
-<p>A diagnostic and remediation methodology for the modern revenue stack.</p>
-</div>
-<div class="footer-links">
-<div>
-<h4>The Framework</h4>
-<ul>
-<li><a href="/framework.html">Methodology</a></li>
-<li><a href="/tools/">Free tools</a></li>
-<li><a href="/assessment.html">Free assessment</a></li>
-<li><a href="/services.html">Engagements</a></li>
-</ul>
-</div>
-<div>
-<h4>Read</h4>
-<ul>
-<li><a href="/blog/">Articles</a></li>
-</ul>
-</div>
-<div>
-<h4>About</h4>
-<ul>
-<li><a href="/about.html">About the author</a></li>
-</ul>
-</div>
-</div>
-<p class="footer-copy">&copy; 2026 AI-Ready RevOps &middot; WhizzLead aireadyrevops.com</p>
+  <div class="container">
+    <div class="footer-grid">
+      <div><div class="footer-brand">AI-Ready RevOps</div><p class="footer-tag">A diagnostic and remediation methodology for the modern revenue stack.</p></div>
+      <div class="footer-col"><h4>The Framework</h4><ul><li><a href="/framework.html">Methodology</a></li><li><a href="/tools/">Free tools</a></li><li><a href="/assessment.html">Free assessment</a></li><li><a href="/services.html">Paid audits</a></li></ul></div>
+      <div class="footer-col"><h4>Read</h4><ul><li><a href="/blog/">Articles</a></li></ul></div>
+      <div class="footer-col"><h4>About</h4><ul><li><a href="/about.html">About the author</a></li><li><a href="mailto:hello@aireadyrevops.com">Contact</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>&copy; 2026 AI-Ready RevOps &middot; WhizzLead</span><span>aireadyrevops.com</span></div>
+  </div>
 </footer>
+
+<script>
+  const tog = document.querySelector('.menu-toggle');
+  const links = document.getElementById('primary-nav');
+  if (tog && links) tog.addEventListener('click', () => { const o = links.classList.toggle('open'); tog.setAttribute('aria-expanded', o ? 'true' : 'false'); });
+</script>
 </body>
 </html>

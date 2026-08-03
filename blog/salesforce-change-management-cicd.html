@@ -3,43 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FAF8F3">
 <title>Change Management for Salesforce: Why Every RevOps Team Needs Deployment Governance | AI-Ready RevOps</title>
 <meta name="description" content="When anyone can change anything in production without review, you get broken flows, conflicting automations, and an org nobody trusts. A guide to Salesforce change management.">
 <link rel="canonical" href="https://aireadyrevops.com/blog/salesforce-change-management-cicd.html">
+
+<meta property="og:type" content="article">
 <meta property="og:title" content="Change Management for Salesforce: Why Every RevOps Team Needs Deployment Governance">
 <meta property="og:description" content="When anyone can change anything in production without review, you get broken flows, conflicting automations, and an org nobody trusts. A guide to Salesforce change management.">
-<meta property="og:type" content="article">
 <meta property="og:url" content="https://aireadyrevops.com/blog/salesforce-change-management-cicd.html">
-<meta property="og:image" content="https://aireadyrevops.com/assets/og-image.png">
-<meta property="og:site_name" content="AI-Ready RevOps">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Change Management for Salesforce: Why Every RevOps Team Needs Deployment Governance">
-<meta name="twitter:description" content="When anyone can change anything in production without review, you get broken flows, conflicting automations, and an org nobody trusts. A guide to Salesforce change management.">
-<meta name="twitter:image" content="https://aireadyrevops.com/assets/og-image.png">
-<meta name="theme-color" content="#FAF8F3">
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<meta property="article:published_time" content="2026-07-06">
+<meta property="article:author" content="Vinay Raghavendran">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,30..100;1,9..144,300..700,30..100&family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/style.css">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "Change Management for Salesforce: Why Every RevOps Team Needs Deployment Governance",
   "description": "When anyone can change anything in production without review, you get broken flows, conflicting automations, and an org nobody trusts. A guide to Salesforce change management.",
+  "author": { "@type": "Person", "name": "Vinay Raghavendran", "url": "https://aireadyrevops.com/about.html" },
+  "publisher": { "@type": "Organization", "name": "AI-Ready RevOps" },
   "datePublished": "2026-07-06",
-  "dateModified": "2026-07-06",
-  "author": {
-    "@type": "Person",
-    "name": "Vinay Raghavendran",
-    "url": "https://aireadyrevops.com/about.html"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "AI-Ready RevOps",
-    "url": "https://aireadyrevops.com"
-  },
+  "url": "https://aireadyrevops.com/blog/salesforce-change-management-cicd.html",
   "mainEntityOfPage": "https://aireadyrevops.com/blog/salesforce-change-management-cicd.html"
 }
 </script>
@@ -70,93 +61,91 @@
 </head>
 <body>
 <a href="#main" class="skip-link">Skip to content</a>
+
 <header class="site-header">
-<nav>
-<a href="/" class="logo">AI-Ready RevOps</a>
-<ul class="nav-links">
-<li><a href="/framework.html">Framework</a></li>
-<li><a href="/tools/">Free Tools</a></li>
-<li><a href="/services.html">Services</a></li>
-<li><a href="/blog/">Articles</a></li>
-<li><a href="/about.html">About</a></li>
-</ul>
-<a href="/assessment.html" class="nav-cta">Take the Assessment</a>
-</nav>
+  <nav class="nav">
+    <a class="brand" href="/"><span class="brand-mark"></span><span>AI-Ready RevOps</span></a>
+    <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    <ul class="nav-links" id="primary-nav">
+      <li><a href="/framework.html">Framework</a></li>
+      <li><a href="/tools/">Free Tools</a></li>
+      <li><a href="/services.html">Services</a></li>
+      <li><a href="/blog/" aria-current="page">Articles</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a class="nav-cta" href="/assessment.html">Take the Assessment</a></li>
+    </ul>
+  </nav>
 </header>
 
 <main id="main">
-<article class="blog-post">
-<header class="post-header">
-<span class="post-category">Governance & Access</span>
-<h1>Change Management for Salesforce: Why Every RevOps Team Needs Deployment Governance</h1>
-<div class="post-meta">
-<time datetime="2026-07-06">July 06, 2026</time>
-<span class="read-time">8 min read</span>
-</div>
-</header>
 
-<div class="prose">
-<p>The most dangerous person in a Salesforce org is an admin with good intentions and production access. They see a broken flow, they fix it directly. They need a new validation rule, they create it in production. They modify a field type, and three integrations break downstream.</p>
-<h2>Why this matters more now</h2>
-<p>Three forces have made change management urgent. First, the complexity of automations has increased: flows, Apex triggers, and now AI agent configurations all interact. Second, the number of people making changes has grown. Third, AI agents add a new layer of automation that depends on stable metadata.</p>
-<h2>The minimum viable change management process</h2>
-<p><strong>Policy 1: No direct production changes.</strong> All configuration changes are built in a sandbox first, tested, and deployed through a change set or Salesforce CLI.</p>
-<p><strong>Policy 2: Peer review for automations.</strong> Any change to a flow, trigger, or validation rule requires review by a second admin before deployment.</p>
-<p><strong>Policy 3: Change log.</strong> Every deployment is logged with: what changed, who made it, when it was deployed, and why.</p>
-<h2>Graduating to CI/CD</h2>
-<p>Once the sandbox-and-review process is established, move toward version control with Salesforce CLI and Git. This gives you: a complete history of every change, the ability to roll back, branch-based development, and automated testing before deployment.</p>
-<p>Change management discipline is one of the scoring criteria in the Governance and Access dimension of the <a href="/framework.html">AI-Ready RevOps Framework</a>. Without it, your AI tools are operating on infrastructure that can change underneath them at any time.</p>
+<article>
+  <header class="article-header">
+    <div class="container narrow">
+      <div class="article-meta">
+        <span>Governance & Access</span>
+        <span>July 2026</span>
+        <span>8 min read</span>
+      </div>
+      <h1>Change Management for Salesforce: Why Every RevOps Team Needs Deployment Governance</h1>
+    </div>
+  </header>
 
+  <div class="container narrow prose">
 
-<section class="faq">
-<h2>Frequently asked questions</h2>
-<details><summary>Do I need CI/CD for Salesforce?</summary>
-<p>If you have more than one admin making changes, yes. Without CI/CD, changes are made directly in production with no rollback capability and no audit trail.</p>
-</details>
-<details><summary>What is the simplest way to start Salesforce change management?</summary>
-<p>Start with a sandbox policy: all changes are built and tested in a sandbox before production. Add a peer review requirement for any change that affects automation. Then move toward Salesforce CLI and Git.</p>
-</details>
-</section>
+    <p>The most dangerous person in a Salesforce org is an admin with good intentions and production access. They see a broken flow, they fix it directly. They need a new validation rule, they create it in production. They modify a field type, and three integrations break downstream.</p>
+    <h2>Why this matters more now</h2>
+    <p>Three forces have made change management urgent. First, the complexity of automations has increased: flows, Apex triggers, and now AI agent configurations all interact. Second, the number of people making changes has grown. Third, AI agents add a new layer of automation that depends on stable metadata.</p>
+    <h2>The minimum viable change management process</h2>
+    <p><strong>Policy 1: No direct production changes.</strong> All configuration changes are built in a sandbox first, tested, and deployed through a change set or Salesforce CLI.</p>
+    <p><strong>Policy 2: Peer review for automations.</strong> Any change to a flow, trigger, or validation rule requires review by a second admin before deployment.</p>
+    <p><strong>Policy 3: Change log.</strong> Every deployment is logged with: what changed, who made it, when it was deployed, and why.</p>
+    <h2>Graduating to CI/CD</h2>
+    <p>Once the sandbox-and-review process is established, move toward version control with Salesforce CLI and Git. This gives you: a complete history of every change, the ability to roll back, branch-based development, and automated testing before deployment.</p>
+    <p>Change management discipline is one of the scoring criteria in the Governance and Access dimension of the <a href="/framework.html">AI-Ready RevOps Framework</a>. Without it, your AI tools are operating on infrastructure that can change underneath them at any time.</p>
 
 
-<div class="post-cta">
-<h3>See where your revenue stack stands</h3>
-<p>The <a href="/assessment.html">free AI-Ready RevOps Assessment</a> scores your organization across six weighted dimensions in about four minutes. No demo, no sales call required.</p>
-<a href="/assessment.html" class="btn">Take the assessment</a>
-</div>
-</div>
+    <h2>Frequently asked questions</h2>
+    <details><summary>Do I need CI/CD for Salesforce?</summary>
+    <p>If you have more than one admin making changes, yes. Without CI/CD, changes are made directly in production with no rollback capability and no audit trail.</p>
+    </details>
+
+    <details><summary>What is the simplest way to start Salesforce change management?</summary>
+    <p>Start with a sandbox policy: all changes are built and tested in a sandbox before production. Add a peer review requirement for any change that affects automation. Then move toward Salesforce CLI and Git.</p>
+    </details>
+
+
+    <hr>
+
+    <div class="callout">
+      <h3 style="margin-bottom:0.5rem">Score your stack.</h3>
+      <p style="margin-bottom:1rem">The free 15-question assessment produces a Readiness Index in under four minutes. See where your foundation stands across six weighted dimensions.</p>
+      <a href="/assessment.html" class="btn btn-accent btn-arrow">Take the assessment</a>
+    </div>
+
+    <p style="margin-top:3rem"><a href="/blog/">&larr; All articles</a></p>
+
+  </div>
 </article>
+
 </main>
 
 <footer class="site-footer">
-<div class="footer-brand">
-<strong>AI-Ready RevOps</strong>
-<p>A diagnostic and remediation methodology for the modern revenue stack.</p>
-</div>
-<div class="footer-links">
-<div>
-<h4>The Framework</h4>
-<ul>
-<li><a href="/framework.html">Methodology</a></li>
-<li><a href="/tools/">Free tools</a></li>
-<li><a href="/assessment.html">Free assessment</a></li>
-<li><a href="/services.html">Engagements</a></li>
-</ul>
-</div>
-<div>
-<h4>Read</h4>
-<ul>
-<li><a href="/blog/">Articles</a></li>
-</ul>
-</div>
-<div>
-<h4>About</h4>
-<ul>
-<li><a href="/about.html">About the author</a></li>
-</ul>
-</div>
-</div>
-<p class="footer-copy">&copy; 2026 AI-Ready RevOps &middot; WhizzLead aireadyrevops.com</p>
+  <div class="container">
+    <div class="footer-grid">
+      <div><div class="footer-brand">AI-Ready RevOps</div><p class="footer-tag">A diagnostic and remediation methodology for the modern revenue stack.</p></div>
+      <div class="footer-col"><h4>The Framework</h4><ul><li><a href="/framework.html">Methodology</a></li><li><a href="/tools/">Free tools</a></li><li><a href="/assessment.html">Free assessment</a></li><li><a href="/services.html">Paid audits</a></li></ul></div>
+      <div class="footer-col"><h4>Read</h4><ul><li><a href="/blog/">Articles</a></li></ul></div>
+      <div class="footer-col"><h4>About</h4><ul><li><a href="/about.html">About the author</a></li><li><a href="mailto:hello@aireadyrevops.com">Contact</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>&copy; 2026 AI-Ready RevOps &middot; WhizzLead</span><span>aireadyrevops.com</span></div>
+  </div>
 </footer>
+
+<script>
+  const tog = document.querySelector('.menu-toggle');
+  const links = document.getElementById('primary-nav');
+  if (tog && links) tog.addEventListener('click', () => { const o = links.classList.toggle('open'); tog.setAttribute('aria-expanded', o ? 'true' : 'false'); });
+</script>
 </body>
 </html>

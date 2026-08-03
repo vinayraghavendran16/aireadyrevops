@@ -3,43 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FAF8F3">
 <title>The Real Cost of Sales Tool Sprawl (and How to Calculate It) | AI-Ready RevOps</title>
 <meta name="description" content="License fees are only 50-60% of the real cost. A framework for calculating the true cost including hidden admin, training, and integration costs.">
 <link rel="canonical" href="https://aireadyrevops.com/blog/sales-tool-sprawl-cost-calculation.html">
+
+<meta property="og:type" content="article">
 <meta property="og:title" content="The Real Cost of Sales Tool Sprawl (and How to Calculate It)">
 <meta property="og:description" content="License fees are only 50-60% of the real cost. A framework for calculating the true cost including hidden admin, training, and integration costs.">
-<meta property="og:type" content="article">
 <meta property="og:url" content="https://aireadyrevops.com/blog/sales-tool-sprawl-cost-calculation.html">
-<meta property="og:image" content="https://aireadyrevops.com/assets/og-image.png">
-<meta property="og:site_name" content="AI-Ready RevOps">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="The Real Cost of Sales Tool Sprawl (and How to Calculate It)">
-<meta name="twitter:description" content="License fees are only 50-60% of the real cost. A framework for calculating the true cost including hidden admin, training, and integration costs.">
-<meta name="twitter:image" content="https://aireadyrevops.com/assets/og-image.png">
-<meta name="theme-color" content="#FAF8F3">
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<meta property="article:published_time" content="2026-05-22">
+<meta property="article:author" content="Vinay Raghavendran">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,30..100;1,9..144,300..700,30..100&family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/style.css">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "The Real Cost of Sales Tool Sprawl (and How to Calculate It)",
   "description": "License fees are only 50-60% of the real cost. A framework for calculating the true cost including hidden admin, training, and integration costs.",
+  "author": { "@type": "Person", "name": "Vinay Raghavendran", "url": "https://aireadyrevops.com/about.html" },
+  "publisher": { "@type": "Organization", "name": "AI-Ready RevOps" },
   "datePublished": "2026-05-22",
-  "dateModified": "2026-05-22",
-  "author": {
-    "@type": "Person",
-    "name": "Vinay Raghavendran",
-    "url": "https://aireadyrevops.com/about.html"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "AI-Ready RevOps",
-    "url": "https://aireadyrevops.com"
-  },
+  "url": "https://aireadyrevops.com/blog/sales-tool-sprawl-cost-calculation.html",
   "mainEntityOfPage": "https://aireadyrevops.com/blog/sales-tool-sprawl-cost-calculation.html"
 }
 </script>
@@ -70,93 +61,92 @@
 </head>
 <body>
 <a href="#main" class="skip-link">Skip to content</a>
+
 <header class="site-header">
-<nav>
-<a href="/" class="logo">AI-Ready RevOps</a>
-<ul class="nav-links">
-<li><a href="/framework.html">Framework</a></li>
-<li><a href="/tools/">Free Tools</a></li>
-<li><a href="/services.html">Services</a></li>
-<li><a href="/blog/">Articles</a></li>
-<li><a href="/about.html">About</a></li>
-</ul>
-<a href="/assessment.html" class="nav-cta">Take the Assessment</a>
-</nav>
+  <nav class="nav">
+    <a class="brand" href="/"><span class="brand-mark"></span><span>AI-Ready RevOps</span></a>
+    <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    <ul class="nav-links" id="primary-nav">
+      <li><a href="/framework.html">Framework</a></li>
+      <li><a href="/tools/">Free Tools</a></li>
+      <li><a href="/services.html">Services</a></li>
+      <li><a href="/blog/" aria-current="page">Articles</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a class="nav-cta" href="/assessment.html">Take the Assessment</a></li>
+    </ul>
+  </nav>
 </header>
 
 <main id="main">
-<article class="blog-post">
-<header class="post-header">
-<span class="post-category">AI Stack Fit</span>
-<h1>The Real Cost of Sales Tool Sprawl (and How to Calculate It)</h1>
-<div class="post-meta">
-<time datetime="2026-05-22">May 22, 2026</time>
-<span class="read-time">7 min read</span>
-</div>
-</header>
 
-<div class="prose">
-<p>Your finance team tracks tool license costs. Nobody tracks the real cost: every hour your admin spends configuring the tool, every hour training new reps, every minute of context-switching, and every data quality issue from another integration.</p>
-<h2>The five cost layers</h2>
-<p><strong>Layer 1: License fees.</strong> The visible cost. Easy to track, often the only number in the budget.</p>
-<p><strong>Layer 2: Implementation.</strong> Vendor professional services, internal team hours, first round of training. Often equals 50-100% of first year's license cost.</p>
-<p><strong>Layer 3: Ongoing admin.</strong> User management, configuration updates, integration monitoring, troubleshooting. Estimate 5-10 hours per month per tool.</p>
-<p><strong>Layer 4: Integration costs.</strong> Data mappings, sync schedules, error handling. Each integration is a potential failure point.</p>
-<p><strong>Layer 5: Productivity cost.</strong> The largest and least measured. Each additional tool reduces selling time by 3-5% through context-switching.</p>
-<p>Use the <a href="/tools/cost-of-inaction.html">Cost-of-Inaction Calculator</a> to model the total across all five layers.</p>
-<p>Stack rationalization is scored under the AI Stack Fit dimension of the <a href="/framework.html">AI-Ready RevOps Framework</a>.</p>
+<article>
+  <header class="article-header">
+    <div class="container narrow">
+      <div class="article-meta">
+        <span>AI Stack Fit</span>
+        <span>May 2026</span>
+        <span>7 min read</span>
+      </div>
+      <h1>The Real Cost of Sales Tool Sprawl (and How to Calculate It)</h1>
+    </div>
+  </header>
+
+  <div class="container narrow prose">
+
+    <p>Your finance team tracks tool license costs. Nobody tracks the real cost: every hour your admin spends configuring the tool, every hour training new reps, every minute of context-switching, and every data quality issue from another integration.</p>
+    <h2>The five cost layers</h2>
+    <p><strong>Layer 1: License fees.</strong> The visible cost. Easy to track, often the only number in the budget.</p>
+    <p><strong>Layer 2: Implementation.</strong> Vendor professional services, internal team hours, first round of training. Often equals 50-100% of first year's license cost.</p>
+    <p><strong>Layer 3: Ongoing admin.</strong> User management, configuration updates, integration monitoring, troubleshooting. Estimate 5-10 hours per month per tool.</p>
+    <p><strong>Layer 4: Integration costs.</strong> Data mappings, sync schedules, error handling. Each integration is a potential failure point.</p>
+    <p><strong>Layer 5: Productivity cost.</strong> The largest and least measured. Each additional tool reduces selling time by 3-5% through context-switching.</p>
+    <p>Use the <a href="/tools/cost-of-inaction.html">Cost-of-Inaction Calculator</a> to model the total across all five layers.</p>
+    <p>Stack rationalization is scored under the AI Stack Fit dimension of the <a href="/framework.html">AI-Ready RevOps Framework</a>.</p>
+
+    <p class="dim-tools" style="margin:0.85rem 0 0;font-size:0.93rem;line-height:1.55"><span style="font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.09em;text-transform:uppercase;color:var(--accent);margin-right:0.5rem">Try it free &rarr;</span><a href="/tools/cost-of-inaction.html">Cost-of-Inaction Calculator</a></p>
 
 
-<section class="faq">
-<h2>Frequently asked questions</h2>
-<details><summary>What is the true cost of a sales tool?</summary>
-<p>License fees represent half the picture. Add implementation, admin time, integration maintenance, training, and context-switching. True cost is 1.5-2x visible license spend.</p>
-</details>
-<details><summary>How much do B2B SaaS companies spend on sales tools per rep?</summary>
-<p>$5,000-15,000 per rep per year at mid-market. Companies with sprawl often spend 15-20% of an AE's OTE.</p>
-</details>
-</section>
+    <h2>Frequently asked questions</h2>
+    <details><summary>What is the true cost of a sales tool?</summary>
+    <p>License fees represent half the picture. Add implementation, admin time, integration maintenance, training, and context-switching. True cost is 1.5-2x visible license spend.</p>
+    </details>
 
-<div class="related-tools"><p><strong>Related free tools:</strong> <a href="/tools/cost-of-inaction.html">Cost-of-Inaction Calculator</a></p></div>
+    <details><summary>How much do B2B SaaS companies spend on sales tools per rep?</summary>
+    <p>$5,000-15,000 per rep per year at mid-market. Companies with sprawl often spend 15-20% of an AE's OTE.</p>
+    </details>
 
-<div class="post-cta">
-<h3>See where your revenue stack stands</h3>
-<p>The <a href="/assessment.html">free AI-Ready RevOps Assessment</a> scores your organization across six weighted dimensions in about four minutes. No demo, no sales call required.</p>
-<a href="/assessment.html" class="btn">Take the assessment</a>
-</div>
-</div>
+
+    <hr>
+
+    <div class="callout">
+      <h3 style="margin-bottom:0.5rem">Score your stack.</h3>
+      <p style="margin-bottom:1rem">The free 15-question assessment produces a Readiness Index in under four minutes. See where your foundation stands across six weighted dimensions.</p>
+      <a href="/assessment.html" class="btn btn-accent btn-arrow">Take the assessment</a>
+    </div>
+
+    <p style="margin-top:3rem"><a href="/blog/">&larr; All articles</a></p>
+
+  </div>
 </article>
+
 </main>
 
 <footer class="site-footer">
-<div class="footer-brand">
-<strong>AI-Ready RevOps</strong>
-<p>A diagnostic and remediation methodology for the modern revenue stack.</p>
-</div>
-<div class="footer-links">
-<div>
-<h4>The Framework</h4>
-<ul>
-<li><a href="/framework.html">Methodology</a></li>
-<li><a href="/tools/">Free tools</a></li>
-<li><a href="/assessment.html">Free assessment</a></li>
-<li><a href="/services.html">Engagements</a></li>
-</ul>
-</div>
-<div>
-<h4>Read</h4>
-<ul>
-<li><a href="/blog/">Articles</a></li>
-</ul>
-</div>
-<div>
-<h4>About</h4>
-<ul>
-<li><a href="/about.html">About the author</a></li>
-</ul>
-</div>
-</div>
-<p class="footer-copy">&copy; 2026 AI-Ready RevOps &middot; WhizzLead aireadyrevops.com</p>
+  <div class="container">
+    <div class="footer-grid">
+      <div><div class="footer-brand">AI-Ready RevOps</div><p class="footer-tag">A diagnostic and remediation methodology for the modern revenue stack.</p></div>
+      <div class="footer-col"><h4>The Framework</h4><ul><li><a href="/framework.html">Methodology</a></li><li><a href="/tools/">Free tools</a></li><li><a href="/assessment.html">Free assessment</a></li><li><a href="/services.html">Paid audits</a></li></ul></div>
+      <div class="footer-col"><h4>Read</h4><ul><li><a href="/blog/">Articles</a></li></ul></div>
+      <div class="footer-col"><h4>About</h4><ul><li><a href="/about.html">About the author</a></li><li><a href="mailto:hello@aireadyrevops.com">Contact</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>&copy; 2026 AI-Ready RevOps &middot; WhizzLead</span><span>aireadyrevops.com</span></div>
+  </div>
 </footer>
+
+<script>
+  const tog = document.querySelector('.menu-toggle');
+  const links = document.getElementById('primary-nav');
+  if (tog && links) tog.addEventListener('click', () => { const o = links.classList.toggle('open'); tog.setAttribute('aria-expanded', o ? 'true' : 'false'); });
+</script>
 </body>
 </html>

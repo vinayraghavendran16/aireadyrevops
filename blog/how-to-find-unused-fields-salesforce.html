@@ -3,43 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FAF8F3">
 <title>How to Find and Remove Unused Custom Fields in Salesforce | AI-Ready RevOps</title>
 <meta name="description" content="A step-by-step guide to identifying, auditing, and removing unused custom fields in Salesforce. Reduce clutter, improve data quality, and get your org AI-ready.">
 <link rel="canonical" href="https://aireadyrevops.com/blog/how-to-find-unused-fields-salesforce.html">
+
+<meta property="og:type" content="article">
 <meta property="og:title" content="How to Find and Remove Unused Custom Fields in Salesforce">
 <meta property="og:description" content="A step-by-step guide to identifying, auditing, and removing unused custom fields in Salesforce. Reduce clutter, improve data quality, and get your org AI-ready.">
-<meta property="og:type" content="article">
 <meta property="og:url" content="https://aireadyrevops.com/blog/how-to-find-unused-fields-salesforce.html">
-<meta property="og:image" content="https://aireadyrevops.com/assets/og-image.png">
-<meta property="og:site_name" content="AI-Ready RevOps">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="How to Find and Remove Unused Custom Fields in Salesforce">
-<meta name="twitter:description" content="A step-by-step guide to identifying, auditing, and removing unused custom fields in Salesforce. Reduce clutter, improve data quality, and get your org AI-ready.">
-<meta name="twitter:image" content="https://aireadyrevops.com/assets/og-image.png">
-<meta name="theme-color" content="#FAF8F3">
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<meta property="article:published_time" content="2026-03-09">
+<meta property="article:author" content="Vinay Raghavendran">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,30..100;1,9..144,300..700,30..100&family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/style.css">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "How to Find and Remove Unused Custom Fields in Salesforce",
   "description": "A step-by-step guide to identifying, auditing, and removing unused custom fields in Salesforce. Reduce clutter, improve data quality, and get your org AI-ready.",
+  "author": { "@type": "Person", "name": "Vinay Raghavendran", "url": "https://aireadyrevops.com/about.html" },
+  "publisher": { "@type": "Organization", "name": "AI-Ready RevOps" },
   "datePublished": "2026-03-09",
-  "dateModified": "2026-03-09",
-  "author": {
-    "@type": "Person",
-    "name": "Vinay Raghavendran",
-    "url": "https://aireadyrevops.com/about.html"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "AI-Ready RevOps",
-    "url": "https://aireadyrevops.com"
-  },
+  "url": "https://aireadyrevops.com/blog/how-to-find-unused-fields-salesforce.html",
   "mainEntityOfPage": "https://aireadyrevops.com/blog/how-to-find-unused-fields-salesforce.html"
 }
 </script>
@@ -78,111 +69,111 @@
 </head>
 <body>
 <a href="#main" class="skip-link">Skip to content</a>
+
 <header class="site-header">
-<nav>
-<a href="/" class="logo">AI-Ready RevOps</a>
-<ul class="nav-links">
-<li><a href="/framework.html">Framework</a></li>
-<li><a href="/tools/">Free Tools</a></li>
-<li><a href="/services.html">Services</a></li>
-<li><a href="/blog/">Articles</a></li>
-<li><a href="/about.html">About</a></li>
-</ul>
-<a href="/assessment.html" class="nav-cta">Take the Assessment</a>
-</nav>
+  <nav class="nav">
+    <a class="brand" href="/"><span class="brand-mark"></span><span>AI-Ready RevOps</span></a>
+    <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    <ul class="nav-links" id="primary-nav">
+      <li><a href="/framework.html">Framework</a></li>
+      <li><a href="/tools/">Free Tools</a></li>
+      <li><a href="/services.html">Services</a></li>
+      <li><a href="/blog/" aria-current="page">Articles</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a class="nav-cta" href="/assessment.html">Take the Assessment</a></li>
+    </ul>
+  </nav>
 </header>
 
 <main id="main">
-<article class="blog-post">
-<header class="post-header">
-<span class="post-category">Data Foundation</span>
-<h1>How to Find and Remove Unused Custom Fields in Salesforce</h1>
-<div class="post-meta">
-<time datetime="2026-03-09">March 09, 2026</time>
-<span class="read-time">8 min read</span>
-</div>
-</header>
 
-<div class="prose">
-<p>Every Salesforce org accumulates custom fields the way a garage accumulates boxes. Someone created them for a one-time report. A previous admin built them for a project that never launched. A vendor integration seeded twenty fields, and the vendor was replaced two years ago.</p>
-<p>The result: orgs with 200, 300, sometimes 500+ custom fields on Account and Opportunity alone, most of which nobody uses. This is not just clutter. It is a direct threat to data quality, rep productivity, and any AI tool that reads from your CRM.</p>
-<h2>Why unused fields matter more than you think</h2>
-<p>Unused fields create three compounding problems. First, they slow down your reps. Every field on a page layout is a decision a rep has to make: fill it, skip it, or wonder whether it matters. Research consistently shows that form completion rates drop as field count rises. If your Opportunity layout has 60 fields and 25 of them are irrelevant, your reps are spending cognitive energy on noise.</p>
-<p>Second, unused fields that still hold partial data become poison for AI models. A forecasting copilot or lead scoring engine that ingests Salesforce data treats every populated field as a signal. If a deprecated field called "Legacy_Region__c" still has values on 40% of records, the model will try to learn from it. That learning is based on stale, incomplete data, and it degrades output quality in ways that are difficult to detect.</p>
-<p>Third, unused fields make your metadata harder to govern. Every field is a surface area for permissions, field-level security, and integration mappings. More fields means more complexity in every security review, every integration build, and every new admin's onboarding.</p>
-<h2>Step 1: Pull your field inventory</h2>
-<p>Start with a complete inventory. Go to Setup, then Object Manager, select the object (Account, Contact, Opportunity, Lead are the priority), and export the field list. For each field, note the API name, data type, created date, and last modified date.</p>
-<p>If you have access to Salesforce CLI, you can pull metadata for all custom fields across objects in a single command. This gives you an XML file per field with creation metadata. For larger orgs, tools like Salesforce Optimizer (free inside Setup) generate a report that flags fields with low population rates.</p>
-<h2>Step 2: Check field population rates</h2>
-<p>A field that exists on zero records is easy to remove. The harder cases are fields populated on 10% or 30% of records. For these, run a SOQL query to count non-null values. A field populated on fewer than 5% of records and not referenced in any report is a strong candidate for removal.</p>
-<p>Be careful with formula fields and roll-up summaries. These may not hold data themselves but compute values from other fields. Removing a source field without checking dependent formulas will break calculations silently.</p>
-<h2>Step 3: Map field dependencies</h2>
-<p>Before removing any field, check five places: page layouts, record types, validation rules, flows and process builders, and Apex code. Salesforce does not natively surface all of these dependencies in one view. You will need to search your metadata or use a dependency analysis tool.</p>
-<p>Also check integrations. Third-party tools that sync via API may reference fields by API name. Removing a field that an integration expects will cause sync failures, often silently. Pull your connected app list from Setup and check API logs for recent calls referencing the field.</p>
-<h2>Step 4: Categorize before you delete</h2>
-<p>Sort your unused fields into three buckets. First, fields with zero population and zero dependencies: delete these immediately. Second, fields with low population but possible integration references: flag these for review with your integration team before removing. Third, fields with moderate population but no current business use: archive the data first (export to a CSV or data warehouse), then remove the field.</p>
-<p>Document every deletion. Keep a changelog with the field API name, the date removed, and why. This protects you from the inevitable "who deleted that field?" question six months later.</p>
-<h2>Step 5: Set a governance policy to prevent recurrence</h2>
-<p>Cleaning up unused fields is a one-time project. Preventing their return is a policy. Establish a rule: every new custom field requires a documented business justification, an assigned owner, and a sunset date. Run a quarterly audit of field population rates and flag anything below 10% for review.</p>
-<p>This is where a data stewardship model pays for itself. When someone owns each object's field inventory, field sprawl stops compounding.</p>
-<h2>What this has to do with AI readiness</h2>
-<p>If you are deploying or planning to deploy AI tools on your Salesforce data (forecasting copilots, lead scoring, account intelligence, or agent-based workflows), your field hygiene is the first thing to fix. Every AI model is only as good as the data it reads. A clean, intentional set of fields produces clean, intentional outputs. A bloated set of deprecated fields produces noise that your AI cannot distinguish from signal.</p>
-<p>This is one of six dimensions in the <a href="/framework.html">AI-Ready RevOps Framework</a>. Data Foundation carries the highest weight in the Readiness Index because it is the most common point of failure.</p>
+<article>
+  <header class="article-header">
+    <div class="container narrow">
+      <div class="article-meta">
+        <span>Data Foundation</span>
+        <span>March 2026</span>
+        <span>8 min read</span>
+      </div>
+      <h1>How to Find and Remove Unused Custom Fields in Salesforce</h1>
+    </div>
+  </header>
+
+  <div class="container narrow prose">
+
+    <p>Every Salesforce org accumulates custom fields the way a garage accumulates boxes. Someone created them for a one-time report. A previous admin built them for a project that never launched. A vendor integration seeded twenty fields, and the vendor was replaced two years ago.</p>
+    <p>The result: orgs with 200, 300, sometimes 500+ custom fields on Account and Opportunity alone, most of which nobody uses. This is not just clutter. It is a direct threat to data quality, rep productivity, and any AI tool that reads from your CRM.</p>
+    <h2>Why unused fields matter more than you think</h2>
+    <p>Unused fields create three compounding problems. First, they slow down your reps. Every field on a page layout is a decision a rep has to make: fill it, skip it, or wonder whether it matters. Research consistently shows that form completion rates drop as field count rises. If your Opportunity layout has 60 fields and 25 of them are irrelevant, your reps are spending cognitive energy on noise.</p>
+    <p>Second, unused fields that still hold partial data become poison for AI models. A forecasting copilot or lead scoring engine that ingests Salesforce data treats every populated field as a signal. If a deprecated field called "Legacy_Region__c" still has values on 40% of records, the model will try to learn from it. That learning is based on stale, incomplete data, and it degrades output quality in ways that are difficult to detect.</p>
+    <p>Third, unused fields make your metadata harder to govern. Every field is a surface area for permissions, field-level security, and integration mappings. More fields means more complexity in every security review, every integration build, and every new admin's onboarding.</p>
+    <h2>Step 1: Pull your field inventory</h2>
+    <p>Start with a complete inventory. Go to Setup, then Object Manager, select the object (Account, Contact, Opportunity, Lead are the priority), and export the field list. For each field, note the API name, data type, created date, and last modified date.</p>
+    <p>If you have access to Salesforce CLI, you can pull metadata for all custom fields across objects in a single command. This gives you an XML file per field with creation metadata. For larger orgs, tools like Salesforce Optimizer (free inside Setup) generate a report that flags fields with low population rates.</p>
+    <h2>Step 2: Check field population rates</h2>
+    <p>A field that exists on zero records is easy to remove. The harder cases are fields populated on 10% or 30% of records. For these, run a SOQL query to count non-null values. A field populated on fewer than 5% of records and not referenced in any report is a strong candidate for removal.</p>
+    <p>Be careful with formula fields and roll-up summaries. These may not hold data themselves but compute values from other fields. Removing a source field without checking dependent formulas will break calculations silently.</p>
+    <h2>Step 3: Map field dependencies</h2>
+    <p>Before removing any field, check five places: page layouts, record types, validation rules, flows and process builders, and Apex code. Salesforce does not natively surface all of these dependencies in one view. You will need to search your metadata or use a dependency analysis tool.</p>
+    <p>Also check integrations. Third-party tools that sync via API may reference fields by API name. Removing a field that an integration expects will cause sync failures, often silently. Pull your connected app list from Setup and check API logs for recent calls referencing the field.</p>
+    <h2>Step 4: Categorize before you delete</h2>
+    <p>Sort your unused fields into three buckets. First, fields with zero population and zero dependencies: delete these immediately. Second, fields with low population but possible integration references: flag these for review with your integration team before removing. Third, fields with moderate population but no current business use: archive the data first (export to a CSV or data warehouse), then remove the field.</p>
+    <p>Document every deletion. Keep a changelog with the field API name, the date removed, and why. This protects you from the inevitable "who deleted that field?" question six months later.</p>
+    <h2>Step 5: Set a governance policy to prevent recurrence</h2>
+    <p>Cleaning up unused fields is a one-time project. Preventing their return is a policy. Establish a rule: every new custom field requires a documented business justification, an assigned owner, and a sunset date. Run a quarterly audit of field population rates and flag anything below 10% for review.</p>
+    <p>This is where a data stewardship model pays for itself. When someone owns each object's field inventory, field sprawl stops compounding.</p>
+    <h2>What this has to do with AI readiness</h2>
+    <p>If you are deploying or planning to deploy AI tools on your Salesforce data (forecasting copilots, lead scoring, account intelligence, or agent-based workflows), your field hygiene is the first thing to fix. Every AI model is only as good as the data it reads. A clean, intentional set of fields produces clean, intentional outputs. A bloated set of deprecated fields produces noise that your AI cannot distinguish from signal.</p>
+    <p>This is one of six dimensions in the <a href="/framework.html">AI-Ready RevOps Framework</a>. Data Foundation carries the highest weight in the Readiness Index because it is the most common point of failure.</p>
+
+    <p class="dim-tools" style="margin:0.85rem 0 0;font-size:0.93rem;line-height:1.55"><span style="font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.09em;text-transform:uppercase;color:var(--accent);margin-right:0.5rem">Try it free &rarr;</span><a href="/tools/crm-data-quality.html">CRM Data Quality Scorecard</a></p>
 
 
-<section class="faq">
-<h2>Frequently asked questions</h2>
-<details><summary>How many unused custom fields does a typical Salesforce org have?</summary>
-<p>Most mid-market Salesforce orgs accumulate between 100 and 400 custom fields that are no longer referenced in reports, layouts, flows, or integrations. These fields add cognitive load for reps, slow down page loads, and contaminate any AI model that reads from the object.</p>
-</details>
-<details><summary>Can I safely delete unused custom fields?</summary>
-<p>Not immediately. A field with no data and no references in code, flows, reports, or layouts is safe to remove. But always check for hard-coded API references in integrations, Apex triggers, and third-party apps before deleting. Export a field dependency report first.</p>
-</details>
-<details><summary>How do unused fields affect AI tools?</summary>
-<p>AI tools that read from Salesforce objects treat every populated field as a potential signal. Unused fields that still hold stale or partial data introduce noise. The model may weight that noise alongside real signals, producing less accurate predictions, lead scores, or forecasts.</p>
-</details>
-</section>
+    <h2>Frequently asked questions</h2>
+    <details><summary>How many unused custom fields does a typical Salesforce org have?</summary>
+    <p>Most mid-market Salesforce orgs accumulate between 100 and 400 custom fields that are no longer referenced in reports, layouts, flows, or integrations. These fields add cognitive load for reps, slow down page loads, and contaminate any AI model that reads from the object.</p>
+    </details>
 
-<div class="related-tools"><p><strong>Related free tools:</strong> <a href="/tools/crm-data-quality.html">CRM Data Quality Scorecard</a></p></div>
+    <details><summary>Can I safely delete unused custom fields?</summary>
+    <p>Not immediately. A field with no data and no references in code, flows, reports, or layouts is safe to remove. But always check for hard-coded API references in integrations, Apex triggers, and third-party apps before deleting. Export a field dependency report first.</p>
+    </details>
 
-<div class="post-cta">
-<h3>See where your revenue stack stands</h3>
-<p>The <a href="/assessment.html">free AI-Ready RevOps Assessment</a> scores your organization across six weighted dimensions in about four minutes. No demo, no sales call required.</p>
-<a href="/assessment.html" class="btn">Take the assessment</a>
-</div>
-</div>
+    <details><summary>How do unused fields affect AI tools?</summary>
+    <p>AI tools that read from Salesforce objects treat every populated field as a potential signal. Unused fields that still hold stale or partial data introduce noise. The model may weight that noise alongside real signals, producing less accurate predictions, lead scores, or forecasts.</p>
+    </details>
+
+
+    <hr>
+
+    <div class="callout">
+      <h3 style="margin-bottom:0.5rem">Score your stack.</h3>
+      <p style="margin-bottom:1rem">The free 15-question assessment produces a Readiness Index in under four minutes. See where your foundation stands across six weighted dimensions.</p>
+      <a href="/assessment.html" class="btn btn-accent btn-arrow">Take the assessment</a>
+    </div>
+
+    <p style="margin-top:3rem"><a href="/blog/">&larr; All articles</a></p>
+
+  </div>
 </article>
+
 </main>
 
 <footer class="site-footer">
-<div class="footer-brand">
-<strong>AI-Ready RevOps</strong>
-<p>A diagnostic and remediation methodology for the modern revenue stack.</p>
-</div>
-<div class="footer-links">
-<div>
-<h4>The Framework</h4>
-<ul>
-<li><a href="/framework.html">Methodology</a></li>
-<li><a href="/tools/">Free tools</a></li>
-<li><a href="/assessment.html">Free assessment</a></li>
-<li><a href="/services.html">Engagements</a></li>
-</ul>
-</div>
-<div>
-<h4>Read</h4>
-<ul>
-<li><a href="/blog/">Articles</a></li>
-</ul>
-</div>
-<div>
-<h4>About</h4>
-<ul>
-<li><a href="/about.html">About the author</a></li>
-</ul>
-</div>
-</div>
-<p class="footer-copy">&copy; 2026 AI-Ready RevOps &middot; WhizzLead aireadyrevops.com</p>
+  <div class="container">
+    <div class="footer-grid">
+      <div><div class="footer-brand">AI-Ready RevOps</div><p class="footer-tag">A diagnostic and remediation methodology for the modern revenue stack.</p></div>
+      <div class="footer-col"><h4>The Framework</h4><ul><li><a href="/framework.html">Methodology</a></li><li><a href="/tools/">Free tools</a></li><li><a href="/assessment.html">Free assessment</a></li><li><a href="/services.html">Paid audits</a></li></ul></div>
+      <div class="footer-col"><h4>Read</h4><ul><li><a href="/blog/">Articles</a></li></ul></div>
+      <div class="footer-col"><h4>About</h4><ul><li><a href="/about.html">About the author</a></li><li><a href="mailto:hello@aireadyrevops.com">Contact</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>&copy; 2026 AI-Ready RevOps &middot; WhizzLead</span><span>aireadyrevops.com</span></div>
+  </div>
 </footer>
+
+<script>
+  const tog = document.querySelector('.menu-toggle');
+  const links = document.getElementById('primary-nav');
+  if (tog && links) tog.addEventListener('click', () => { const o = links.classList.toggle('open'); tog.setAttribute('aria-expanded', o ? 'true' : 'false'); });
+</script>
 </body>
 </html>
