@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Is Your CRM Data Ready for AI? A 10-Point Checklist | AI-Ready RevOps</title>
+<meta name="description" content="Before deploying AI tools on your CRM, check these 10 data quality criteria. Most orgs fail on at least 6. A practical checklist for RevOps leaders.">
+<link rel="canonical" href="https://aireadyrevops.com/blog/crm-data-ready-for-ai-checklist.html">
+<meta property="og:title" content="Is Your CRM Data Ready for AI? A 10-Point Checklist">
+<meta property="og:description" content="Before deploying AI tools on your CRM, check these 10 data quality criteria. Most orgs fail on at least 6. A practical checklist for RevOps leaders.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aireadyrevops.com/blog/crm-data-ready-for-ai-checklist.html">
+<meta property="og:image" content="https://aireadyrevops.com/assets/og-image.png">
+<meta property="og:site_name" content="AI-Ready RevOps">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Is Your CRM Data Ready for AI? A 10-Point Checklist">
+<meta name="twitter:description" content="Before deploying AI tools on your CRM, check these 10 data quality criteria. Most orgs fail on at least 6. A practical checklist for RevOps leaders.">
+<meta name="twitter:image" content="https://aireadyrevops.com/assets/og-image.png">
+<meta name="theme-color" content="#FAF8F3">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Is Your CRM Data Ready for AI? A 10-Point Checklist",
+  "description": "Before deploying AI tools on your CRM, check these 10 data quality criteria. Most orgs fail on at least 6. A practical checklist for RevOps leaders.",
+  "datePublished": "2026-03-30",
+  "dateModified": "2026-03-30",
+  "author": {
+    "@type": "Person",
+    "name": "Vinay Raghavendran",
+    "url": "https://aireadyrevops.com/about.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "AI-Ready RevOps",
+    "url": "https://aireadyrevops.com"
+  },
+  "mainEntityOfPage": "https://aireadyrevops.com/blog/crm-data-ready-for-ai-checklist.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does AI-ready CRM data look like?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AI-ready CRM data has high field completeness on key objects, consistent picklist usage, minimal duplicates, documented definitions, clear ownership, and reliable timestamps. If your data fails on three or more of these criteria, AI tools will produce unreliable outputs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to make CRM data AI-ready?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For a mid-market Salesforce org, a focused cleanup takes 4-8 weeks for the most critical objects. Ongoing governance to maintain quality requires a named data steward and a quarterly review cadence."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+<header class="site-header">
+<nav>
+<a href="/" class="logo">AI-Ready RevOps</a>
+<ul class="nav-links">
+<li><a href="/framework.html">Framework</a></li>
+<li><a href="/tools/">Free Tools</a></li>
+<li><a href="/services.html">Services</a></li>
+<li><a href="/blog/">Articles</a></li>
+<li><a href="/about.html">About</a></li>
+</ul>
+<a href="/assessment.html" class="nav-cta">Take the Assessment</a>
+</nav>
+</header>
+
+<main id="main">
+<article class="blog-post">
+<header class="post-header">
+<span class="post-category">Data Foundation</span>
+<h1>Is Your CRM Data Ready for AI? A 10-Point Checklist</h1>
+<div class="post-meta">
+<time datetime="2026-03-30">March 30, 2026</time>
+<span class="read-time">8 min read</span>
+</div>
+</header>
+
+<div class="prose">
+<p>You are about to deploy a lead scoring model, a forecasting copilot, or an AI SDR on your CRM data. Before you do, run through this checklist. Most mid-market B2B SaaS companies fail on at least six of these ten criteria. Each failure degrades the output of any AI tool that reads from your CRM.</p>
+<h2>The checklist</h2>
+<h3>1. Required field completion rate above 85%</h3>
+<p>Check the completion rate on required fields for Account, Contact, Opportunity, and Lead objects. If fewer than 85% of records have all required fields populated, your AI models are training on incomplete data. Pull a report on null rates per field to find the gaps.</p>
+<h3>2. Picklist "Other" rate below 10%</h3>
+<p>For every picklist field that feeds reporting or AI, check the distribution. If "Other" exceeds 10% on any critical picklist, the data is not capturing meaningful categories.</p>
+<h3>3. Duplicate rate below 5%</h3>
+<p>Run a duplicate detection report on Accounts and Contacts. A duplicate rate above 5% means your AI tools are learning from conflicting records for the same entity. Automated deduplication with merge rules should be active, not just configured.</p>
+<h3>4. Stage definitions are documented and enforced</h3>
+<p>Ask three reps what each pipeline stage means. If the answers differ, your stage data is subjective and your pipeline analysis is unreliable. Stage exit criteria should be enforced via validation rules, not left to rep judgment.</p>
+<h3>5. Close dates reflect reality</h3>
+<p>Check the percentage of open opportunities with close dates in the past. Above 10% means your pipeline data is stale and your forecast is inflated. Automated hygiene flows should flag and escalate past-due close dates.</p>
+<h3>6. Key definitions are aligned across teams</h3>
+<p>Does your marketing team, sales team, and CS team agree on what counts as an MQL, SQL, ARR, and churn? If the definitions are different, every AI tool that spans these teams will inherit the inconsistency. Use the <a href="/gap-check">Definition Gap Check</a> to find where your teams diverge.</p>
+<h3>7. Activity data is captured systematically</h3>
+<p>AI tools that analyze rep behavior need consistent activity data. If activity logging depends on manual rep entry, the data will be incomplete and biased toward diligent reps. Automated activity capture via email and calendar sync is the minimum.</p>
+<h3>8. Data has a named owner per object</h3>
+<p>Someone should be accountable for the data quality of each major object. Without named ownership, data quality is everyone's job and therefore nobody's job.</p>
+<h3>9. Historical data is trustworthy</h3>
+<p>AI models learn from historical patterns. Audit a sample of historical closed-won and closed-lost deals: are the fields populated? Are the stages accurate? Are the dates real? If your historical data is unreliable, consider limiting the training window for AI tools to the period after your cleanup.</p>
+<h3>10. Integration data flows are monitored</h3>
+<p>If data flows into Salesforce from marketing automation, enrichment tools, or product usage platforms, check the sync health. Stale syncs, failed jobs, and conflicting field mappings introduce data quality issues that are invisible until an AI model surfaces them as bad predictions.</p>
+<h2>Scoring yourself</h2>
+<p>Count how many of the ten criteria your org passes. Eight or more: you are in strong shape to deploy AI tools. Five to seven: targeted remediation is needed. Below five: foundational work is required, and deploying AI now will likely compound existing problems rather than solve them.</p>
+<p>For a more detailed assessment, take the free <a href="/assessment.html">AI-Ready RevOps Assessment</a>. It scores your org across six weighted dimensions and shows you the three foundations most likely eating your AI ROI.</p>
+
+
+<section class="faq">
+<h2>Frequently asked questions</h2>
+<details><summary>What does AI-ready CRM data look like?</summary>
+<p>AI-ready CRM data has high field completeness on key objects, consistent picklist usage, minimal duplicates, documented definitions, clear ownership, and reliable timestamps. If your data fails on three or more of these criteria, AI tools will produce unreliable outputs.</p>
+</details>
+<details><summary>How long does it take to make CRM data AI-ready?</summary>
+<p>For a mid-market Salesforce org, a focused cleanup takes 4-8 weeks for the most critical objects. Ongoing governance to maintain quality requires a named data steward and a quarterly review cadence.</p>
+</details>
+</section>
+
+<div class="related-tools"><p><strong>Related free tools:</strong> <a href="/tools/crm-data-quality.html">CRM Data Quality Scorecard</a>, <a href="/assessment.html">Free Assessment</a></p></div>
+
+<div class="post-cta">
+<h3>See where your revenue stack stands</h3>
+<p>The <a href="/assessment.html">free AI-Ready RevOps Assessment</a> scores your organization across six weighted dimensions in about four minutes. No demo, no sales call required.</p>
+<a href="/assessment.html" class="btn">Take the assessment</a>
+</div>
+</div>
+</article>
+</main>
+
+<footer class="site-footer">
+<div class="footer-brand">
+<strong>AI-Ready RevOps</strong>
+<p>A diagnostic and remediation methodology for the modern revenue stack.</p>
+</div>
+<div class="footer-links">
+<div>
+<h4>The Framework</h4>
+<ul>
+<li><a href="/framework.html">Methodology</a></li>
+<li><a href="/tools/">Free tools</a></li>
+<li><a href="/assessment.html">Free assessment</a></li>
+<li><a href="/services.html">Engagements</a></li>
+</ul>
+</div>
+<div>
+<h4>Read</h4>
+<ul>
+<li><a href="/blog/">Articles</a></li>
+</ul>
+</div>
+<div>
+<h4>About</h4>
+<ul>
+<li><a href="/about.html">About the author</a></li>
+</ul>
+</div>
+</div>
+<p class="footer-copy">&copy; 2026 AI-Ready RevOps &middot; WhizzLead aireadyrevops.com</p>
+</footer>
+</body>
+</html>

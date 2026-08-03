@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Salesforce Permission Sprawl: How to Audit Profiles and Permission Sets | AI-Ready RevOps</title>
+<meta name="description" content="Most Salesforce orgs have more profiles than they need and permission sets that overlap in ways nobody can explain. A practical audit and cleanup guide.">
+<link rel="canonical" href="https://aireadyrevops.com/blog/salesforce-permission-sprawl-audit.html">
+<meta property="og:title" content="Salesforce Permission Sprawl: How to Audit Profiles and Permission Sets">
+<meta property="og:description" content="Most Salesforce orgs have more profiles than they need and permission sets that overlap in ways nobody can explain. A practical audit and cleanup guide.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aireadyrevops.com/blog/salesforce-permission-sprawl-audit.html">
+<meta property="og:image" content="https://aireadyrevops.com/assets/og-image.png">
+<meta property="og:site_name" content="AI-Ready RevOps">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Salesforce Permission Sprawl: How to Audit Profiles and Permission Sets">
+<meta name="twitter:description" content="Most Salesforce orgs have more profiles than they need and permission sets that overlap in ways nobody can explain. A practical audit and cleanup guide.">
+<meta name="twitter:image" content="https://aireadyrevops.com/assets/og-image.png">
+<meta name="theme-color" content="#FAF8F3">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Salesforce Permission Sprawl: How to Audit Profiles and Permission Sets",
+  "description": "Most Salesforce orgs have more profiles than they need and permission sets that overlap in ways nobody can explain. A practical audit and cleanup guide.",
+  "datePublished": "2026-06-15",
+  "dateModified": "2026-06-15",
+  "author": {
+    "@type": "Person",
+    "name": "Vinay Raghavendran",
+    "url": "https://aireadyrevops.com/about.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "AI-Ready RevOps",
+    "url": "https://aireadyrevops.com"
+  },
+  "mainEntityOfPage": "https://aireadyrevops.com/blog/salesforce-permission-sprawl-audit.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How many Salesforce profiles should an org have?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most mid-market orgs can operate with 5-10 profiles. If you have more than 20, you almost certainly have redundant profiles that should be consolidated."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the risk of permission sprawl?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Over-broad permissions mean users and AI agents can see and modify data they should not. This creates compliance risk, audit trail gaps, and data quality issues."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+<header class="site-header">
+<nav>
+<a href="/" class="logo">AI-Ready RevOps</a>
+<ul class="nav-links">
+<li><a href="/framework.html">Framework</a></li>
+<li><a href="/tools/">Free Tools</a></li>
+<li><a href="/services.html">Services</a></li>
+<li><a href="/blog/">Articles</a></li>
+<li><a href="/about.html">About</a></li>
+</ul>
+<a href="/assessment.html" class="nav-cta">Take the Assessment</a>
+</nav>
+</header>
+
+<main id="main">
+<article class="blog-post">
+<header class="post-header">
+<span class="post-category">Governance & Access</span>
+<h1>Salesforce Permission Sprawl: How to Audit Profiles and Permission Sets</h1>
+<div class="post-meta">
+<time datetime="2026-06-15">June 15, 2026</time>
+<span class="read-time">8 min read</span>
+</div>
+</header>
+
+<div class="prose">
+<p>Open your Salesforce Setup and count your profiles. If you have more than 15, check how many are actually different. In most orgs, profiles accumulate the same way custom fields do: someone needed slightly different access, a new profile was cloned, and now you have 30 profiles where 8 would suffice.</p>
+<h2>Why permission sprawl matters now</h2>
+<p>Two recent shifts have made it urgent. First, breaches like the Salesforce-Salesloft incident highlighted that over-broad permissions increase the blast radius of any security event. Second, AI agents like Agentforce operate within your permission model. An agent with an over-broad profile can surface data it should not or create audit trail gaps.</p>
+<h2>The audit process</h2>
+<p>Export all profiles and their object-level permissions. For each profile, document: which objects have read/write access, how many users are assigned, and when it was last modified. Group profiles by similarity: if two profiles differ only on a few field-level permissions, they are candidates for consolidation.</p>
+<p>Then review permission sets. Many orgs use them inconsistently: some users get permissions from their profile, some from a permission set, some from both. The net result is difficult to audit.</p>
+<h2>Consolidation approach</h2>
+<p>The modern best practice is a minimum viable profile (limited base permissions) plus permission set groups that grant access by role or function. Map each existing profile to a proposed permission set group. Build the new structure, test with a pilot group, and migrate users in batches.</p>
+<p>Governance and Access is one of six dimensions in the <a href="/framework.html">AI-Ready RevOps Framework</a>. Profile and permission discipline determines what your AI tools can see, modify, and act on.</p>
+
+
+<section class="faq">
+<h2>Frequently asked questions</h2>
+<details><summary>How many Salesforce profiles should an org have?</summary>
+<p>Most mid-market orgs can operate with 5-10 profiles. If you have more than 20, you almost certainly have redundant profiles that should be consolidated.</p>
+</details>
+<details><summary>What is the risk of permission sprawl?</summary>
+<p>Over-broad permissions mean users and AI agents can see and modify data they should not. This creates compliance risk, audit trail gaps, and data quality issues.</p>
+</details>
+</section>
+
+<div class="related-tools"><p><strong>Related free tools:</strong> <a href="/assessment.html">Free Assessment</a></p></div>
+
+<div class="post-cta">
+<h3>See where your revenue stack stands</h3>
+<p>The <a href="/assessment.html">free AI-Ready RevOps Assessment</a> scores your organization across six weighted dimensions in about four minutes. No demo, no sales call required.</p>
+<a href="/assessment.html" class="btn">Take the assessment</a>
+</div>
+</div>
+</article>
+</main>
+
+<footer class="site-footer">
+<div class="footer-brand">
+<strong>AI-Ready RevOps</strong>
+<p>A diagnostic and remediation methodology for the modern revenue stack.</p>
+</div>
+<div class="footer-links">
+<div>
+<h4>The Framework</h4>
+<ul>
+<li><a href="/framework.html">Methodology</a></li>
+<li><a href="/tools/">Free tools</a></li>
+<li><a href="/assessment.html">Free assessment</a></li>
+<li><a href="/services.html">Engagements</a></li>
+</ul>
+</div>
+<div>
+<h4>Read</h4>
+<ul>
+<li><a href="/blog/">Articles</a></li>
+</ul>
+</div>
+<div>
+<h4>About</h4>
+<ul>
+<li><a href="/about.html">About the author</a></li>
+</ul>
+</div>
+</div>
+<p class="footer-copy">&copy; 2026 AI-Ready RevOps &middot; WhizzLead aireadyrevops.com</p>
+</footer>
+</body>
+</html>

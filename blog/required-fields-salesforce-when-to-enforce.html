@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Required Fields in Salesforce: When to Enforce and When to Relax | AI-Ready RevOps</title>
+<meta name="description" content="Too many required fields kill rep adoption. Too few leave your data full of gaps. A framework for deciding which fields to require at each pipeline stage.">
+<link rel="canonical" href="https://aireadyrevops.com/blog/required-fields-salesforce-when-to-enforce.html">
+<meta property="og:title" content="Required Fields in Salesforce: When to Enforce and When to Relax">
+<meta property="og:description" content="Too many required fields kill rep adoption. Too few leave your data full of gaps. A framework for deciding which fields to require at each pipeline stage.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aireadyrevops.com/blog/required-fields-salesforce-when-to-enforce.html">
+<meta property="og:image" content="https://aireadyrevops.com/assets/og-image.png">
+<meta property="og:site_name" content="AI-Ready RevOps">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Required Fields in Salesforce: When to Enforce and When to Relax">
+<meta name="twitter:description" content="Too many required fields kill rep adoption. Too few leave your data full of gaps. A framework for deciding which fields to require at each pipeline stage.">
+<meta name="twitter:image" content="https://aireadyrevops.com/assets/og-image.png">
+<meta name="theme-color" content="#FAF8F3">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Required Fields in Salesforce: When to Enforce and When to Relax",
+  "description": "Too many required fields kill rep adoption. Too few leave your data full of gaps. A framework for deciding which fields to require at each pipeline stage.",
+  "datePublished": "2026-04-15",
+  "dateModified": "2026-04-15",
+  "author": {
+    "@type": "Person",
+    "name": "Vinay Raghavendran",
+    "url": "https://aireadyrevops.com/about.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "AI-Ready RevOps",
+    "url": "https://aireadyrevops.com"
+  },
+  "mainEntityOfPage": "https://aireadyrevops.com/blog/required-fields-salesforce-when-to-enforce.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How many required fields should an Opportunity have?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "5-8 at creation, adding 3-5 more as stage-specific requirements at later stages. More than 12 at creation causes workarounds."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should required fields differ by stage?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Progressive profiling balances data completeness with rep friction."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+<header class="site-header">
+<nav>
+<a href="/" class="logo">AI-Ready RevOps</a>
+<ul class="nav-links">
+<li><a href="/framework.html">Framework</a></li>
+<li><a href="/tools/">Free Tools</a></li>
+<li><a href="/services.html">Services</a></li>
+<li><a href="/blog/">Articles</a></li>
+<li><a href="/about.html">About</a></li>
+</ul>
+<a href="/assessment.html" class="nav-cta">Take the Assessment</a>
+</nav>
+</header>
+
+<main id="main">
+<article class="blog-post">
+<header class="post-header">
+<span class="post-category">Data Foundation</span>
+<h1>Required Fields in Salesforce: When to Enforce and When to Relax</h1>
+<div class="post-meta">
+<time datetime="2026-04-15">April 15, 2026</time>
+<span class="read-time">7 min read</span>
+</div>
+</header>
+
+<div class="prose">
+<p>The tension in every Salesforce org: leadership wants complete data, reps want to move fast, and the CRM sits in between collecting whatever compromise emerges.</p>
+<h2>The progressive profiling approach</h2>
+<p>Stage-based requirements that ask for more data as the deal matures. At opportunity creation: Account, Amount, Close Date, Lead Source, Stage. At qualification: primary use case, decision-maker identified, budget range. At proposal: competitive details, champion name, procurement process.</p>
+<h2>Implementing in Salesforce</h2>
+<p>Use validation rules to enforce stage-specific requirements. Pair with path guidance or dynamic forms that highlight which fields need to be completed for the next stage.</p>
+<p>Avoid making fields universally required at the object level when they are only relevant at certain stages. A universally required field forces reps to enter a value at creation even when they do not have the information, producing placeholder data worse than no data.</p>
+<h2>The AI consideration</h2>
+<p>A required field that reps satisfy with "TBD" or "N/A" is worse for an AI model than a null value. Progressive profiling reduces placeholder data by asking for information only when it is naturally available.</p>
+<p>Field completeness with real data is one of the criteria in the Data Foundation dimension of the <a href="/framework.html">AI-Ready RevOps Framework</a>.</p>
+
+
+<section class="faq">
+<h2>Frequently asked questions</h2>
+<details><summary>How many required fields should an Opportunity have?</summary>
+<p>5-8 at creation, adding 3-5 more as stage-specific requirements at later stages. More than 12 at creation causes workarounds.</p>
+</details>
+<details><summary>Should required fields differ by stage?</summary>
+<p>Yes. Progressive profiling balances data completeness with rep friction.</p>
+</details>
+</section>
+
+<div class="related-tools"><p><strong>Related free tools:</strong> <a href="/tools/exit-criteria-designer.html">Stage Exit-Criteria Designer</a></p></div>
+
+<div class="post-cta">
+<h3>See where your revenue stack stands</h3>
+<p>The <a href="/assessment.html">free AI-Ready RevOps Assessment</a> scores your organization across six weighted dimensions in about four minutes. No demo, no sales call required.</p>
+<a href="/assessment.html" class="btn">Take the assessment</a>
+</div>
+</div>
+</article>
+</main>
+
+<footer class="site-footer">
+<div class="footer-brand">
+<strong>AI-Ready RevOps</strong>
+<p>A diagnostic and remediation methodology for the modern revenue stack.</p>
+</div>
+<div class="footer-links">
+<div>
+<h4>The Framework</h4>
+<ul>
+<li><a href="/framework.html">Methodology</a></li>
+<li><a href="/tools/">Free tools</a></li>
+<li><a href="/assessment.html">Free assessment</a></li>
+<li><a href="/services.html">Engagements</a></li>
+</ul>
+</div>
+<div>
+<h4>Read</h4>
+<ul>
+<li><a href="/blog/">Articles</a></li>
+</ul>
+</div>
+<div>
+<h4>About</h4>
+<ul>
+<li><a href="/about.html">About the author</a></li>
+</ul>
+</div>
+</div>
+<p class="footer-copy">&copy; 2026 AI-Ready RevOps &middot; WhizzLead aireadyrevops.com</p>
+</footer>
+</body>
+</html>

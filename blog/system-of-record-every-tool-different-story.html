@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>How to Find Your System of Record When Every Tool Tells a Different Story | AI-Ready RevOps</title>
+<meta name="description" content="When your CRM says one thing, your marketing platform says another, and your BI tool says a third, you do not have a system of record. Here is how to fix that.">
+<link rel="canonical" href="https://aireadyrevops.com/blog/system-of-record-every-tool-different-story.html">
+<meta property="og:title" content="How to Find Your System of Record When Every Tool Tells a Different Story">
+<meta property="og:description" content="When your CRM says one thing, your marketing platform says another, and your BI tool says a third, you do not have a system of record. Here is how to fix that.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aireadyrevops.com/blog/system-of-record-every-tool-different-story.html">
+<meta property="og:image" content="https://aireadyrevops.com/assets/og-image.png">
+<meta property="og:site_name" content="AI-Ready RevOps">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Find Your System of Record When Every Tool Tells a Different Story">
+<meta name="twitter:description" content="When your CRM says one thing, your marketing platform says another, and your BI tool says a third, you do not have a system of record. Here is how to fix that.">
+<meta name="twitter:image" content="https://aireadyrevops.com/assets/og-image.png">
+<meta name="theme-color" content="#FAF8F3">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Find Your System of Record When Every Tool Tells a Different Story",
+  "description": "When your CRM says one thing, your marketing platform says another, and your BI tool says a third, you do not have a system of record. Here is how to fix that.",
+  "datePublished": "2026-05-25",
+  "dateModified": "2026-05-25",
+  "author": {
+    "@type": "Person",
+    "name": "Vinay Raghavendran",
+    "url": "https://aireadyrevops.com/about.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "AI-Ready RevOps",
+    "url": "https://aireadyrevops.com"
+  },
+  "mainEntityOfPage": "https://aireadyrevops.com/blog/system-of-record-every-tool-different-story.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a system of record for RevOps?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A system of record (SoR) is the single authoritative source for a specific data domain. The key is that each data domain has one and only one SoR, and every other tool defers to it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do my tools show different numbers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Multiple tools showing different numbers usually means there is no defined system of record, sync timing creates lag, or the same metric is calculated differently in each tool."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+<header class="site-header">
+<nav>
+<a href="/" class="logo">AI-Ready RevOps</a>
+<ul class="nav-links">
+<li><a href="/framework.html">Framework</a></li>
+<li><a href="/tools/">Free Tools</a></li>
+<li><a href="/services.html">Services</a></li>
+<li><a href="/blog/">Articles</a></li>
+<li><a href="/about.html">About</a></li>
+</ul>
+<a href="/assessment.html" class="nav-cta">Take the Assessment</a>
+</nav>
+</header>
+
+<main id="main">
+<article class="blog-post">
+<header class="post-header">
+<span class="post-category">Integration Architecture</span>
+<h1>How to Find Your System of Record When Every Tool Tells a Different Story</h1>
+<div class="post-meta">
+<time datetime="2026-05-25">May 25, 2026</time>
+<span class="read-time">8 min read</span>
+</div>
+</header>
+
+<div class="prose">
+<p>Your CRM says pipeline is $4.2M. Your BI dashboard says $3.8M. Your VP of Sales' spreadsheet says $4.7M. Your CEO asks which number to believe, and nobody can answer confidently.</p>
+<h2>What a system of record actually means</h2>
+<p>A system of record is the single authoritative source for a specific data domain. It does not mean you only have one tool. It means that for each type of data, there is one designated source that every other tool defers to. Example: Salesforce is the SoR for pipeline and revenue data. HubSpot is the SoR for marketing engagement data. When these tools sync, data flows in a defined direction, and conflicts are resolved by deferring to the SoR.</p>
+<h2>How to establish clarity</h2>
+<p>List every data domain your revenue team uses: pipeline, revenue (booked), revenue (recognized), leads, contacts, accounts, activities, marketing engagement, product usage, billing, support tickets. For each domain, identify which tool currently holds the most complete and reliable version. That tool becomes the SoR.</p>
+<p>Then document the sync direction for every integration. Data should flow from SoR to downstream tools, not the other way. If both tools are updating the same field bidirectionally, you have a conflict waiting to happen.</p>
+<h2>Common conflicts</h2>
+<p>The most common SoR conflict is between CRM and marketing automation on lead/contact data. Both tools hold records for the same people, but they diverge on field values. The fix: define conflict resolution rules where the SoR wins.</p>
+<p>The second most common is between CRM and BI on revenue numbers. This usually stems from calculation differences. The fix is labeling correctly: "booked ARR per CRM" versus "recognized revenue per finance model" are two different metrics.</p>
+<p>Integration Architecture is one of six dimensions in the <a href="/framework.html">AI-Ready RevOps Framework</a>. When AI tools read from multiple sources without clear SoR rules, they inherit every conflict in your stack.</p>
+
+
+<section class="faq">
+<h2>Frequently asked questions</h2>
+<details><summary>What is a system of record for RevOps?</summary>
+<p>A system of record (SoR) is the single authoritative source for a specific data domain. The key is that each data domain has one and only one SoR, and every other tool defers to it.</p>
+</details>
+<details><summary>Why do my tools show different numbers?</summary>
+<p>Multiple tools showing different numbers usually means there is no defined system of record, sync timing creates lag, or the same metric is calculated differently in each tool.</p>
+</details>
+</section>
+
+<div class="related-tools"><p><strong>Related free tools:</strong> <a href="/tools/mql-sql-aligner.html">MQL/SQL Definition Aligner</a></p></div>
+
+<div class="post-cta">
+<h3>See where your revenue stack stands</h3>
+<p>The <a href="/assessment.html">free AI-Ready RevOps Assessment</a> scores your organization across six weighted dimensions in about four minutes. No demo, no sales call required.</p>
+<a href="/assessment.html" class="btn">Take the assessment</a>
+</div>
+</div>
+</article>
+</main>
+
+<footer class="site-footer">
+<div class="footer-brand">
+<strong>AI-Ready RevOps</strong>
+<p>A diagnostic and remediation methodology for the modern revenue stack.</p>
+</div>
+<div class="footer-links">
+<div>
+<h4>The Framework</h4>
+<ul>
+<li><a href="/framework.html">Methodology</a></li>
+<li><a href="/tools/">Free tools</a></li>
+<li><a href="/assessment.html">Free assessment</a></li>
+<li><a href="/services.html">Engagements</a></li>
+</ul>
+</div>
+<div>
+<h4>Read</h4>
+<ul>
+<li><a href="/blog/">Articles</a></li>
+</ul>
+</div>
+<div>
+<h4>About</h4>
+<ul>
+<li><a href="/about.html">About the author</a></li>
+</ul>
+</div>
+</div>
+<p class="footer-copy">&copy; 2026 AI-Ready RevOps &middot; WhizzLead aireadyrevops.com</p>
+</footer>
+</body>
+</html>

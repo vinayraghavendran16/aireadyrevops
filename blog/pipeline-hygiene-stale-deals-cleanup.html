@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pipeline Hygiene: How to Clean Stale Deals Without Killing Rep Morale | AI-Ready RevOps</title>
+<meta name="description" content="15-25% of your pipeline is stale deals with expired close dates. Here is how to clean them up systematically without making reps feel punished.">
+<link rel="canonical" href="https://aireadyrevops.com/blog/pipeline-hygiene-stale-deals-cleanup.html">
+<meta property="og:title" content="Pipeline Hygiene: How to Clean Stale Deals Without Killing Rep Morale">
+<meta property="og:description" content="15-25% of your pipeline is stale deals with expired close dates. Here is how to clean them up systematically without making reps feel punished.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aireadyrevops.com/blog/pipeline-hygiene-stale-deals-cleanup.html">
+<meta property="og:image" content="https://aireadyrevops.com/assets/og-image.png">
+<meta property="og:site_name" content="AI-Ready RevOps">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pipeline Hygiene: How to Clean Stale Deals Without Killing Rep Morale">
+<meta name="twitter:description" content="15-25% of your pipeline is stale deals with expired close dates. Here is how to clean them up systematically without making reps feel punished.">
+<meta name="twitter:image" content="https://aireadyrevops.com/assets/og-image.png">
+<meta name="theme-color" content="#FAF8F3">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Pipeline Hygiene: How to Clean Stale Deals Without Killing Rep Morale",
+  "description": "15-25% of your pipeline is stale deals with expired close dates. Here is how to clean them up systematically without making reps feel punished.",
+  "datePublished": "2026-05-18",
+  "dateModified": "2026-05-18",
+  "author": {
+    "@type": "Person",
+    "name": "Vinay Raghavendran",
+    "url": "https://aireadyrevops.com/about.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "AI-Ready RevOps",
+    "url": "https://aireadyrevops.com"
+  },
+  "mainEntityOfPage": "https://aireadyrevops.com/blog/pipeline-hygiene-stale-deals-cleanup.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What counts as a stale deal in Salesforce?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A deal is stale when its close date has passed without a stage change, when it has been in the same stage for longer than your average sales cycle, or when there has been no logged activity in 30+ days."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I automatically close stale deals?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Auto-closing is too aggressive. A better approach is automated flagging and escalation: alert the rep after 14 days past close date, notify the manager after 30 days, and auto-move to a Stale stage after 45 days."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+<header class="site-header">
+<nav>
+<a href="/" class="logo">AI-Ready RevOps</a>
+<ul class="nav-links">
+<li><a href="/framework.html">Framework</a></li>
+<li><a href="/tools/">Free Tools</a></li>
+<li><a href="/services.html">Services</a></li>
+<li><a href="/blog/">Articles</a></li>
+<li><a href="/about.html">About</a></li>
+</ul>
+<a href="/assessment.html" class="nav-cta">Take the Assessment</a>
+</nav>
+</header>
+
+<main id="main">
+<article class="blog-post">
+<header class="post-header">
+<span class="post-category">Forecasting Trust</span>
+<h1>Pipeline Hygiene: How to Clean Stale Deals Without Killing Rep Morale</h1>
+<div class="post-meta">
+<time datetime="2026-05-18">May 18, 2026</time>
+<span class="read-time">7 min read</span>
+</div>
+</header>
+
+<div class="prose">
+<p>Pull a report right now on open opportunities in your Salesforce org with close dates in the past. If your org is typical, 15-25% of your pipeline is stale: deals with close dates that expired weeks or months ago, sitting in stages that suggest progress while representing none.</p>
+<h2>Why deals go stale</h2>
+<p>Reps push close dates forward because there is no penalty for doing so and a perceived penalty for closing a deal as lost. Managers often reinforce this by treating pipeline size as a performance metric, which incentivizes keeping everything open.</p>
+<h2>A staged cleanup approach</h2>
+<p>Instead of mass-closing stale deals, use a graduated escalation process. Build a Salesforce report that flags deals based on three criteria: close date is in the past, the deal has been in the same stage for longer than 1.5x your average stage duration, or there is no logged activity in 30 days.</p>
+<p>Then implement a three-step escalation flow. At 14 days past close date: send an automated notification to the rep. At 30 days: notify the manager. At 45 days: automatically move the deal to a "Stale" stage and remove it from forecast views.</p>
+<p>The key is that the rep can reactivate a stale deal at any time by updating the close date and adding a status note. This preserves autonomy while enforcing accountability.</p>
+<h2>The cultural shift</h2>
+<p>Pipeline hygiene only works if the team believes that a smaller, accurate pipeline is more valuable than a large, inflated one. Share forecast accuracy metrics with the team. When reps see that stale deals caused the forecast to miss by 15 points last quarter, the cleanup feels like collective improvement, not punishment.</p>
+<p>Pipeline hygiene is one of four criteria in the Forecasting Trust dimension of the <a href="/framework.html">AI-Ready RevOps Framework</a>. Clean pipeline is the prerequisite for accurate forecasting, whether human or AI-driven.</p>
+
+
+<section class="faq">
+<h2>Frequently asked questions</h2>
+<details><summary>What counts as a stale deal in Salesforce?</summary>
+<p>A deal is stale when its close date has passed without a stage change, when it has been in the same stage for longer than your average sales cycle, or when there has been no logged activity in 30+ days.</p>
+</details>
+<details><summary>Should I automatically close stale deals?</summary>
+<p>Auto-closing is too aggressive. A better approach is automated flagging and escalation: alert the rep after 14 days past close date, notify the manager after 30 days, and auto-move to a Stale stage after 45 days.</p>
+</details>
+</section>
+
+<div class="related-tools"><p><strong>Related free tools:</strong> <a href="/tools/forecast-simulator.html">Forecasting Model Simulator</a></p></div>
+
+<div class="post-cta">
+<h3>See where your revenue stack stands</h3>
+<p>The <a href="/assessment.html">free AI-Ready RevOps Assessment</a> scores your organization across six weighted dimensions in about four minutes. No demo, no sales call required.</p>
+<a href="/assessment.html" class="btn">Take the assessment</a>
+</div>
+</div>
+</article>
+</main>
+
+<footer class="site-footer">
+<div class="footer-brand">
+<strong>AI-Ready RevOps</strong>
+<p>A diagnostic and remediation methodology for the modern revenue stack.</p>
+</div>
+<div class="footer-links">
+<div>
+<h4>The Framework</h4>
+<ul>
+<li><a href="/framework.html">Methodology</a></li>
+<li><a href="/tools/">Free tools</a></li>
+<li><a href="/assessment.html">Free assessment</a></li>
+<li><a href="/services.html">Engagements</a></li>
+</ul>
+</div>
+<div>
+<h4>Read</h4>
+<ul>
+<li><a href="/blog/">Articles</a></li>
+</ul>
+</div>
+<div>
+<h4>About</h4>
+<ul>
+<li><a href="/about.html">About the author</a></li>
+</ul>
+</div>
+</div>
+<p class="footer-copy">&copy; 2026 AI-Ready RevOps &middot; WhizzLead aireadyrevops.com</p>
+</footer>
+</body>
+</html>

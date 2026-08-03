@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Salesforce Duplicate Management: A Practical Cleanup Guide for RevOps | AI-Ready RevOps</title>
+<meta name="description" content="Duplicate records in Salesforce corrupt your AI models, distort your pipeline, and waste rep time. A practical guide to detection, merging, and ongoing governance.">
+<link rel="canonical" href="https://aireadyrevops.com/blog/salesforce-duplicate-management-cleanup-guide.html">
+<meta property="og:title" content="Salesforce Duplicate Management: A Practical Cleanup Guide for RevOps">
+<meta property="og:description" content="Duplicate records in Salesforce corrupt your AI models, distort your pipeline, and waste rep time. A practical guide to detection, merging, and ongoing governance.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aireadyrevops.com/blog/salesforce-duplicate-management-cleanup-guide.html">
+<meta property="og:image" content="https://aireadyrevops.com/assets/og-image.png">
+<meta property="og:site_name" content="AI-Ready RevOps">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Salesforce Duplicate Management: A Practical Cleanup Guide for RevOps">
+<meta name="twitter:description" content="Duplicate records in Salesforce corrupt your AI models, distort your pipeline, and waste rep time. A practical guide to detection, merging, and ongoing governance.">
+<meta name="twitter:image" content="https://aireadyrevops.com/assets/og-image.png">
+<meta name="theme-color" content="#FAF8F3">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Salesforce Duplicate Management: A Practical Cleanup Guide for RevOps",
+  "description": "Duplicate records in Salesforce corrupt your AI models, distort your pipeline, and waste rep time. A practical guide to detection, merging, and ongoing governance.",
+  "datePublished": "2026-04-13",
+  "dateModified": "2026-04-13",
+  "author": {
+    "@type": "Person",
+    "name": "Vinay Raghavendran",
+    "url": "https://aireadyrevops.com/about.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "AI-Ready RevOps",
+    "url": "https://aireadyrevops.com"
+  },
+  "mainEntityOfPage": "https://aireadyrevops.com/blog/salesforce-duplicate-management-cleanup-guide.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is an acceptable duplicate rate in Salesforce?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Below 5% on Accounts and Contacts is the target. The average mid-market org runs between 10-20% before a dedicated cleanup effort."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do duplicates affect AI tools?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Duplicate records mean your AI model sees the same customer or company as two separate entities with different data. This splits activity history, fragments engagement signals, and produces conflicting predictions for what is actually a single relationship."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+<header class="site-header">
+<nav>
+<a href="/" class="logo">AI-Ready RevOps</a>
+<ul class="nav-links">
+<li><a href="/framework.html">Framework</a></li>
+<li><a href="/tools/">Free Tools</a></li>
+<li><a href="/services.html">Services</a></li>
+<li><a href="/blog/">Articles</a></li>
+<li><a href="/about.html">About</a></li>
+</ul>
+<a href="/assessment.html" class="nav-cta">Take the Assessment</a>
+</nav>
+</header>
+
+<main id="main">
+<article class="blog-post">
+<header class="post-header">
+<span class="post-category">Data Foundation</span>
+<h1>Salesforce Duplicate Management: A Practical Cleanup Guide for RevOps</h1>
+<div class="post-meta">
+<time datetime="2026-04-13">April 13, 2026</time>
+<span class="read-time">8 min read</span>
+</div>
+</header>
+
+<div class="prose">
+<p>Duplicates are the silent data quality killer. Unlike missing fields or broken picklists, duplicates do not show up as empty cells in a report. They hide in plain sight: two Account records for the same company with slightly different names, three Contact records for the same person with different email addresses, or parallel Opportunity records that double-count pipeline value.</p>
+<p>For AI tools, duplicates are especially destructive. A lead scoring model that sees the same prospect as two separate contacts will split the engagement history between them. Each record looks less engaged than the real person actually is, producing a lower score. A forecasting model that counts duplicate opportunities will overstate pipeline.</p>
+<h2>Step 1: Measure your duplicate rate</h2>
+<p>Before cleaning, quantify the problem. Use Salesforce's built-in Duplicate Management rules to scan Accounts and Contacts. For Accounts, match on company name (fuzzy match), domain, and phone. For Contacts, match on email, then on name plus company combination.</p>
+<p>Export the duplicate report and calculate the rate: duplicate records divided by total records. If you are above 10%, this is a priority project. Between 5% and 10%, schedule a cleanup. Below 5%, your focus shifts to prevention.</p>
+<h2>Step 2: Define your merge rules</h2>
+<p>Merging duplicates is not just picking a winner. You need rules for which record survives, how conflicting field values are resolved, and what happens to related records (activities, opportunities, cases). Document these rules before you start merging.</p>
+<p>Common merge rules: the record with the most recent activity wins. If both records have different values for the same field, keep the most recently updated value. All related records should transfer to the surviving record. Test your merge rules on a small batch before processing in bulk.</p>
+<h2>Step 3: Bulk merge with care</h2>
+<p>For large duplicate sets, manual merging is impractical. Tools like DemandTools, Cloudingo, or Salesforce's native Duplicate Jobs can automate the process. But automation without oversight is dangerous. Always review a sample of proposed merges before running a bulk job. Look for false positives (records that match on name but are actually different entities) and edge cases (parent/child company relationships that look like duplicates but are not).</p>
+<h2>Step 4: Prevent recurrence</h2>
+<p>Cleanup without prevention is a cycle. Enable Salesforce Duplicate Rules on Account, Contact, and Lead creation. Set the rules to alert (not block) on potential duplicates, which reduces rep friction while flagging issues. For data imported via integration or enrichment tools, run dedup checks as part of the import process.</p>
+<p>Assign quarterly duplicate audits to your data steward. A 15-minute review of duplicate detection reports every quarter catches accumulation before it becomes a project.</p>
+<p>Duplicate management is one of four criteria in the Data Foundation dimension of the <a href="/framework.html">AI-Ready RevOps Framework</a>. Clean deduplication is a prerequisite for every AI tool that reads from your CRM.</p>
+
+
+<section class="faq">
+<h2>Frequently asked questions</h2>
+<details><summary>What is an acceptable duplicate rate in Salesforce?</summary>
+<p>Below 5% on Accounts and Contacts is the target. The average mid-market org runs between 10-20% before a dedicated cleanup effort.</p>
+</details>
+<details><summary>How do duplicates affect AI tools?</summary>
+<p>Duplicate records mean your AI model sees the same customer or company as two separate entities with different data. This splits activity history, fragments engagement signals, and produces conflicting predictions for what is actually a single relationship.</p>
+</details>
+</section>
+
+<div class="related-tools"><p><strong>Related free tools:</strong> <a href="/tools/crm-data-quality.html">CRM Data Quality Scorecard</a></p></div>
+
+<div class="post-cta">
+<h3>See where your revenue stack stands</h3>
+<p>The <a href="/assessment.html">free AI-Ready RevOps Assessment</a> scores your organization across six weighted dimensions in about four minutes. No demo, no sales call required.</p>
+<a href="/assessment.html" class="btn">Take the assessment</a>
+</div>
+</div>
+</article>
+</main>
+
+<footer class="site-footer">
+<div class="footer-brand">
+<strong>AI-Ready RevOps</strong>
+<p>A diagnostic and remediation methodology for the modern revenue stack.</p>
+</div>
+<div class="footer-links">
+<div>
+<h4>The Framework</h4>
+<ul>
+<li><a href="/framework.html">Methodology</a></li>
+<li><a href="/tools/">Free tools</a></li>
+<li><a href="/assessment.html">Free assessment</a></li>
+<li><a href="/services.html">Engagements</a></li>
+</ul>
+</div>
+<div>
+<h4>Read</h4>
+<ul>
+<li><a href="/blog/">Articles</a></li>
+</ul>
+</div>
+<div>
+<h4>About</h4>
+<ul>
+<li><a href="/about.html">About the author</a></li>
+</ul>
+</div>
+</div>
+<p class="footer-copy">&copy; 2026 AI-Ready RevOps &middot; WhizzLead aireadyrevops.com</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Why Agentforce Gives Bad Answers (and How to Fix the Data Underneath) | AI-Ready RevOps</title>
+<meta name="description" content="Agentforce is only as good as your Salesforce data. If your fields are messy, your stages are subjective, and your permissions are sprawling, the agent inherits all of it.">
+<link rel="canonical" href="https://aireadyrevops.com/blog/why-agentforce-gives-bad-answers.html">
+<meta property="og:title" content="Why Agentforce Gives Bad Answers (and How to Fix the Data Underneath)">
+<meta property="og:description" content="Agentforce is only as good as your Salesforce data. If your fields are messy, your stages are subjective, and your permissions are sprawling, the agent inherits all of it.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aireadyrevops.com/blog/why-agentforce-gives-bad-answers.html">
+<meta property="og:image" content="https://aireadyrevops.com/assets/og-image.png">
+<meta property="og:site_name" content="AI-Ready RevOps">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Why Agentforce Gives Bad Answers (and How to Fix the Data Underneath)">
+<meta name="twitter:description" content="Agentforce is only as good as your Salesforce data. If your fields are messy, your stages are subjective, and your permissions are sprawling, the agent inherits all of it.">
+<meta name="twitter:image" content="https://aireadyrevops.com/assets/og-image.png">
+<meta name="theme-color" content="#FAF8F3">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Why Agentforce Gives Bad Answers (and How to Fix the Data Underneath)",
+  "description": "Agentforce is only as good as your Salesforce data. If your fields are messy, your stages are subjective, and your permissions are sprawling, the agent inherits all of it.",
+  "datePublished": "2026-04-06",
+  "dateModified": "2026-04-06",
+  "author": {
+    "@type": "Person",
+    "name": "Vinay Raghavendran",
+    "url": "https://aireadyrevops.com/about.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "AI-Ready RevOps",
+    "url": "https://aireadyrevops.com"
+  },
+  "mainEntityOfPage": "https://aireadyrevops.com/blog/why-agentforce-gives-bad-answers.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why is Agentforce not working well for my team?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The most common reason is data quality. Agentforce reads from your Salesforce objects, and if those objects have incomplete fields, inconsistent picklists, stale records, or conflicting data from broken integrations, the agent produces unreliable outputs. Fix the data foundation before troubleshooting the agent configuration."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I prepare my Salesforce org for Agentforce?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Start with data hygiene: clean up unused fields, fix picklist values, resolve duplicates, and enforce stage definitions. Then audit your connected apps and permissions to ensure the agent has access to the right data without over-broad access."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+<header class="site-header">
+<nav>
+<a href="/" class="logo">AI-Ready RevOps</a>
+<ul class="nav-links">
+<li><a href="/framework.html">Framework</a></li>
+<li><a href="/tools/">Free Tools</a></li>
+<li><a href="/services.html">Services</a></li>
+<li><a href="/blog/">Articles</a></li>
+<li><a href="/about.html">About</a></li>
+</ul>
+<a href="/assessment.html" class="nav-cta">Take the Assessment</a>
+</nav>
+</header>
+
+<main id="main">
+<article class="blog-post">
+<header class="post-header">
+<span class="post-category">AI Stack Fit</span>
+<h1>Why Agentforce Gives Bad Answers (and How to Fix the Data Underneath)</h1>
+<div class="post-meta">
+<time datetime="2026-04-06">April 06, 2026</time>
+<span class="read-time">9 min read</span>
+</div>
+</header>
+
+<div class="prose">
+<p>Your team deployed Agentforce expecting transformation. Instead, the agent is surfacing wrong accounts, suggesting irrelevant actions, and producing summaries that reps do not trust. The instinct is to blame the AI. The problem is almost always underneath it.</p>
+<p>Agentforce, like every AI agent built on CRM data, is a pattern-matching engine operating on your Salesforce metadata and records. It does not know what is correct. It knows what is there. If what is there is a decade of accumulated field sprawl, inconsistent picklists, stale pipeline data, and over-broad permissions, the agent will faithfully reflect all of it.</p>
+<h2>The four data problems that break Agentforce</h2>
+<h3>Field noise</h3>
+<p>If your Account object has 200 custom fields and half of them are unused or partially populated, Agentforce has to parse through all of them when building context for a query. The agent does not know that "Legacy_Region__c" is deprecated. It sees a field with values on 40% of records and treats it as potentially relevant. This dilutes the signal from fields that actually matter.</p>
+<h3>Inconsistent categories</h3>
+<p>When your Industry picklist has 45 values and "Other" represents 30% of records, the agent cannot reliably segment or route by industry. When your Lead Source has values that overlap ("Webinar" and "Event" and "Virtual Event"), the agent cannot build clean attribution models. Every AI insight built on these fields inherits the ambiguity.</p>
+<h3>Stale pipeline</h3>
+<p>An agent tasked with identifying priority accounts or suggesting next-best actions relies on pipeline data being current. If 20% of your open opportunities have close dates in the past, the agent's prioritization is based on fiction. It will recommend actions on deals that are effectively dead.</p>
+<h3>Permission sprawl</h3>
+<p>Agentforce operates within your org's permission model. If the agent has access to objects and fields it should not (or lacks access to ones it needs), the outputs will be either over-broad or incomplete.</p>
+<h2>How to fix it</h2>
+<p>Do not start by reconfiguring the agent. Start by auditing the data it reads. Pull field population rates on Account, Contact, and Opportunity. Check picklist distributions. Flag stale pipeline. Review the agent's permission set. These four checks take a day, and they will explain 80% of the bad outputs you are seeing.</p>
+<p>Once you have identified the data issues, prioritize by impact. Fix the fields and picklists that feed the agent's most common queries first. Clean up stale pipeline before enabling pipeline-based recommendations. Tighten permissions to match the agent's intended scope.</p>
+<p>Then, and only then, revisit the agent's configuration. With clean data underneath, the same agent configuration that was producing bad answers will start producing useful ones. The technology was never the bottleneck. The foundation was.</p>
+<p>If you want to see exactly where your Salesforce org stands before configuring or reconfiguring Agentforce, the <a href="/assessment.html">AI-Ready RevOps Assessment</a> scores your data foundation alongside five other dimensions that determine whether AI tools will produce ROI on your stack.</p>
+
+
+<section class="faq">
+<h2>Frequently asked questions</h2>
+<details><summary>Why is Agentforce not working well for my team?</summary>
+<p>The most common reason is data quality. Agentforce reads from your Salesforce objects, and if those objects have incomplete fields, inconsistent picklists, stale records, or conflicting data from broken integrations, the agent produces unreliable outputs. Fix the data foundation before troubleshooting the agent configuration.</p>
+</details>
+<details><summary>How do I prepare my Salesforce org for Agentforce?</summary>
+<p>Start with data hygiene: clean up unused fields, fix picklist values, resolve duplicates, and enforce stage definitions. Then audit your connected apps and permissions to ensure the agent has access to the right data without over-broad access.</p>
+</details>
+</section>
+
+<div class="related-tools"><p><strong>Related free tools:</strong> <a href="/tools/crm-data-quality.html">CRM Data Quality Scorecard</a>, <a href="/assessment.html">Free Assessment</a></p></div>
+
+<div class="post-cta">
+<h3>See where your revenue stack stands</h3>
+<p>The <a href="/assessment.html">free AI-Ready RevOps Assessment</a> scores your organization across six weighted dimensions in about four minutes. No demo, no sales call required.</p>
+<a href="/assessment.html" class="btn">Take the assessment</a>
+</div>
+</div>
+</article>
+</main>
+
+<footer class="site-footer">
+<div class="footer-brand">
+<strong>AI-Ready RevOps</strong>
+<p>A diagnostic and remediation methodology for the modern revenue stack.</p>
+</div>
+<div class="footer-links">
+<div>
+<h4>The Framework</h4>
+<ul>
+<li><a href="/framework.html">Methodology</a></li>
+<li><a href="/tools/">Free tools</a></li>
+<li><a href="/assessment.html">Free assessment</a></li>
+<li><a href="/services.html">Engagements</a></li>
+</ul>
+</div>
+<div>
+<h4>Read</h4>
+<ul>
+<li><a href="/blog/">Articles</a></li>
+</ul>
+</div>
+<div>
+<h4>About</h4>
+<ul>
+<li><a href="/about.html">About the author</a></li>
+</ul>
+</div>
+</div>
+<p class="footer-copy">&copy; 2026 AI-Ready RevOps &middot; WhizzLead aireadyrevops.com</p>
+</footer>
+</body>
+</html>
