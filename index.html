@@ -1,105 +1,684 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Articles — AI-Ready RevOps</title>
-<meta name="description" content="Long-form pieces on AI-readiness, revenue operations, and the foundations modern AI tools need to actually deliver ROI.">
-<link rel="canonical" href="https://aireadyrevops.com/blog/">
-<meta property="og:title" content="Articles — AI-Ready RevOps">
-<meta property="og:description" content="Long-form pieces on AI-readiness, revenue operations, and modern revenue stack design.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://aireadyrevops.com/blog/">
-<meta name="theme-color" content="#FAF8F3">
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ═══ SEO ═══ -->
+  <title>SaaSSpendTrack — SaaS Spend Management Software | Free for Small Teams</title>
+  <meta name="description" content="Track every SaaS contract, renewal, invoice, and vendor in one dashboard. Free forever for up to 3 vendors. Live in 30 minutes. 80% cheaper than Zluri and Spendflo.">
+  <meta name="keywords" content="SaaS spend management, vendor spend tracking, contract renewal alerts, SaaS cost optimization, software spend dashboard, invoice tracking, SaaS management tool">
+  <meta name="author" content="SaaSSpendTrack">
+  <link rel="canonical" href="https://saasspendtrack.com/">
+
+  <!-- ═══ Open Graph / Social ═══ -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://saasspendtrack.com/">
+  <meta property="og:title" content="SaaSSpendTrack — Stop Overpaying for SaaS">
+  <meta property="og:description" content="Track every contract, renewal, and invoice across your entire vendor stack. One dashboard. Zero surprises. Free forever for up to 3 vendors.">
+  <meta property="og:image" content="https://saasspendtrack.com/og-image.png">
+  <meta property="og:site_name" content="SaaSSpendTrack">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SaaSSpendTrack — SaaS Spend Management">
+  <meta name="twitter:description" content="Track every SaaS contract, renewal, invoice, and vendor in one dashboard. Free forever for small teams.">
+  <meta name="twitter:image" content="https://saasspendtrack.com/og-image.png">
+
+  <!-- ═══ GEO — AI Engine Visibility ═══ -->
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+  <!-- ═══ Structured Data — Organization ═══ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "SaaSSpendTrack",
+    "url": "https://saasspendtrack.com",
+    "description": "SaaSSpendTrack is a SaaS spend management dashboard for growing teams. It tracks contracts, renewals, invoices, and vendor spend in one place — replacing spreadsheets and giving 20–500 person companies enterprise-grade visibility at a fraction of the cost.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Free",
+        "price": "0",
+        "priceCurrency": "USD",
+        "description": "Free forever for up to 3 vendors. Unlimited users and contracts."
+      },
+      {
+        "@type": "Offer",
+        "name": "Pro",
+        "price": "99",
+        "priceCurrency": "USD",
+        "billingDuration": "P1Y",
+        "description": "Up to 100 vendors, invoice tracking, Slack integration, adoption tracking."
+      },
+      {
+        "@type": "Offer",
+        "name": "Enterprise",
+        "price": "999",
+        "priceCurrency": "USD",
+        "billingDuration": "P1Y",
+        "description": "100+ vendors, SSO, ERP integrations, risk scoring, priority support."
+      }
+    ],
+    "featureList": [
+      "Contract ingestion and management",
+      "Renewal alerts via email and Slack",
+      "Invoice tracking",
+      "Vendor spend analytics",
+      "Workflow automation",
+      "Multi-department access",
+      "Unlimited users on all plans",
+      "Unlimited contracts on all plans"
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "47"
+    }
+  }
+  </script>
+
+  <!-- ═══ Structured Data — FAQ (AEO) ═══ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is SaaSSpendTrack?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "SaaSSpendTrack is a SaaS spend management dashboard for growing teams (20–500 employees). It tracks contracts, renewals, invoices, vendor details, and adoption rates in one place — replacing spreadsheets and giving you enterprise-grade visibility at a fraction of the cost of tools like Zluri or Spendflo."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does SaaSSpendTrack cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "SaaSSpendTrack is free forever for up to 3 vendors. The Pro plan is $99/year for up to 100 vendors. The Enterprise plan is $999/year for 100+ vendors. All plans include unlimited users and unlimited contracts."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is SaaSSpendTrack different from Zluri or Spendflo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Zluri and Spendflo cost $30,000–$60,000 per year and take 2–3 months to deploy, targeting companies with 500+ employees. SaaSSpendTrack starts free, costs $99/year for most teams, and goes live in 30 minutes — giving you 80% of the visibility at less than 1% of the cost."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does onboarding take?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Under 30 minutes. Connect your data sources, configure alerts, and your dashboard is ready. No implementation team needed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I add unlimited users for free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Every plan — including the free plan — supports unlimited users and unlimited contracts. The only limit is the number of vendors you can track."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What SaaS tools can SaaSSpendTrack track?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "SaaSSpendTrack can track any vendor in your SaaS stack, including tools like Salesforce, Figma, Notion, Slack, Intercom, HubSpot, Zoom, and hundreds more. You can add vendors manually or connect via integrations."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- ═══ Structured Data — Breadcrumb ═══ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://saasspendtrack.com/" }
+    ]
+  }
+  </script>
+
+  <!-- ═══ Favicon ═══ -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230F1829'/%3E%3Crect x='6' y='18' width='5' height='8' rx='1.5' fill='%2322C55E'/%3E%3Crect x='13.5' y='12' width='5' height='14' rx='1.5' fill='%2322C55E'/%3E%3Crect x='21' y='6' width='5' height='20' rx='1.5' fill='%2322C55E'/%3E%3C/svg%3E">
+
+  <!-- ═══ Fonts ═══ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- ═══ RB2B Visitor Tracking ═══ -->
+  <script>!function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("0NW1GHJ823O4");</script>
 </head>
 <body>
-<a href="#main" class="skip-link">Skip to content</a>
-<header class="site-header">
-<nav>
-<a href="/" class="logo">AI-Ready RevOps</a>
-<ul class="nav-links">
-<li><a href="/framework.html">Framework</a></li>
-<li><a href="/tools/">Free Tools</a></li>
-<li><a href="/services.html">Services</a></li>
-<li><a href="/blog/">Articles</a></li>
-<li><a href="/about.html">About</a></li>
-</ul>
-<a href="/assessment.html" class="nav-cta">Take the Assessment</a>
-</nav>
-</header>
 
-<main id="main">
-<section class="section">
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="logo" aria-label="SaaSSpendTrack home">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <rect width="32" height="32" rx="7" fill="#0F1829"/>
+          <rect x="6" y="18" width="5" height="8" rx="1.5" fill="#22C55E"/>
+          <rect x="13.5" y="12" width="5" height="14" rx="1.5" fill="#22C55E"/>
+          <rect x="21" y="6" width="5" height="20" rx="1.5" fill="#22C55E"/>
+        </svg>
+        <span>SaaSSpendTrack</span>
+      </a>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://contractiq.whizzlead.com" class="btn btn-sm btn-ghost">Log in</a>
+        <a href="https://contractiq.whizzlead.com" class="btn btn-sm btn-primary" data-plg="nav-cta">Start free →</a>
+      </div>
+      <button class="mobile-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div class="mobile-menu" role="navigation" aria-label="Mobile navigation">
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="https://contractiq.whizzlead.com" class="btn btn-sm btn-primary" style="width:100%;text-align:center;" data-plg="mobile-cta">Start free →</a>
+    </div>
+  </nav>
 
-<p class="eyebrow">Articles</p>
+  <!-- Hero -->
+  <section class="hero" aria-labelledby="hero-headline">
+    <div class="hero-grid-bg" aria-hidden="true"></div>
+    <div class="container hero-content">
+      <div class="hero-badge">🔥 90% cheaper than Zluri &amp; Spendflo</div>
+      <h1 id="hero-headline">Stop overpaying<br>for <span class="hero-accent">SaaS.</span></h1>
+      <p class="hero-sub">Track every contract, renewal, and invoice across your entire vendor stack. One dashboard. Zero surprises. Live in 30 minutes.</p>
+      <div class="hero-actions">
+        <a href="https://contractiq.whizzlead.com" class="btn btn-lg btn-primary" data-plg="hero-primary">Start free — no card needed →</a>
+        <a href="#demo" class="btn btn-lg btn-dark-outline" data-plg="hero-demo">See the dashboard</a>
+      </div>
+      <p class="hero-trust">Trusted by finance &amp; ops teams at growing SaaS companies</p>
+    </div>
+  </section>
 
-<h1>The methodology, in pieces.</h1>
+  <!-- Stats -->
+  <section class="stats-bar" aria-label="Key metrics">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-block">
+          <div class="stat-top"><span class="stat-num" data-target="30" aria-label="30 minutes">0</span><span class="stat-suffix">min</span></div>
+          <span class="stat-desc">to go live</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-block">
+          <div class="stat-top"><span class="stat-num" data-target="90" aria-label="90 percent">0</span><span class="stat-suffix">%</span></div>
+          <span class="stat-desc">cheaper than enterprise tools</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-block">
+          <div class="stat-top"><span class="stat-dollar">$</span><span class="stat-num" data-target="0" aria-label="zero dollars">0</span></div>
+          <span class="stat-desc">to get started</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-block">
+          <div class="stat-top"><span class="stat-num" data-target="100" aria-label="100 percent">0</span><span class="stat-suffix">%</span></div>
+          <span class="stat-desc">free — forever</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<p>Long-form on AI-readiness, revenue operations, and what it takes to make modern AI tools actually deliver ROI inside a real revenue stack.</p>
+  <!-- PLG Value Ladder — 3 steps to paid -->
+  <section class="plg-ladder">
+    <div class="container">
+      <div class="section-header">
+        <span class="sh-badge">How it works</span>
+        <h2>From spreadsheet chaos<br>to <span class="green-text">full visibility</span> in 3 steps</h2>
+      </div>
+      <div class="ladder-grid">
+        <div class="ladder-step reveal">
+          <div class="ladder-num">01</div>
+          <div class="ladder-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h3>Sign up free</h3>
+          <p>Create your account in 60 seconds. No credit card, no sales call, no demo required. Start with up to 3 vendors.</p>
+          <span class="ladder-cta-inline"><a href="https://contractiq.whizzlead.com" data-plg="ladder-step1">Start free →</a></span>
+        </div>
+        <div class="ladder-arrow" aria-hidden="true">→</div>
+        <div class="ladder-step reveal">
+          <div class="ladder-num">02</div>
+          <div class="ladder-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <h3>Add your vendors</h3>
+          <p>Upload contracts, add vendors manually, or connect your tools. Your dashboard populates with spend data instantly.</p>
+          <span class="ladder-cta-inline"><a href="https://contractiq.whizzlead.com" data-plg="ladder-step2">See a demo →</a></span>
+        </div>
+        <div class="ladder-arrow" aria-hidden="true">→</div>
+        <div class="ladder-step reveal">
+          <div class="ladder-num">03</div>
+          <div class="ladder-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+          </div>
+          <h3>Track &amp; save</h3>
+          <p>Get renewal alerts, catch overdue invoices, and spot unused licenses before they auto-renew. Teams upgrade to Pro when they feel the value.</p>
+          <span class="ladder-cta-inline"><a href="https://rzp.io/rzp/2T2PfXBC" data-plg="ladder-step3">Upgrade to Pro →</a></span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<a href="/blog/ai-on-broken-foundations.html">
-The thesis
-AI on broken foundations: why your AI tools aren't producing ROI
-The dominant 2026 RevOps problem isn't AI strategy — it's whether the data, processes, and governance underneath the AI can be trusted at all. A diagnosis.
-~9 min read
-</a>
+  <!-- Dashboard Preview -->
+  <section class="preview" id="demo" aria-label="Product dashboard preview">
+    <div class="container">
+      <div class="preview-label">Live dashboard preview</div>
+      <div class="preview-window reveal">
+        <div class="preview-chrome" aria-hidden="true">
+          <div class="chrome-dots"><span></span><span></span><span></span></div>
+          <div class="chrome-bar">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity:.4"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            saasspendtrack.com/dashboard
+          </div>
+        </div>
+        <div class="preview-body">
+          <div class="dash-sidebar" aria-hidden="true">
+            <div class="sidebar-logo">
+              <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="7" fill="#0F1829"/><rect x="6" y="18" width="5" height="8" rx="1.5" fill="#22C55E"/><rect x="13.5" y="12" width="5" height="14" rx="1.5" fill="#22C55E"/><rect x="21" y="6" width="5" height="20" rx="1.5" fill="#22C55E"/></svg>
+              <span>SSTrack</span>
+            </div>
+            <div class="sidebar-item active"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>Dashboard</div>
+            <div class="sidebar-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Vendors</div>
+            <div class="sidebar-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Contracts</div>
+            <div class="sidebar-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Invoices</div>
+            <div class="sidebar-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>Analytics</div>
+          </div>
+          <div class="dash-main">
+            <div class="dash-header">
+              <div><span class="dash-eyebrow">Overview</span><span class="dash-title">Vendor spend</span></div>
+              <div class="dash-period"><span class="period-btn">Monthly</span><span class="period-btn active">Annual</span></div>
+            </div>
+            <div class="dash-cards">
+              <div class="dash-card"><span class="dc-label">Total spend</span><span class="dc-value">$47,200</span><span class="dc-change up">↓ 12% vs last year</span></div>
+              <div class="dash-card"><span class="dc-label">Active vendors</span><span class="dc-value">24</span><span class="dc-change neutral">+2 this quarter</span></div>
+              <div class="dash-card warn"><span class="dc-label">Renewals due</span><span class="dc-value">3</span><span class="dc-change warn">⚠ Action needed</span></div>
+              <div class="dash-card"><span class="dc-label">Avg cost/user</span><span class="dc-value">$18.40</span><span class="dc-change up">↓ $3.20 saved</span></div>
+            </div>
+            <div class="dash-table">
+              <div class="dt-header"><span>Vendor</span><span>Annual cost</span><span>Users</span><span>Status</span></div>
+              <div class="dt-row"><span class="dt-name"><span class="dot green"></span>Salesforce</span><span class="dt-cost">$14,400</span><span>45</span><span class="badge active">Active</span></div>
+              <div class="dt-row"><span class="dt-name"><span class="dot amber"></span>Figma</span><span class="dt-cost">$8,640</span><span>32</span><span class="badge renew">Renews Aug 3</span></div>
+              <div class="dt-row"><span class="dt-name"><span class="dot green"></span>Notion</span><span class="dt-cost">$4,800</span><span>60</span><span class="badge active">Active</span></div>
+              <div class="dt-row"><span class="dt-name"><span class="dot green"></span>Slack</span><span class="dt-cost">$6,120</span><span>58</span><span class="badge active">Active</span></div>
+              <div class="dt-row"><span class="dt-name"><span class="dot red"></span>Intercom</span><span class="dt-cost">$9,600</span><span>12</span><span class="badge overdue">Invoice overdue</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<a href="/blog/six-dimensions-explained.html">
-Methodology
-The six dimensions of an AI-ready revenue stack
-What each dimension measures, why it's weighted the way it is, and the most common failure mode in each. The framework, decomposed.
-~12 min read
-</a>
+  <!-- Features -->
+  <section class="features" id="features" aria-labelledby="features-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="sh-badge">Features</span>
+        <h2 id="features-heading">Everything Zluri does at $30K.<br>We do it at <span class="green-text">$499.</span></h2>
+      </div>
+      <div class="features-grid">
+        <article class="fcard reveal">
+          <div class="fcard-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+          <h3>Contract ingestion</h3>
+          <p>Upload from Google Drive, your CLM, or add manually. We extract every term, date, and amount automatically.</p>
+        </article>
+        <article class="fcard reveal">
+          <div class="fcard-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg></div>
+          <h3>Renewal alerts</h3>
+          <p>Email and Slack notifications before renewals hit — days, weeks, or months in advance. Nothing auto-renews by accident.</p>
+        </article>
+        <article class="fcard reveal">
+          <div class="fcard-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
+          <h3>Invoice tracking</h3>
+          <p>Pending, paid, overdue — every invoice across every vendor in a single view. No more chasing down finance for status.</p>
+        </article>
+        <article class="fcard reveal">
+          <div class="fcard-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10M18 20V4M6 20v-4"/></svg></div>
+          <h3>Spend analytics</h3>
+          <p>Per-user costs, department breakdowns, adoption rates. Forecast next year's SaaS spend with real usage data.</p>
+        </article>
+        <article class="fcard reveal">
+          <div class="fcard-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 014-4h14M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg></div>
+          <h3>Workflow automation</h3>
+          <p>Build escalation paths so the right people act at the right time. Customize every alert, trigger, and approval flow.</p>
+        </article>
+        <article class="fcard reveal">
+          <div class="fcard-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+          <h3>Integrations</h3>
+          <p>Connects with Slack, Google Drive, CLM tools, and ERP systems. One source of truth across your entire stack.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-<a href="/blog/when-not-to-buy-ai.html">
-Decision framework
-When not to buy AI: a checklist for RevOps leaders
-The honest version. If your foundation looks like this, every dollar of new AI spend will produce noise instead of signal. A specific decision framework.
-~7 min read
-</a>
+  <!-- Comparison -->
+  <section class="compare-section" aria-labelledby="compare-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="sh-badge green">Why switch</span>
+        <h2 id="compare-heading">Enterprise visibility.<br><span class="green-text">Startup pricing.</span></h2>
+      </div>
+      <div class="compare-grid">
+        <div class="compare-card them">
+          <div class="compare-label">Zluri / Spendflo</div>
+          <div class="compare-price">$30,000<span>+/yr</span></div>
+          <ul>
+            <li class="neg">2–3 months to go live</li>
+            <li class="neg">500+ employee target</li>
+            <li class="neg">Users cost extra</li>
+            <li class="neg">Contracts are tiered</li>
+          </ul>
+        </div>
+        <div class="compare-card us">
+          <div class="compare-best">Your pick</div>
+          <div class="compare-label">SaaSSpendTrack</div>
+          <div class="compare-price">$0 – $499<span>/yr</span></div>
+          <ul>
+            <li class="pos">Live in 30 minutes</li>
+            <li class="pos">Built for 20–500 employees</li>
+            <li class="pos">Unlimited users — every plan</li>
+            <li class="pos">Unlimited contracts — every plan</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<h3>More articles on the way.</h3>
+  <!-- Pricing -->
+  <section class="pricing" id="pricing" aria-labelledby="pricing-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="sh-badge">Pricing</span>
+        <h2 id="pricing-heading">Transparent pricing.<br>No sales calls. No surprises.</h2>
+        <p class="sh-sub">Every plan includes unlimited users and unlimited contracts.</p>
+      </div>
 
-<p>New pieces publish roughly every two weeks. The fastest way to stay current is to take the <a href="/assessment.html">free assessment</a> — the follow-up email includes a link to subscribe to new articles.</p>
+      <!-- Billing toggle -->
+      <div class="billing-toggle" role="group" aria-label="Billing period">
+        <button class="toggle-btn active" id="btn-monthly" data-period="monthly">Monthly</button>
+        <button class="toggle-btn" id="btn-annual" data-period="annual">
+          Annual
+          <span class="toggle-save">Save 17%</span>
+        </button>
+      </div>
 
-</section>
-</main>
+      <div class="pricing-grid">
+        <!-- Free -->
+        <div class="plan reveal">
+          <div class="plan-name">Free</div>
+          <div class="plan-price"><span class="price-dollar">$</span>0</div>
+          <div class="plan-period">Forever</div>
+          <div class="plan-sep"></div>
+          <div class="plan-limit">Up to 3 vendors</div>
+          <ul>
+            <li>Unlimited users</li>
+            <li>Unlimited contracts</li>
+            <li>Dashboard + alerts</li>
+            <li>Renewal tracking</li>
+            <li>Email notifications</li>
+          </ul>
+          <a href="https://contractiq.whizzlead.com" class="btn btn-outline-dark btn-full" data-plg="pricing-free">Start free</a>
+        </div>
 
-<footer class="site-footer">
-<div class="footer-brand">
-<strong>AI-Ready RevOps</strong>
-<p>A diagnostic and remediation methodology for the modern revenue stack.</p>
-</div>
-<div class="footer-links">
-<div>
-<h4>The Framework</h4>
-<ul>
-<li><a href="/framework.html">Methodology</a></li>
-<li><a href="/tools/">Free tools</a></li>
-<li><a href="/assessment.html">Free assessment</a></li>
-<li><a href="/services.html">Paid audits</a></li>
-</ul>
-</div>
-<div>
-<h4>Read</h4>
-<ul>
-<li><a href="/blog/">Articles</a></li>
-</ul>
-</div>
-<div>
-<h4>About</h4>
-<ul>
-<li><a href="/about.html">About the author</a></li>
-<li><a href="mailto:vinay@aireadyrevops.com">Contact</a></li>
-</ul>
-</div>
-</div>
-<p class="footer-copy">&copy; 2026 AI-Ready RevOps &middot; WhizzLead aireadyrevops.com</p>
-</footer>
+        <!-- Pro -->
+        <div class="plan featured reveal">
+          <div class="plan-popular">Most popular</div>
+          <div class="plan-name">Pro</div>
+          <div class="plan-price">
+            <span class="price-dollar">$</span><span class="price-val" data-monthly="49" data-annual="499">49</span><span class="price-yr" id="pro-period">/mo</span>
+          </div>
+          <div class="plan-period" id="pro-subline">Billed monthly</div>
+          <div class="plan-sep"></div>
+          <div class="plan-limit">Up to 100 vendors</div>
+          <ul>
+            <li>Everything in Free</li>
+            <li>Invoice tracking</li>
+            <li>Adoption tracking</li>
+            <li>Vendor management</li>
+            <li>Slack integration</li>
+            <li>Multi-department access</li>
+          </ul>
+          <a href="https://rzp.io/rzp/nsTE3gR" class="btn btn-primary btn-full" data-plg="pricing-pro" id="pro-cta">Get started →</a>
+        </div>
+
+        <!-- Enterprise -->
+        <div class="plan reveal">
+          <div class="plan-name">Enterprise</div>
+          <div class="plan-price">
+            <span class="price-dollar">$</span><span class="price-val" data-monthly="149" data-annual="1,499">149</span><span class="price-yr" id="ent-period">/mo</span>
+          </div>
+          <div class="plan-period" id="ent-subline">Billed monthly</div>
+          <div class="plan-sep"></div>
+          <div class="plan-limit">100+ vendors</div>
+          <ul>
+            <li>Everything in Pro</li>
+            <li>Full clause analysis</li>
+            <li>Automated risk scoring</li>
+            <li>SSO + ERP integrations</li>
+            <li>Escalation workflows</li>
+            <li>Priority support</li>
+          </ul>
+          <a href="https://rzp.io/rzp/MhqdtN2a" class="btn btn-outline-dark btn-full" data-plg="pricing-enterprise" id="ent-cta">Get started →</a>
+        </div>
+      </div>
+
+      <!-- PLG inline nudge -->
+      <div class="pricing-nudge">
+        <span>🎯 Most teams save more in their first caught renewal than a full year's subscription.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ — AEO optimised -->
+  <section class="faq" id="faq" aria-labelledby="faq-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="sh-badge">FAQ</span>
+        <h2 id="faq-heading">Questions? Answers.</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>What is SaaSSpendTrack and who is it for?</summary>
+          <p>SaaSSpendTrack is a SaaS spend management dashboard built for finance, ops, and procurement teams at companies with 20–500 employees. It replaces spreadsheets with a single dashboard that tracks contracts, renewals, invoices, vendor details, and adoption rates — giving you enterprise-grade visibility at a fraction of the cost of tools like Zluri or Spendflo.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How much does SaaSSpendTrack cost?</summary>
+          <p>Free forever for up to 3 vendors with unlimited users and contracts. The Pro plan is $499/year (~$41/month) for up to 100 vendors — no budget approval needed. The Enterprise plan is $1,499/year (~$125/month) for 100+ vendors with SSO, ERP integrations, and risk scoring. All plans include unlimited users and unlimited contracts.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How is SaaSSpendTrack different from Zluri or Spendflo?</summary>
+          <p>Zluri and Spendflo cost $30,000–$60,000 per year and take 2–3 months to deploy, primarily targeting 500+ employee companies. SaaSSpendTrack starts free, costs $99/year for most teams, and goes live in under 30 minutes — delivering 80% of the visibility at less than 1% of the price.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How long does onboarding take?</summary>
+          <p>Under 30 minutes. Add your vendors, upload or link contracts, configure renewal alerts, and your dashboard is live. No implementation consultant needed.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I add unlimited users on the free plan?</summary>
+          <p>Yes. Every plan — including Free — supports unlimited users and unlimited contracts. The only variable across plans is the number of vendors you can track (3 on Free, 100 on Pro, 100+ on Enterprise).</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is there a free trial for paid plans?</summary>
+          <p>Yes — 7-day free trial with full access to every feature. No credit card required to start.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What integrations does SaaSSpendTrack support?</summary>
+          <p>SaaSSpendTrack integrates with Slack (for renewal and invoice alerts), Google Drive (for contract uploads), CLM tools, and ERP systems on the Enterprise plan. Additional integrations are being added regularly.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How do I get support?</summary>
+          <p>Lifetime support on all plans. Email support@saasspendtrack.com — we respond within hours, not days. Enterprise customers get a dedicated Slack channel.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta" aria-labelledby="cta-heading">
+    <div class="container">
+      <div class="cta-logo" aria-hidden="true">
+        <svg width="52" height="52" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="7" fill="#0F1829"/><rect x="6" y="18" width="5" height="8" rx="1.5" fill="#22C55E"/><rect x="13.5" y="12" width="5" height="14" rx="1.5" fill="#22C55E"/><rect x="21" y="6" width="5" height="20" rx="1.5" fill="#22C55E"/></svg>
+      </div>
+      <h2 id="cta-heading">Your SaaS stack is<br><span class="green-text">bleeding money.</span></h2>
+      <p>Start free in 60 seconds. Upgrade when you feel the value. Cancel anytime.</p>
+      <a href="https://contractiq.whizzlead.com" class="btn btn-lg btn-primary" data-plg="final-cta">Start tracking — free →</a>
+      <p class="cta-sub">No credit card &nbsp;·&nbsp; No sales call &nbsp;·&nbsp; Live in 30 minutes</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo" aria-label="SaaSSpendTrack home">
+            <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#0F1829"/><rect x="6" y="18" width="5" height="8" rx="1.5" fill="#22C55E"/><rect x="13.5" y="12" width="5" height="14" rx="1.5" fill="#22C55E"/><rect x="21" y="6" width="5" height="20" rx="1.5" fill="#22C55E"/></svg>
+            <span>SaaSSpendTrack</span>
+          </a>
+          <p>SaaS spend management for teams that move fast. Track every dollar you spend on SaaS. Automatically.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="#features">Features</a>
+          <a href="#pricing">Pricing</a>
+          <a href="https://contractiq.whizzlead.com">Dashboard</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="#">About</a>
+          <a href="/privacy">Privacy policy</a>
+          <a href="#">Terms of service</a>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <a href="mailto:support@saasspendtrack.com">support@saasspendtrack.com</a>
+          <a href="#">Documentation</a>
+          <a href="#faq">FAQ</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 SaaSSpendTrack. All rights reserved.</p>
+        <p class="footer-tagline">Track every dollar you spend on SaaS. Automatically.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cookie Banner (RB2B compliance) -->
+  <div id="cookie-banner" role="dialog" aria-label="Cookie consent" style="display:none;">
+    <div class="cookie-inner">
+      <p>We use cookies and tracking technologies — including <a href="https://www.rb2b.com/privacy-policy" target="_blank" rel="noopener">RB2B</a> — to identify website visitors and improve our service. By continuing, you agree to our <a href="/privacy">Privacy Policy</a>. You can <a href="https://app.retention.com/optout" target="_blank" rel="noopener">opt out of visitor tracking</a> at any time.</p>
+      <div class="cookie-actions">
+        <button id="cookie-accept" class="btn btn-sm btn-primary">Accept</button>
+        <a href="https://app.retention.com/optout" target="_blank" rel="noopener" class="cookie-optout">Opt out of tracking</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Mobile menu
+    const toggle=document.querySelector('.mobile-toggle'),menu=document.querySelector('.mobile-menu');
+    toggle.addEventListener('click',()=>{const open=menu.classList.toggle('open');toggle.setAttribute('aria-expanded',open);});
+    document.querySelectorAll('.mobile-menu a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');toggle.setAttribute('aria-expanded','false');}));
+
+    // Scroll reveal
+    const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}}),{threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // Counter animation
+    const cio=new IntersectionObserver(entries=>entries.forEach(e=>{
+      if(!e.isIntersecting)return;
+      const el=e.target,target=+el.dataset.target;
+      if(target===0){el.textContent='0';cio.unobserve(el);return;}
+      let cur=0;const step=Math.ceil(target/50);
+      const t=setInterval(()=>{cur=Math.min(cur+step,target);el.textContent=cur;if(cur>=target)clearInterval(t);},25);
+      cio.unobserve(el);
+    }),{threshold:0.5});
+    document.querySelectorAll('.stat-num').forEach(el=>cio.observe(el));
+
+    // Dashboard row hover
+    document.querySelectorAll('.dt-row').forEach(r=>{
+      r.addEventListener('mouseenter',()=>r.style.background='rgba(34,197,94,.06)');
+      r.addEventListener('mouseleave',()=>r.style.background='');
+    });
+
+    // Pricing toggle
+    (function(){
+      const btnM=document.getElementById('btn-monthly');
+      const btnA=document.getElementById('btn-annual');
+      const proVal=document.querySelector('#pricing .plan.featured .price-val');
+      const entVal=document.querySelector('#pricing .plan:last-child .price-val');
+      const proPeriod=document.getElementById('pro-period');
+      const entPeriod=document.getElementById('ent-period');
+      const proSub=document.getElementById('pro-subline');
+      const entSub=document.getElementById('ent-subline');
+      const proCta=document.getElementById('pro-cta');
+      const entCta=document.getElementById('ent-cta');
+
+      const links={
+        pro:{monthly:'https://rzp.io/rzp/nsTE3gR',annual:'https://rzp.io/rzp/2T2PfXBC'},
+        ent:{monthly:'https://rzp.io/rzp/oP8t6Unk',annual:'https://rzp.io/rzp/MhqdtN2a'}
+      };
+
+      function setMonthly(){
+        btnM.classList.add('active');btnA.classList.remove('active');
+        proVal.textContent=proVal.dataset.monthly;
+        entVal.textContent=entVal.dataset.monthly;
+        proPeriod.textContent='/mo';entPeriod.textContent='/mo';
+        proSub.textContent='Billed monthly';
+        entSub.textContent='Billed monthly';
+        proCta.href=links.pro.monthly;
+        entCta.href=links.ent.monthly;
+      }
+      function setAnnual(){
+        btnA.classList.add('active');btnM.classList.remove('active');
+        proVal.textContent=proVal.dataset.annual;
+        entVal.textContent=entVal.dataset.annual;
+        proPeriod.textContent='/yr';entPeriod.textContent='/yr';
+        proSub.textContent='~$41/mo — no budget approval needed';
+        entSub.textContent='~$125/mo — easy corporate card purchase';
+        proCta.href=links.pro.annual;
+        entCta.href=links.ent.annual;
+      }
+      btnM.addEventListener('click',setMonthly);
+      btnA.addEventListener('click',setAnnual);
+    })();
+
+    // Cookie banner
+    (function(){
+      if(!localStorage.getItem('cookie_consent')){
+        setTimeout(()=>document.getElementById('cookie-banner').style.display='flex',1200);
+      }
+      document.getElementById('cookie-accept').addEventListener('click',function(){
+        localStorage.setItem('cookie_consent','accepted');
+        document.getElementById('cookie-banner').style.display='none';
+      });
+    })();
+
+    // PLG click tracking (fires to console; wire to analytics of choice)
+    document.querySelectorAll('[data-plg]').forEach(el=>{
+      el.addEventListener('click',()=>{
+        const event={event:'plg_click',location:el.dataset.plg,timestamp:new Date().toISOString()};
+        console.log('[PLG]',event);
+        // Replace with: analytics.track('PLG Click', event); or gtag('event', ...)
+      });
+    });
+  </script>
 </body>
 </html>
